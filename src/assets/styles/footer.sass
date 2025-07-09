@@ -1,0 +1,132 @@
+.footer
+	background: $gray-lighten-1
+	&__box
+		padding: 40px 0 32px 0
+		display: grid
+		grid-template-columns: repeat(24,1fr)
+		gap: 72px 24px
+		grid-template-areas: 'logo cont1 cont2 soc' 'copy conf promo promo'
+		align-items: start
+		.logo
+			grid-area: logo
+			grid-column: 1/6
+		.cont1
+			grid-area: cont1
+			grid-column: 10/15
+		.cont2
+			grid-area: cont2
+			grid-column: 15/20
+		.soc
+			grid-area: soc
+			grid-column: 20/25
+		.copy
+			grid-area: copy
+			grid-column: 1/6
+		.conf
+			grid-area: conf
+			grid-column: 10/15
+			a
+				white-space: nowrap
+		.promo
+			grid-area: promo
+			grid-column: 15/25
+	&__contacts-box
+		display: grid
+		gap: 16px
+		justify-items: start
+	&__social-box
+		display: grid
+		grid-auto-flow: column
+		gap: 12px
+	&__title
+		color: $gray-darken-3
+		font-size: 16px
+		font-weight: 500
+		line-height: 130%
+	&__link
+		color: $gray-darken-1
+		font-size: 16px
+		font-weight: 400
+		line-height: 130%
+		transition: color $anim
+		cursor: pointer
+		&:active, &:hover, &:focus
+			color: $green
+	&__copy
+		color: $gray-darken-1
+		font-size: 16px
+		font-weight: 400
+		line-height: 130%
+		transition: color $anim
+		white-space: nowrap
+		@media all and ($s)
+			white-space: normal
+	&__social-link
+		& svg path
+			transition: fill $anim
+		&:active svg path , &:hover svg path , &:focus svg path
+			fill: $green
+	@media all and ($xl)
+		&__box
+			grid-template-columns: repeat(12,1fr)
+			gap: 72px 30px
+			.logo
+				grid-column: 1/4
+			.cont1
+				grid-column: 4/7
+			.cont2
+				grid-column: 7/10
+			.soc
+				grid-column: 10/13
+			.copy
+				grid-column: 1/4
+			.conf
+				grid-column: 4/7
+			.promo
+				grid-column: 7/13
+				justify-self: center
+	@media all and ($l)
+		&__box
+			gap: 72px 24px
+	@media all and ($m)
+		&__box
+			gap: 24px 16px
+			grid-template-areas: 'logo .' 'cont1 cont2' 'soc .' 'conf .' 'promo .' 'copy .'
+			grid-template-columns: 1fr 1fr
+			.logo
+				grid-column: 1/2
+				padding-bottom: 24px
+			.cont1
+				grid-column: 1/2
+			.cont2
+				grid-column: 2/3
+			.soc
+				grid-column: 1/2
+				padding-top: 24px
+				padding-bottom: 24px
+			.copy
+				grid-column: 1/2
+			.conf
+				grid-column: 1/2
+			.promo
+				grid-column: 1/2
+				justify-self: start
+	@media all and ($s)
+		&__box
+			grid-template-areas: 'logo' 'cont1' 'cont2' 'soc' 'conf' 'promo' 'copy'
+			grid-template-columns: 1fr
+			gap: 24px
+			.logo
+				padding-bottom: 16px
+			.cont1
+				padding-bottom: 8px
+			.cont2
+				grid-column: 1/2
+				padding-bottom: 8px
+			.soc
+				grid-column: 1/2
+				padding-top: 0
+				padding-bottom: 16px
+			.conf
+				a
+					white-space: normal

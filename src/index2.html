@@ -1,0 +1,66 @@
+{% set title = "Натуральная фермерская " %}
+{% set bodyClass = "is-feedback" %}
+
+{% extends "html/layouts/default.html" %}
+
+{% block content %}
+
+{% include "html/includes/header.html" %}
+<section class="feedback">
+  <div class="container">
+    <div class="feedback__box">
+      <h1 class="feedback__title">
+        Обратная связь
+      </h1>
+
+      <div class="feedback__text-box">
+        <p class="feedback__text">
+          Если у вас есть вопросы или вам нужна консультация, пожалуйста, свяжитесь с нами удобным для вас способом. Мы
+          всегда
+          готовы ответить на ваши вопросы и предоставить необходимую информацию.
+        </p>
+        <p class="feedback__text">
+          Мы обязательно свяжемся с вами в ближайшее время и поможем решить вашу задачу!
+        </p>
+      </div>
+
+      <div class="feedback__link-box">
+        <h2 class="feedback__link-title">
+          Свяжитесь с нами удобным способом
+        </h2>
+        <ul class="feedback__link-list">
+          <li class="feedback__link-item">
+            <a class="feedback__link tel" type="tel" href="tel:+79536236283">
+              <p class="feedback__link-text">
+                +7 (953) 623-62-83
+              </p>
+            </a>
+          </li>
+          <li class="feedback__link-item">
+            <a class="feedback__link mail" href="mailto:tishaeva1991@gmail.com" type="mail">
+              <p class="feedback__link-text">
+                tishaeva1991@gmail.com
+              </p>
+            </a>
+          </li>
+          <li class="feedback__link-item">
+            <a class="feedback__link tg" href="https://t.me/tishaeva1991">
+              <p class="feedback__link-text">
+                Telegram
+              </p>
+            </a>
+          </li>
+          <li class="feedback__link-item">
+            <a class="feedback__link wa" href="https://wa.me/79536236283">
+              <p class="feedback__link-text">
+                WhatsApp
+              </p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</section>
+
+
+{% endblock %}

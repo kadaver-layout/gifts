@@ -1,0 +1,873 @@
+{% set title = "Натуральная фермерская " %}
+{% set bodyClass = "is-main" %}
+
+{% extends "html/layouts/default.html" %}
+
+{% block content %}
+
+<section class="banner container">
+
+	{% include "html/includes/header.html" %}
+
+
+	<div class="banner__box">
+		<h3 class="banner__subtitle">
+			ЯРМАРКА «ОТ АБХАЗИИ ДО КАМЧАТКИ»
+		</h3>
+		<h1 class="banner__title">
+			Натуральная фермерская продукция по всей стране
+		</h1>
+		<p class="banner__text">
+			Экологически чистая продукция, приготовленная по старинным семейным рецептурам. Возможность приобрести
+			натуральные
+			продукты, изготовленные небольшими семейными хозяйствами напрямую от производителей.
+		</p>
+	</div>
+
+</section>
+
+
+
+<section class="info-banner">
+	<div class="container">
+		<div class="info-banner__box">
+			<a class="info-banner__link" type="tel" href="tel:+79536236283">
+				<picture>
+					<source srcset="assets/img/mini-banner-mob.jpg" media="(max-width: 599px)">
+					<img class="info-banner__img" src="assets/img/mini-banner.jpg" alt="">
+				</picture>
+				<div class="info-banner__tel-box">
+					<img class="info-banner__tel-img" src="assets/img/tel.svg">
+					<p class="info-banner__tel">+7 (953) 623-62-83</p>
+				</div>
+			</a>
+		</div>
+	</div>
+</section>
+
+
+<section class="about">
+	<div class="container">
+		<div class="about__box">
+			<div data-aos="fade-up" class="about__block about__block--1">
+				<h2 class="title">
+					Подход
+				</h2>
+
+				<p class="about__desc">
+					<span>Поставки формируются из свежайших продуктов, которые едут напрямую в город проведения мероприятия. Таким
+						образом, покупатели могут попробовать и приобрести те деликатесы,некоторые не представлены в их регионах
+						проживания.</span>
+					<span>Задача производителей, сохранить пользу в каждом продукте и подарить
+						покупателям
+						необыкновенный натуральный вкус,некоторый многие помнят ещё с детства.</span>
+				</p>
+
+				<div class="about__icon">
+					<img src="assets/img/m1.svg">
+				</div>
+			</div>
+			<div data-aos="fade-up" class="about__block about__block--2">
+				<h2 class="title">
+					Миссия
+				</h2>
+				<p class="about__desc">
+					<span>
+						Мы предлагаем человеку свежайший товар, даже с коротким сроком хранения. Сети и рынки не имеют такой
+						возможности, а значит люди могут приобрести продукты, которые не продаются у них в регионе.
+					</span>
+					<span>В составе
+						продукции отсутствуют добавки и консерванты. Продукты, представленные на ярмарке исключительно экологически
+						чистого происхождения.</span>
+				</p>
+				<div class="about__icon">
+					<img src="assets/img/m2.svg">
+				</div>
+			</div>
+			<div data-aos="fade-up" class="about__block about__block--3">
+				<h2 class="title">
+					История
+				</h2>
+				<p class="about__desc">
+					<span>
+						Более 6-ти лет ярмарки постоянно проходят в более чем 30 городах России. </span>
+					<span> Десятки тысяч покупателей
+						уже знают этот бренд и возвращаются снова и снова.</span>
+				</p>
+				<div class="about__icon">
+					<img src="assets/img/m3.svg">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="calendar" data-aos="fade-up" class="calendar">
+	<div class="container">
+		<h2 class="title">
+			Расписание ярмарок
+		</h2>
+		<div class="calendar__area">
+
+			<div class="calendar__box">
+
+				<div data-fancybox data-src="#modal-calendar" class="calendar__item calendar__item-link">
+
+					<div class="calendar__img-box">
+						<div class="calendar__buble">
+							<p class="calendar__buble-text">Розыгрыш</p>
+							<img class="calendar__buble-img svg" src="assets/img/buble.svg" alt="">
+						</div>
+						<img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
+					</div>
+
+					<div class="calendar__title-date">
+						<div class="calendar__date-box">
+							<p class="calendar__date">
+								<img class="svg" src="assets/img/date.svg">
+								с 12 по 30 декабря
+							</p>
+						</div>
+						<p class="calendar__item-title">
+							г. Екатеринбург
+						</p>
+					</div>
+					<div class="calendar__desc-box">
+						<p class="calendar__desc-label">
+							Адрес
+						</p>
+						<p class="calendar__desc">
+							ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
+						</p>
+					</div>
+					<div class="calendar__desc-box">
+						<p class="calendar__desc-label">
+							Время работы
+						</p>
+						<p class="calendar__desc">
+							с 10:00 до 22:00
+						</p>
+					</div>
+				</div>
+
+				<div class="calendar__item">
+					<img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
+					<div class="calendar__title-date">
+						<div class="calendar__date-box gray">
+							<p class="calendar__date">
+								<img class="svg" src="assets/img/date.svg">
+								с 12 по 30 декабря
+							</p>
+						</div>
+						<p class="calendar__item-title">
+							г. Екатеринбург
+						</p>
+					</div>
+					<div class="calendar__desc-box">
+						<p class="calendar__desc-label">
+							Адрес
+						</p>
+						<p class="calendar__desc">
+							ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
+						</p>
+					</div>
+					<div class="calendar__desc-box">
+						<p class="calendar__desc-label">
+							Время работы
+						</p>
+						<p class="calendar__desc">
+							с 10:00 до 22:00
+						</p>
+					</div>
+				</div>
+
+				<div class="calendar__item">
+					<img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
+					<div class="calendar__title-date">
+						<div class="calendar__date-box">
+							<p class="calendar__date">
+								<img class="svg" src="assets/img/date.svg">
+								с 12 по 30 декабря
+							</p>
+						</div>
+						<p class="calendar__item-title">
+							г. Екатеринбург
+						</p>
+					</div>
+					<div class="calendar__desc-box">
+						<p class="calendar__desc-label">
+							Адрес
+						</p>
+						<p class="calendar__desc">
+							ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
+						</p>
+					</div>
+					<div class="calendar__desc-box">
+						<p class="calendar__desc-label">
+							Время работы
+						</p>
+						<p class="calendar__desc">
+							с 10:00 до 22:00
+						</p>
+					</div>
+				</div>
+
+				<div class="calendar__item">
+					<img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
+					<div class="calendar__title-date">
+						<div class="calendar__date-box">
+							<p class="calendar__date">
+								<img class="svg" src="assets/img/date.svg">
+								с 12 по 30 декабря
+							</p>
+						</div>
+						<p class="calendar__item-title">
+							г. Екатеринбург
+						</p>
+					</div>
+					<div class="calendar__desc-box">
+						<p class="calendar__desc-label">
+							Адрес
+						</p>
+						<p class="calendar__desc">
+							ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
+						</p>
+					</div>
+					<div class="calendar__desc-box">
+						<p class="calendar__desc-label">
+							Время работы
+						</p>
+						<p class="calendar__desc">
+							с 10:00 до 22:00
+						</p>
+					</div>
+				</div>
+
+				<div class="calendar__item">
+					<img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
+					<div class="calendar__title-date">
+						<div class="calendar__date-box gray">
+							<p class="calendar__date">
+								<img class="svg" src="assets/img/date.svg">
+								с 12 по 30 декабря
+							</p>
+						</div>
+						<p class="calendar__item-title">
+							г. Екатеринбург
+						</p>
+					</div>
+					<div class="calendar__desc-box">
+						<p class="calendar__desc-label">
+							Адрес
+						</p>
+						<p class="calendar__desc">
+							ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
+						</p>
+					</div>
+					<div class="calendar__desc-box">
+						<p class="calendar__desc-label">
+							Время работы
+						</p>
+						<p class="calendar__desc">
+							с 10:00 до 22:00
+						</p>
+					</div>
+				</div>
+
+				<div class="calendar__item">
+					<img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
+					<div class="calendar__title-date">
+						<div class="calendar__date-box">
+							<p class="calendar__date">
+								<img class="svg" src="assets/img/date.svg">
+								с 12 по 30 декабря
+							</p>
+						</div>
+						<p class="calendar__item-title">
+							г. Екатеринбург
+						</p>
+					</div>
+					<div class="calendar__desc-box">
+						<p class="calendar__desc-label">
+							Адрес
+						</p>
+						<p class="calendar__desc">
+							ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
+						</p>
+					</div>
+					<div class="calendar__desc-box">
+						<p class="calendar__desc-label">
+							Время работы
+						</p>
+						<p class="calendar__desc">
+							с 10:00 до 22:00
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</section>
+
+<section class="request">
+	<div class="container">
+		<div class="request__box">
+			<div data-aos="fade-right" class="request__btn-box">
+				<h2 class="title">
+					Отправьте заявку и получите скидку 10% на покупки
+				</h2>
+				<button class="request__btn">
+					Отравить заявку
+				</button>
+			</div>
+			<img data-aos="fade-left" class="request__img" src="assets/img/request-img.jpg" alt="Фото ">
+		</div>
+
+	</div>
+</section>
+
+
+<section id="catalog" data-aos="fade-up" class="catalog">
+	<div class="container">
+		<h2 class="title">
+			Каталог продукции
+		</h2>
+		<div class="catalog__box">
+			<a href="" style="background-color: #FBF8CC ;" class="catalog__item">
+				<div class="catalog__content">
+					<p class="catalog__title">
+						Южные специи и приправы
+					</p>
+					<p class="catalog__desc">
+						Более 40-ка видов пряных смесей для самых вкусных и изысканных блюд. Вы сможете найти как классические
+						варианты: хмели-сунели, соли, куркума, перец, сумах, чаман так и наши авторские специи. Все они приготовлены
+						по семейным рецептам и в них сочетаются лучшие травы, пряности, а самое главное — искусство сочетания.
+					</p>
+				</div>
+
+
+				<img class="catalog__background" src="assets/img/catalog1.jpg" alt="">
+			</a>
+			<a href="" style="background-color: #FDE4CF ;" class="catalog__item">
+				<div class="catalog__content">
+					<p class="catalog__title">
+						Ароматные соусы юга
+					</p>
+					<p class="catalog__desc">
+						Натуральная классическая Абхазская бочковая аджика не оставит равнодушным ценителей острого. На ярмарке
+						представлены 2 варианта из сухого красного перца и свежего зеленого. Так же богатый выбор домашних соусов,
+						здесь вся палитра вкусов юга: гранатовый, томатный, их желтой и зеленой алычи, спелых персиков и абрикосов.
+					</p>
+				</div>
+
+
+				<img class="catalog__background" src="assets/img/catalog1.jpg" alt="">
+			</a>
+			<a href="" style="background-color: #FFCFD2 ;" class="catalog__item">
+				<div class="catalog__content">
+					<p class="catalog__title">
+						Твердые сыры
+					</p>
+					<p class="catalog__desc">
+						Изысканные вкусы и необычные сочетания — даже самые притязательные гурманы не проходят мимо витрины
+						с твёрдыми сырами. Сорта с выдержкой до 6 лет, аутентичные рецепты и только натуральные ингредиенты. Сыры
+						сварены на буйволином, овечьем и козьем молоке. Знаменитые сыры с плесенью и камамбер идеально подойдут
+						для самой вкусной сырной тарелки. Гармонично сочетаются с горным мёдом.
+					</p>
+				</div>
+
+
+				<img class="catalog__background" src="assets/img/catalog1.jpg" alt="">
+			</a>
+			<a href="" style="background-color: #F1C0E8 ;" class="catalog__item">
+				<div class="catalog__content">
+					<p class="catalog__title">
+						Вяленые фрукты
+					</p>
+					<p class="catalog__desc">
+						Натуральные вяленные фрукты и национальные десерты из Армении – это настоящее удовольствие для ценителей
+						вкуса и пользы. Огромный ассортимент от самых привычных до редких вкусов. На витринах можно найти – хурму,
+						зефирные яблоки, молодой орех, инжир, персики, груши, абрикосы, томаты, финики, черешню и многое другое.
+						Королевские «Шарики здоровья», начиненные орехом и домашнюю пастилу.
+					</p>
+				</div>
+
+
+				<img class="catalog__background" src="assets/img/catalog1.jpg" alt="">
+			</a>
+			<a href="" style="background-color: #CFBAF0 ;" class="catalog__item">
+				<div class="catalog__content">
+					<p class="catalog__title">
+						Мягкие сыры и масло
+					</p>
+					<p class="catalog__desc">
+						Адыгейские сыры гордость наших сыроделов. Мягкие, соленые, пряные, подкопчённые, необычные сыры-рулеты с
+						аджикой. Знаменитый чечил, косички и сулугуни. Все сыры приготовлены на небольшое семейной ферме только из
+						натурального козьего и коровьего молока, собранного в высокогорных экологически чистых районах Кавказа.
+						Ароматное насыщенное сливочное масло напомнит Вам вкусы из детства.
+					</p>
+				</div>
+
+
+				<img class="catalog__background" src="assets/img/catalog1.jpg" alt="">
+			</a>
+			<a href="" style="background-color: #A3C4F3 ;" class="catalog__item">
+				<div class="catalog__content">
+					<p class="catalog__title">
+						Мясные деликатесы и дичь
+					</p>
+					<p class="catalog__desc">
+						На этих витринах есть чему удивиться. Поистине шикарные мясные деликатесы из дичи. Кавказская оленина,
+						домашний хамон, шейка кабана, косуля в вине, марал, знаменитая бастурма, колбаса из зайца с фазаном и это
+						только часть всего великолепия. Только соль, специи и традиционные рецепты приготовления залог
+						необыкновенного вкуса. Такой деликатес займет достойное место на праздничном столе, а также может стать
+						хорошим подарком.
+					</p>
+				</div>
+
+
+				<img class="catalog__background" src="assets/img/catalog1.jpg" alt="">
+			</a>
+			<a href="" style="background-color: #90DBF4 ;" class="catalog__item catalog__item--hidden hidden">
+				<div class="catalog__content">
+					<p class="catalog__title">
+						Краснодарский чай
+					</p>
+					<p class="catalog__desc">
+						Краснодарский чай известен во всем мире! Это самый северный чай, который созревает на солнечных плантациях
+						поселка Дагомыс, города Сочи. Насыщенный теплом южного солнца он обладает необыкновенным вкусом и ароматом.
+						На ярмарке Вы найдете более 30 видов чая. Основа черный байховый и майский сбор. Все купажи — это авторские
+						смеси, рецепты которых подбирались десятилетиями. Кубанские ягоды, горные травы, цветы, фрукты делают каждый
+						чай уникальным по составу и вкусу. Только натуральные ингредиенты без красителей и ароматизаторов. Помимо
+						вкуса таким чаепитием можно поднять иммунитет и оказать пользу здоровью.
+					</p>
+				</div>
+
+
+				<img class="catalog__background" src="assets/img/catalog1.jpg" alt="">
+			</a>
+			<a href="" style="background-color: #98F5E1 ;" class="catalog__item catalog__item--hidden hidden">
+				<div class="catalog__content">
+					<p class="catalog__title">
+						Домашние колбасы
+					</p>
+					<p class="catalog__desc">
+						Домашняя колбаса, что может быть вкуснее. На ярмарке Вы найдете более 20-ти видов авторских сырокопченых
+						колбас. Все рецепты проверены временем и выведены до идеала. Особенные сочетания различных сортов мяса и
+						тщательный подбор специй гарантируют неповторимый вкус. Таких колбас не найти в обычном магазине: рубленая
+						свинина и телятина, говядина, конина, суджук, оленина многообразие выбора для самых изысканных гурманов. Все
+						приготовлено с любовью и просто не сможет оставить Вас равнодушными.
+					</p>
+				</div>
+
+
+				<img class="catalog__background" src="assets/img/catalog1.jpg" alt="">
+			</a>
+			<a href="" style="background-color: #B9FBC0 ;" class="catalog__item catalog__item--hidden hidden">
+				<div class="catalog__content">
+					<p class="catalog__title">
+						Горный мед и южное варенье
+					</p>
+					<p class="catalog__desc">
+						Самый полезный и экологически чистый натуральный мед с горных пасек. Для гостей ярмарки представлены 3
+						основных сорта – каштановый, липовый и мед из акации. Богатый ассортимент домашнего варенья. Инжир, молодой
+						грецкий орех, фейхоа, необыкновенное варенье из молодых шишек или веточек пихты, пряное имбирное или нежное
+						из розы. Все приготовлено с любовью и только из натуральных ингредиентов.
+					</p>
+				</div>
+
+
+				<img class="catalog__background" src="assets/img/catalog1.jpg" alt="">
+			</a>
+			<a href="" style="background-color: #D8E2DC ;" class="catalog__item catalog__item--hidden hidden">
+				<div class="catalog__content">
+					<p class="catalog__title">
+						Домашние десерты и масло
+					</p>
+					<p class="catalog__desc">
+						Натуральная домашняя халва во всем своем великолепии! Подсолнечная, арахисовая, кунжутная с огромным
+						разнообразием вкусов: гранатовая, ореховая, с маком и какао, с клюквой и фисташкой, миндалем и грецким
+						орехом. Мы гарантируем Вам возврат в детство с первого кусочка. Молочный ирис, пахлава, лукум, пастила
+						только малая часть всего изобилия вкусов. Отдельное место занимают масла. Натуральное подсолнечное с
+						запахом, оливковое и виноградной косточки. Только домашнее приготовление, а значит неповторимый вкус.
+					</p>
+				</div>
+
+
+				<img class="catalog__background" src="assets/img/catalog1.jpg" alt="">
+			</a>
+			<a href="" style="background-color: #E8E8E4;" class="catalog__item catalog__item--hidden hidden">
+				<div class="catalog__content">
+					<p class="catalog__title">
+						Домашние мясные деликатесы
+					</p>
+					<p class="catalog__desc">
+						На витринах визитные карточки фермеров Кубани. Домашние мясные деликатесы по традиционным семейным рецептам.
+						Копченое и соленое сало, грудинка, вкуснейшая ветчина, говядина в национальных специях, запечённый в тандыре
+						с гранатовым соком кабанчик, жаренная колбаска, рулеты из фазана с телятиной. Только натуральное мясо и
+						профессиональный подход к приготовлению. Абсолютно все можно продегустировать и сделать выбор в пользу
+						личных фаворитов из этого богатого изобилия.
+					</p>
+				</div>
+
+
+				<img class="catalog__background" src="assets/img/catalog1.jpg" alt="">
+			</a>
+			<a href="" style="background-color: #FFD7BA ;" class="catalog__item catalog__item--hidden hidden">
+				<div class="catalog__content">
+					<p class="catalog__title">
+						Дальневосточные деликатесы
+					</p>
+					<p class="catalog__desc">
+						Дары с дальнего востока представлены во всем великолепии. На витринах богатый выбор копченой и слабосоленой
+						рыбы. Здесь царица лосося – дикая чавыча, огромная блорыбица и белуга, известный всеми палтус и тунец. А как
+						же без бочковой селедочки, копченой скумбрии и корюшки. Морской окунь, саварин, камчатский кальмар. Огромный
+						выбор настоящий консервов напрямую от производителей: печень трески, семга, нерка, краб. И конечно
+						великолепие красной икры: королевская кета, кижуч, нерка, горбуша. Мы следим за качеством и свежестью и
+						всегда готовы радовать Вас самыми лучшими морскими деликатесами.
+					</p>
+				</div>
+
+
+
+				<img class="catalog__background" src="assets/img/catalog1.jpg" alt="">
+
+			</a>
+		</div>
+		<button class="catalog__all-btn">
+			<p class="catalog__all-btn-text">
+				Показать больше
+			</p>
+			<img class="svg" src="assets/img/all-btn.svg">
+		</button>
+	</div>
+</section>
+
+<section data-aos="fade-up" class="info">
+	<div class="container">
+		<div class="info__box">
+			<h2 class="title">
+				Экология — <br> наша главная забота
+			</h2>
+			<p class="info__text">
+				Задача производителей, сохранить пользу в каждом продукте и подарить покупателям необыкновенный натуральный
+				вкус, который многие помнят ещё с детства.
+			</p>
+		</div>
+</section>
+<section data-aos="fade-up" class="advantages">
+	<div class="container">
+		<div class="advantages__box">
+			<div class="advantages__item">
+				<img class="svg" src="assets/img/info1.svg">
+				<p class="advantages__item-title">
+					Здоровье
+				</p>
+				<p class="advantages__item-desc">
+					Наши продукты произведены не просто без использования вредных химических веществ, но и с сохранением полезных
+					свойств каждого продукта. Хорошее питания — основа здоровья человека
+				</p>
+			</div>
+			<div class="advantages__item">
+				<img class="svg" src="assets/img/info2.svg">
+				<p class="advantages__item-title">
+					Вкус
+				</p>
+				<p class="advantages__item-desc">
+					Мы выращиваем лучшие породы скота и проводим селекцию поголовья. В поисках непревзойденного вкуса продукты мы
+					осуществляем его тщательный отбор, выбирая лучшее из безупречного
+				</p>
+			</div>
+			<div class="advantages__item">
+				<img class="svg" src="assets/img/info3.svg">
+				<p class="advantages__item-title">
+					Традиции
+				</p>
+				<p class="advantages__item-desc">
+					При производстве экономическая эффективность никогда не ставится выше получения традиционного вкуса продуктов.
+					Мы создаем свои традиции производства настоящих продуктов.
+				</p>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+<section data-aos="fade-up" class="reviews">
+	<div class="container">
+
+		<div class="swiper reviews__box">
+			<h2 class="title">
+				Отзывы наших клиентов
+			</h2>
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<div class="reviews__video-box">
+						<div class="reviews__video-desc-box">
+							<p class="reviews__video-title">
+								Анастасия
+							</p>
+							<p class="reviews__video-city">
+								г. Санкт-Петербург
+							</p>
+						</div>
+						<div data-video="assets/img/video/1.mp4" data-image="assets/img/video1.jpg" class="reviews__video"
+							id="reviews1"></div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="reviews__video-box">
+						<div class="reviews__video-desc-box">
+							<p class="reviews__video-title">
+								Евгений
+							</p>
+							<p class="reviews__video-city">
+								г. Новосибирск
+							</p>
+						</div>
+						<div data-video="assets/img/video/2.mp4" data-image="assets/img/video2.jpg" class="reviews__video"
+							id="reviews2"></div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="reviews__video-box">
+						<div class="reviews__video-desc-box">
+							<p class="reviews__video-title">
+								Иван
+							</p>
+							<p class="reviews__video-city">
+								г. Нижний-Новгород
+							</p>
+						</div>
+						<div data-video="assets/img/video/3.mp4" data-image="assets/img/video3.jpg" class="reviews__video"
+							id="reviews3">
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="reviews__video-box">
+						<div class="reviews__video-desc-box">
+							<p class="reviews__video-title">
+								Павел
+							</p>
+							<p class="reviews__video-city">
+								г. Санкт-Петербург
+							</p>
+						</div>
+						<div data-video="assets/img/video/4.mp4" data-image="assets/img/video4.jpg" class="reviews__video"
+							id="reviews4">
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="reviews__video-box">
+						<div class="reviews__video-desc-box">
+							<p class="reviews__video-title">
+								Дмитрий
+							</p>
+							<p class="reviews__video-city">
+								г. Омск
+							</p>
+						</div>
+						<div data-video="assets/img/video/5.mp4" data-image="assets/img/video5.jpg" class="reviews__video"
+							id="reviews5">
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="reviews__video-box">
+						<div class="reviews__video-desc-box">
+							<p class="reviews__video-title">
+								Андрей
+							</p>
+							<p class="reviews__video-city">
+								г. Ростов-на-Дону
+							</p>
+						</div>
+						<div data-video="assets/img/video/4.mp4" data-image="assets/img/video4.jpg" class="reviews__video"
+							id="reviews6">
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="reviews__video-box">
+						<div class="reviews__video-desc-box">
+							<p class="reviews__video-title">
+								Андрей
+							</p>
+							<p class="reviews__video-city">
+								г. Ростов-на-Дону
+							</p>
+						</div>
+						<div data-video="assets/img/video/1.mp4" data-image="assets/img/video1.jpg" class="reviews__video"
+							id="reviews7">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="reviews__swiper-button-prev swiper-button-prev"></div>
+			<div class="reviews__swiper-button-next swiper-button-next"></div>
+
+		</div>
+	</div>
+</section>
+
+<section id="map-block" data-aos="fade-up" class="map-block">
+	<div class="container">
+		<h2 class="title">
+			Карта ярмарок
+		</h2>
+		<div class="map" id="map">
+
+		</div>
+	</div>
+</section>
+
+<section class="form-block">
+	<div class="container">
+		<div class="form-block__box">
+			<div class="form__block">
+
+				<div class="form__box">
+					<div class="form__sale-box">
+						<p class="form__sale">
+							Скидка 10%
+						</p>
+					</div>
+					<div class="form__box-title">
+						<h2 class="title">
+							Остались вопросы?
+						</h2>
+						<p class="form__box-subtitle">
+							Отправьте заявку на консультацию со специалистом и получите скидку 10% на покупки.
+						</p>
+					</div>
+					<form class="form" action="" id="form" name="form">
+
+						<div class="input_block">
+							<input required class="form__input" type="text" name="name" id="name_input">
+							<label class="label-input" for="name_input">
+								<span class="label-span">Ваше имя</span>
+							</label>
+						</div>
+
+						<div class="input_block">
+							<input required class="form__input" type="tel" name="tel" id="tel_input">
+							<label class="label-input" for="tel_input">
+								<span class="label-span">Номер телефона</span>
+							</label>
+						</div>
+
+
+						<div class="select_block">
+
+							<select class="city" name="city" id="city">
+								<option value=""></option>
+								<option value="1">Орел</option>
+								<option value="2">Москва</option>
+								<option value="3">Питер</option>
+							</select>
+							<label class="label-input-select" for="city">
+								<span class="label-span">Город</span>
+							</label>
+						</div>
+
+						<div class="select_block">
+
+							<select class="advice" name="advice" id="advice">
+								<option value=""></option>
+								<option value="1">Интернет</option>
+								<option value="2">Газета</option>
+								<option value="3">Смс</option>
+							</select>
+							<label class="label-input-select" for="advice">
+								<span class="label-span">Как вы узнали о ярмарке</span>
+							</label>
+						</div>
+					</form>
+
+					<div class="form__submit">
+						<button form="form" type="submit" class="request__btn">
+							Отравить заявку
+						</button>
+						<p class="form__submit-text">
+							Отправляя заявку Вы соглашаетесь с действующей <a href="">политикой конфиденциальности </a>
+						</p>
+					</div>
+				</div>
+
+
+				<div class="form-block__contact-block">
+					<p class="form-block__contact-text">
+						Или свяжитесь с нами удобным способом
+					</p>
+					<div class="form-block__contact-wrapper">
+
+						<a href="tel:+79536236283" type="tel" class="form-block__contact-link">
+							<img class="svg" src="assets/img/tel.svg">
+							<p>
+								+7 (953) 623-62-83
+							</p>
+						</a>
+						<a href="mailto:tishaeva1991@gmail.com" type="mail" class="form-block__contact-link">
+							<img class="svg" src="assets/img/mail.svg">
+							<p>
+								tishaeva1991@gmail.com
+							</p>
+						</a>
+					</div>
+				</div>
+			</div>
+
+
+			<img class="form-block__img" src="assets/img/form.jpg" alt="   ">
+		</div>
+	</div>
+</section>
+
+
+{# <div class="modal-calendar" id="modal-calendar">
+	<div class="modal__container modal-calendar__container">
+		<h2 class="title">
+			Розыгрыш микроволновки!
+		</h2>
+		<img class="modal-calendar__info-img" src="assets/img/info.jpg" alt="">
+		<div class="modal-calendar__description-box">
+			<p>
+				Друзья, у нас отличные новости! На одной из предстоящих ярмарок мы разыгрываем современную микроволновку среди
+				всех
+				посетителей!
+			</p>
+			<p>
+				Как участвовать:
+			</p>
+			<ol>
+				<li>
+					Приходите на ярмарку и найдите наш стенд.
+				</li>
+				<li>
+					Совершите покупку на любую сумму.
+				</li>
+				<li>
+					Заполните специальную анкету для участия в розыгрыше.
+				</li>
+			</ol>
+			<p>
+				Дата и время розыгрыша:
+			</p>
+			<p>
+				Будут объявлены на ярмарке. Победитель будет выбран случайным образом и объявлен прямо на месте.
+			</p>
+			<p>
+				Не упустите шанс!
+			</p>
+		</div>
+	</div>
+</div>
+ #}
+
+
+
+{% endblock %}

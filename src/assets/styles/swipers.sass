@@ -1,0 +1,79 @@
+.swiper
+  width: 100%
+  height: 100%
+  margin-left: auto
+  margin-right: auto
+
+.swiper-main-big
+  .swiper-slide-box
+    display: flex
+    gap: 8px
+    min-height: 277px
+    justify-content: space-around
+    @media all and ($xs)
+      min-height: 170px
+  .swiper-wrapper
+    padding-top: 20px
+    @media all and ($xs)
+      flex-direction: row
+  .swiper-slide:nth-child(2)
+    @media all and ($xs)
+      order: 1
+.swiper-grid-column .swiper-wrapper
+  @media all and ($xs)
+    flex-direction: row
+    min-height: 532px
+  @media all and (max-width: 420px)
+    min-height: 365px
+
+.swiper-button-next, .swiper-button-prev
+  top: 30px
+.swiper-button-next
+  right: 0
+  &::after
+    content: ""
+    background: url(../../assets/img/sw-next.svg)
+    width: 40px
+    height: 40px
+    background-size: cover
+.swiper-button-prev
+  left: auto
+  right: 24px
+  &::after
+    content: ""
+    background: url(../../assets/img/sw-next.svg)
+    width: 40px
+    height: 40px
+    background-size: cover
+    transform: rotateY(180deg)
+
+.swiper-main-saintly
+  .main__item-img
+    max-height: 260px
+    position: relative
+    &::before
+      content: ""
+      position: absolute
+      border: 2px solid #FFF6D7
+      width: calc( 100% - 10px )
+      height: calc( 100% - 10px )
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      border-radius: 30px 30px 40px 40px
+    img
+      height: 260px
+      @media all and (max-width: 420px)
+        height: auto
+    p
+      font-weight: 600
+  .main__item-link
+    &:hover, &:active, &:focus
+      & .main__item-img img
+        height: 260px
+        @media all and (max-width: 420px)
+          height: auto
+      & .main__item-title
+        font-weight: 600
+  .swiper-wrapper
+    padding-top: 20px

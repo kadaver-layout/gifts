@@ -1,0 +1,201 @@
+.form
+  display: grid
+  grid-template-columns: repeat(2,1fr)
+  gap: 32px 24px
+  width: 100%
+  @media all and ($m)
+    gap: 16px
+    margin-bottom: -16px
+  @media all and ($s)
+    grid-template-columns: 1fr
+  &__block
+    display: grid
+    padding: 56px
+    border-radius: 8px
+    background: $green
+    align-content: space-between
+    @media all and ($l)
+      gap: 72px
+    @media all and ($m)
+      gap: 40px
+      padding: 24px 20px
+  &__box
+    display: grid
+    justify-items: start
+    align-items: start
+    gap: 40px
+    @media all and ($m)
+      gap: 32px
+    .title
+      color: #fff
+  &__box-title
+    display: grid
+    gap: 24px
+    @media all and ($m)
+      padding-bottom: 16px
+  &__box-subtitle
+    color: $gray-lighten-1
+    font-size: 20px
+    font-weight: 400
+    line-height: 130%
+    @media all and ($m)
+      font-size: 14px
+  &__sale-box
+    padding: 8px 12px
+    border-radius: 36px
+    background: #fff
+  &__sale
+    color: $gray-darken-3
+    font-size: 16px
+    font-weight: 400
+    line-height: 130%
+    position: relative
+    display: grid
+    grid-auto-flow: column
+    align-items: center
+    gap: 8px
+    &::before
+      content: ""
+      display: block
+      width: 6px
+      height: 6px
+      background: $green
+      border-radius: 50%
+  &__submit
+    display: grid
+    grid-auto-flow: column
+    gap: 32px
+    align-items: center
+    justify-items: start
+    @media all and ($m)
+      grid-auto-flow: row
+      grid-template-columns: 1fr
+      gap: 8px
+      width: 100%
+      justify-items: stretch
+    button
+      @media all and ($m)
+        grid-row: 1/2
+        grid-column: 1/2
+
+  &__submit-text
+    color: $gray-lighten-1
+    font-size: 14px
+    font-weight: 400
+    line-height: 130%
+    @media all and ($m)
+      grid-row: 2/3
+    a
+      color: $gray-lighten-1
+
+.input_block, .select_block
+  width: 100%
+  height: 72px
+  position: relative
+  & .form__input , & .select2, select
+    display: flex
+    align-items: center
+    padding: 0
+    height: 100%
+    width: 100% !important
+    padding: 8px 16px
+    border-radius: 4px
+    background-color: #fff
+    border: 1px solid $gray-lighten-2
+    outline: none
+    overflow: hidden
+    color: $gray-darken-1
+    text-overflow: ellipsis
+    font-size: 16px
+    font-weight: 400
+    line-height: 130%
+    transition: border $anim
+  & .label-input, & .label-input-select
+    white-space: nowrap
+    z-index: 99
+    display: block
+    position: absolute
+    top: 0
+    left: 16px
+  & .label-input .label-span, & .label-input-select .label-span
+    display: block
+    height: 16px
+    transition: all $anim
+    color: $gray-text
+    text-overflow: ellipsis
+    font-size: 16px
+    font-weight: 400
+    line-height: 130%
+    position: absolute
+    top: 21px
+    left: 0
+  & .form__input:focus + .label-input  .label-span,
+  & .form__input:hover + .label-input .label-span,
+  & .form__input:active + .label-input  .label-span,
+  & .select2:hover  + .label-input-select .label-span,
+  & .select2:active  + .label-input-select  .label-span,
+  & .select2:focus  + .label-input-select  .label-span,
+  .label-input-select.active .label-span,
+  .label-input.active .label-span,
+  select.active + .label-span
+    font-size: 12px
+    top: 7px
+    color: $gray-lighten-4
+
+  & .form__input:focus,
+  & .form__input:hover,
+  & .form__input:active
+    border: 1px solid $gray-lighten-4
+
+  .select2-selection__rendered, .selection
+    color: $gray-darken-1
+    text-overflow: ellipsis
+    justify-content: stretch
+    font-size: 16px
+    font-weight: 400
+    line-height: 130%
+    height: 100%
+    width: 100%
+  .select2-container .select2-selection--single
+    height: 100%
+
+.select2 *
+  &:focus-visible
+    outline: none
+.select2
+  transition: border $anim
+  &:active, &:focus, &:hover
+    border: 1px solid $gray-lighten-4
+
+.select2-container--open
+  padding-top: 8px
+  .dropdown-wrapper
+    transform: rotate(180deg)
+
+.select2-dropdown
+  border-radius: 4px !important
+  border: 1px solid $gray-lighten-2
+  background: #FFF
+
+.select2-results__option
+  color: $gray-darken-1
+  font-size: 16px
+  font-weight: 400
+  line-height: 130%
+  padding: 16px
+  &:active, &:focus, &:hover
+    background: $gray-lighten-1
+
+.select2-search
+  display: none
+
+.select2-container .select2-selection--single .select2-selection__rendered
+  display: flex
+  align-items: center
+  padding-left: 0
+
+.dropdown-wrapper
+  background: url(../../assets/img/form-arrow.svg)
+  width: 24px
+  height: 24px
+  transition: transform $anim

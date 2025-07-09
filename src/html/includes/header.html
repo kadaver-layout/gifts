@@ -1,0 +1,123 @@
+<header class="header">
+  <div class="container">
+    <div class="header__box">
+      <a href="" class="header__logo">
+        <img width="197" height="65" src="../../assets/img/logo.png" alt="Logo">
+      </a>
+      <nav class="header__nav">
+        <a href="#calendar" class="header__link">
+          Расписание ярмарок
+        </a>
+        <a href="#catalog" class="header__link">
+          Каталог продукции
+        </a>
+        <a href="#map-block" class="header__link">
+          Карта ярмарок
+        </a>
+        <a href="#footer" class="header__link">
+          Контакты
+        </a>
+      </nav>
+
+      <button data-fancybox data-src="#modal" class="header__btn">
+        <p class="header__link">Отравить заявку</p>
+      </button>
+
+
+
+      <div style="display: none;" class="modal" id="modal">
+        <div class="modal__container">
+          <div class="form__box-title">
+            <h2 class="title">
+              Остались вопросы?
+            </h2>
+            <p class="form__box-subtitle">
+              Оставьте заявку на обратную связь и наши менеджеры свяжутся с Вами
+            </p>
+          </div>
+          <form class="form" action="" id="form2" name="form2">
+
+            <div class="input_block">
+              <input required class="form__input" type="text" name="name" id="name_input2">
+              <label class="label-input" for="name_input2">
+                <span class="label-span">Ваше имя</span>
+              </label>
+            </div>
+
+            <div class="input_block">
+              <input required class="form__input" type="tel" name="tel" id="tel_input2">
+              <label class="label-input" for="tel_input2">
+                <span class="label-span">Номер телефона</span>
+              </label>
+            </div>
+
+
+            <div class="select_block">
+
+              <select class="city" name="city" id="city2">
+                <option value=""></option>
+                <option value="1">Орел</option>
+                <option value="2">Москва</option>
+                <option value="3">Питер</option>
+              </select>
+              <label class="label-input-select" for="city2">
+                <span class="label-span">Город</span>
+              </label>
+            </div>
+
+            <div class="select_block">
+
+              <select class="advice" name="advice" id="advice2">
+                <option value=""></option>
+                <option value="1">Интернет</option>
+                <option value="2">Газета</option>
+                <option value="3">Смс</option>
+              </select>
+              <label class="label-input-select" for="advice2">
+                <span class="label-span">Как вы узнали о ярмарке</span>
+              </label>
+            </div>
+          </form>
+
+          <div class="form__submit">
+            <button form="form2" type="submit" class="request__btn">
+              Отравить заявку
+            </button>
+            <p class="form__submit-text">
+              Отправляя заявку Вы соглашаетесь с действующей <a href="">политикой конфиденциальности </a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="header__nav-box header__nav-box-mobile">
+        <button aria-label=" Кнопка открыть меню" class="header__burger burger">
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+        </button>
+
+        <div class="header__list-mobile">
+          <nav class="header__nav header__nav-mobile">
+            <a href="#calendar" class="header__link">
+              Расписание ярмарок
+            </a>
+            <a href="#catalog" class="header__link">
+              Каталог продукции
+            </a>
+            <a href="#map-block" class="header__link">
+              Карта ярмарок
+            </a>
+            <a href="#footer" class="header__link">
+              Контакты
+            </a>
+          </nav>
+          <button data-fancybox data-src="#modal" class="header__btn header__btn-mobile">
+            <p class="header__link">Отравить заявку</p>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>

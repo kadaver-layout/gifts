@@ -1,0 +1,97 @@
+.burger
+  display: none
+.header__nav-box-mobile
+  display: none
+
+@media all and ($m)
+  .burger
+    display: block
+    position: relative
+    width: 30px
+    height: 40px
+    background-color: transparent
+    border: none
+    cursor: pointer
+    &__line
+      position: absolute
+      left: 50%
+      transform: translateX(-50%)
+      width: 30px
+      height: 3px
+      background-color: #fff
+    &__line:first-child
+      top: 7px
+    &__line:last-child
+      bottom: 7px
+    &__line:nth-child(2)
+      top: 50%
+      transform: translate(-50%, -50%)
+  .header
+    &__nav-box-mobile
+      display: flex
+      cursor: pointer
+    &__btn-mobile
+      display: none
+    &__list-mobile
+      // display: flex
+      flex-direction: column
+      justify-content: space-between
+      right: 0
+      top: 0
+      width: 296px
+      height: 100vh
+      z-index: 1000
+      padding: 40px 16px 80px 16px
+      background-color: #fff
+      position: absolute
+      gap: 60px
+      overflow-y: auto
+      visibility: hidden
+      transform: translateX(120%)
+      transition: visibility $anim, transform $anim, display $anim
+      display: none
+      &--active
+        visibility: visible
+        transform: none
+        display: flex
+        .header__btn-mobile
+          display: flex
+          justify-content: center
+          .header__link
+            color: #fff
+      .header__item .header__link
+        font-size: 24px
+        line-height: 29px
+      .header__nav-mobile
+        padding-top: 40px
+        display: grid
+        grid-auto-flow: row
+        gap: 32px
+      .header__link
+        color: $gray-darken-4
+        font-size: 14px
+        font-weight: 500
+        line-height: 130%
+
+  .burger--active
+    z-index: 1001
+    padding-left: 50px
+    .burger__line
+      background: $gray-lighten-4
+      transition: transform $anim, top $anim, left $anim, color $anim
+    .burger__line:first-child
+      left: 25%
+      top: 50%
+      transform: rotate(45deg)
+      transform-origin: center
+    .burger__line:last-child
+      left: 25%
+      top: 50%
+      transform: rotate(-45deg)
+      transform-origin: center
+    .burger__line:nth-child(2)
+      opacity: 0
+  .stop-scroll
+    overflow: hidden
+  .header__list
+    display: none

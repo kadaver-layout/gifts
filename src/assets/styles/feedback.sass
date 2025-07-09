@@ -1,0 +1,78 @@
+.is-feedback
+  .modal-calendar
+    display: none
+  .header__link
+    color: $gray-darken-3
+  .header__btn .header__link
+    color: #fff
+  .burger__line
+    background-color: $gray-darken-3
+.feedback
+  margin-top: 48px
+  &__box
+    max-width: 899px
+  &__title
+    font-family: var(--font-family)
+    font-weight: 500
+    font-size: 64px
+    color: #1a1a1b
+    @media all and ($s)
+      font-size: 32px
+  &__text
+    font-family: var(--font-family)
+    font-weight: 400
+    font-size: 20px
+    line-height: 130%
+    color: #73737c
+    @media all and ($s)
+      font-size: 16px
+  &__text-box
+    margin-top: 32px
+    margin-bottom: 40px
+    display: grid
+    gap: 20px
+  &__link-box
+    display: grid
+    gap: 24px
+  &__link-title
+    font-family: var(--font-family)
+    font-weight: 500
+    font-size: 24px
+    line-height: 130%
+    color: #1a1a1b
+    @media all and ($s)
+      font-size: 20px
+  &__link-list
+    display: flex
+    gap: 8px
+    flex-wrap: wrap
+  &__link
+    display: grid
+    border-radius: 36px
+    padding: 13.5px 12px
+    background: #efeff0
+    .feedback__link-text::after
+      content: ''
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      left: 0
+      width: 32px
+      height: 32px
+      background-size: contain
+    &.tel .feedback__link-text::after
+      background: url(/assets/img/tel-white.svg) no-repeat
+    &.mail .feedback__link-text::after
+      background: url(/assets/img/mail-white.svg) no-repeat
+    &.tg .feedback__link-text::after
+      background: url(/assets/img/tg-white.svg) no-repeat
+    &.wa .feedback__link-text::after
+      background: url(/assets/img/wa-white.svg) no-repeat
+  &__link-text
+    font-family: var(--font-family)
+    font-weight: 400
+    font-size: 16px
+    line-height: 130%
+    color: #1a1a1b
+    padding-left: 40px
+    position: relative

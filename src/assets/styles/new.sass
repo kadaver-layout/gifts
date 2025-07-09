@@ -1,0 +1,192 @@
+.calendar__img-box
+  position: relative
+  border-radius: 8px
+  max-height: 229px
+  display: grid
+  overflow: hidden
+.calendar__item-link
+  cursor: pointer
+.calendar__img
+  transition: transform $anim
+.calendar__buble
+  z-index: 2
+  position: absolute
+  left: 12px
+  bottom: 12px
+  background: linear-gradient(90deg, #a470ff 0%, #7b64e3 27%, #6479e3 52%, #6490e3 71%, #64aee3 100%)
+  border-radius: 4px
+  padding: 8px 16px
+  display: grid
+  grid-auto-flow: column
+  gap: 4px
+  align-items: center
+.calendar__buble-text
+  font-family: var(--font-family)
+  font-weight: 400
+  font-size: 16px
+  line-height: 130%
+  color: #fff
+.calendar__buble-img
+  min-width: 16px
+  bottom: -1px
+  position: relative
+.calendar__item-link:hover .calendar__img
+  transform: scale(1.05)
+
+.modal-calendar
+  &.fancybox__content
+    padding: 0
+  &__container
+    gap: 40px
+    max-width: 987px
+    padding: 40px
+    @media all and ($s)
+      max-width: 600px
+      gap: 24px
+      padding: 40px 20px
+    @media all and ($xs)
+      max-width: 360px
+  .title
+    font-family: var(--font-family)
+    font-weight: 500
+    font-size: 48px
+    color: var(--gray-darken-3)
+    @media all and ($s)
+      font-size: 24px
+  .form__box-subtitle
+    @media all and ($s)
+      font-size: 14px
+    &.strong
+      font-weight: 500
+
+  &__info-img
+    max-height: 400px
+    width: 100%
+    border-radius: 16px
+    object-fit: cover
+    @media all and ($s)
+      max-height: 268px
+    @media all and ($xs)
+      max-height: 154px
+  &__description
+    display: grid
+    gap: 12px
+    @media all and ($s)
+      gap: 8px
+
+  &__description-box
+    display: grid
+    gap: 24px
+    @media all and ($s)
+      gap: 16px
+    ol
+      display: grid
+      margin-block-start: 0
+      margin-block-end: 0
+    li
+      font-family: var(--font-family)
+      font-weight: 400
+      font-size: 20px
+      line-height: 130%
+      color: var(--gray-darken-1)
+    &::marker
+      font-family: var(--font-family)
+      font-weight: 400
+      font-size: 20px
+      line-height: 130%
+      color: var(--gray-darken-1)
+
+      @media all and ($s)
+        font-size: 14px
+    p
+      font-family: var(--font-family)
+      font-weight: 400
+      font-size: 20px
+      line-height: 130%
+      color: var(--gray-darken-1)
+      @media all and ($s)
+        font-size: 14px
+  &__description-footer
+    display: grid
+    margin-top: 6px
+    @media all and ($s)
+      margin-top: 8px
+    p
+      font-family: var(--font-family)
+      font-weight: 500
+      font-size: 24px
+      line-height: 130%
+      color: var(--gray-darken-1)
+      @media all and ($s)
+        font-size: 20px
+
+/// Баннер 
+.info-banner
+  &__box
+    display: grid
+  &__link
+    position: relative
+    &:hover .info-banner__tel-img, &:active .info-banner__tel-img, &:focus .info-banner__tel-img
+      transform: scale(1.3)
+      @media all and ($m)
+        transform: scale(1.1)
+    &:hover .info-banner__tel-box::before, &:active .info-banner__tel-box::before, &:focus .info-banner__tel-box::before
+      left: 110%
+  &__img
+    border-radius: 24px
+    position: relative
+    width: 100%
+  &__tel-box
+    position: absolute
+    display: grid
+    border-radius: 36px
+    padding: calc(8px + (12 - 8) * ( (100vw - 1440px) / ( 1704 - 1440)))
+    background: #fff
+    margin-top: 6px
+    bottom: 10%
+    left: 4%
+    gap: 8px
+    grid-auto-flow: column
+    align-items: center
+    align-content: center
+    overflow: hidden
+    @media all and ($l)
+      padding: 8px 12px
+    @media all and ($m)
+      padding: 4px 8px
+    @media all and ($s)
+      padding: 3px 6px
+    @media all and ($xs)
+      bottom: 50%
+      left: 10%
+      padding: calc(8px + (12 - 8) * ( (100vw - 340px) / ( 600 - 340)))
+    &::before
+      position: absolute
+      content: ''
+      transition: left $anim
+      width: 50%
+      height: 100%
+      left: -100px
+      top: 50%
+      transform: translateY(-50%)
+      filter: blur(5px)
+      background: rgba(81, 183, 116, 0.3)
+  &__tel-img
+    width: calc(24px + (32 - 24) * ( (100vw - 1440px) / ( 1704 - 1440)))
+    height: calc(24px + (32 - 24) * ( (100vw - 1440px) / ( 1704 - 1440)))
+    min-width: 16px
+    min-height: 16px
+    position: relative
+    z-index: 1
+    transition: transform $anim
+  &__tel
+    position: relative
+    font-family: var(--font-family)
+    font-weight: 400
+    font-size: calc(16px + (20 - 16) * ( (100vw - 1440px) / ( 1704 - 1440)))
+    color: #242427
+    @media all and ($l)
+      font-size: calc(14px + (16 - 14) * ( (100vw - 1200px) / ( 1440 - 1200)))
+    @media all and ($xs)
+      font-size: calc(14px + (18 - 14) * ( (100vw - 340px) / ( 600 - 340)))
+      

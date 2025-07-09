@@ -1,0 +1,36 @@
+.header
+  padding: 24px 0
+  &__box
+    display: grid
+    gap: 72px
+    align-items: center
+    grid-template-columns: auto 1fr auto
+    @media all and ($xs)
+      grid-template-columns: auto auto
+      justify-content: space-between
+  &__logo
+    display: grid
+    justify-self: start
+  &__nav
+    display: grid
+    grid-auto-flow: column
+    gap: 40px
+    justify-content: space-between
+    justify-self: end
+    @media all and ($m)
+      display: none
+  &__btn
+    border-radius: 4px
+    padding: 16px 32px
+    background: $green
+    display: grid
+    justify-self: end
+    transition: background $anim
+    &:active, &:focus, &:hover
+      background: #47A166
+    @media all and ($xs)
+      display: none
+  &__link
+    color: #fff
+    font-size: 14px
+    font-weight: 500

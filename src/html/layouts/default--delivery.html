@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ meta_description }}">
+
+  {% for lib in jsLibs %}
+  {% if lib.css %}
+  <link rel="stylesheet" href="assets/css/libs/{{ lib.css }}">
+  {% endif %}
+  {% endfor %}
+
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+  {% for lib in jsLibs %}
+  <script defer src="assets/js/libs/{{ lib.link }}"></script>
+  {% endfor %}
+  <script
+    src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=71b2368b-427a-4d7a-8d3a-a27bbb3be2eb&suggest_apikey=1ff1b2a6-af01-45fa-9470-b69c21fcbd91"></script>
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=71b2368b-427a-4d7a-8d3a-a27bbb3be2eb&lang=ru_RU"
+    type="text/javascript"></script>
+  <script defer src="assets/js/app.js"></script>
+
+</head>
+
+<body id="body">
+  <div id="svg-sprite-container" style="display: none;"></div>
+  {% block content %}{% endblock %}
+  {% include "includes/city-modal.html" %}
+
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+@use "_vars" as *
+.pagination
+  text-align: center
+  &__show-more
+    display: block
+    width: 100%
+    padding: 16px 0
+    background-color: $gray-lighten-2
+    font-size: 16px
+    border-radius: 4px
+    color: $gray-darken-4
+    border: none
+    cursor: pointer
+    transition: background-color $anim, color $anim
+
+    &:hover
+      background-color: $green
+      color: #fff
+  &__list
+    display: flex
+    justify-content: start
+    gap: 8px
+    margin-top: 16px
+    list-style: none
+    padding: 0
+
+  &__item
+    display: grid
+    width: 48px
+    height: 48px
+    justify-content: center
+    align-items: center
+    font-size: 16px
+    line-height: 1.4
+    color: $gray-text
+    transition: color $anim
+
+    &.active
+      .pagination__link
+        display: grid
+        justify-content: center
+        align-items: center
+        width: 48px
+        height: 48px
+        font-size: 16px
+        font-weight: 500
+        background-color: $green
+        color: #fff
+        border-radius: 4px
+        padding: 8px 12px
+
+    &.pagination__item--dots
+      color: $gray-text
+      display: grid
+      align-content: center
+
+    &.pagination__item--next
+      display: grid
+      align-content: center
+      .pagination__next
+        display: flex
+        align-items: center
+        justify-content: center
+        color: $gray-text
+        transition: color $anim
+
+        &:hover
+          color: $green
+
+        .pagination__arrow
+          width: 16px
+          height: 16px
+          fill: currentColor
+
+  &__link
+    display: inline-block
+    padding: 8px 12px
+    background-color: transparent
+    border: none
+    cursor: pointer
+    transition: color $anim
+    color: $gray-text
+    font-size: 16px
+    font-weight: 500
+    &:hover
+      color: $green

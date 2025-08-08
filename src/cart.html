@@ -1,0 +1,207 @@
+{% set title = "Натуральная фермерская " %}
+{% extends "layouts/default.html" %}
+
+{% block content %}
+<main class="cart-page">
+  <section class="cart">
+    <div class="container">
+      <div class="cart__header">
+        <h1 class="cart__title">Корзина</h1>
+        <p class="cart__item-count">{{ productsCards.length }} товаров</p>
+      </div>
+      <div class="cart__layout">
+        <div class="cart__items-column">
+          <div class="cart__controls">
+            <label class="cart__checkbox-control">
+              <span class="custom-checkbox">
+                <input class="custom-checkbox__input" type="checkbox">
+                <span class="custom-checkbox__box"></span>
+              </span>
+              <span>Выбрать все</span>
+            </label>
+            <button class="cart__delete-selected-btn">Удалить выбранное</button>
+          </div>
+          <hr class="cart__divider">
+          <div class="cart__items-list">
+            {% for item in productsCards %}
+            <div class="cart__item-row">
+              <label class="cart__checkbox-control cart__item-checkbox">
+                <span class="custom-checkbox">
+                  <input class="custom-checkbox__input" type="checkbox">
+                  <span class="custom-checkbox__box"></span>
+                </span>
+              </label>
+              <div class="cart__item">
+                <a href="" class="cart__item-info">
+                  {% if not item.img %}
+                  {{ 'assets/img/no-image.jpg' | picture( "Изображение на товар отсуствует", 'cart__item-image no-img')|safe}}
+                  {% else %}
+                  <div class="card__img-box">
+                    {{ item.img | picture(alt, 'cart__item-image') | safe }}
+                  </div>
+                  {% endif %}
+                  <div class="cart__item-details">
+                    <div  class="cart__item-name">{{ item.title }}</div>
+                    <p class="cart__item-weight">{{ item.weight }}</p>
+                    <p class="cart__item-sku">Арт: {{ item.sku or 'Не указан' }}</p>
+                  </div>
+                </a>
+                <div class="cart__price">
+                  <div class="cart__item-price-box">
+                    <div class="cart__item-quantity-stepper">
+                      <button disabled type="button"
+                        class="cart__item-quantity-btn cart__item-quantity-btn--minus">-</button>
+                      <span class="cart__item-quantity-value">{{ item.quantity or 1 }}</span>
+                      <button type="button" class="cart__item-quantity-btn cart__item-quantity-btn--plus">+</button>
+                    </div>
+
+                    {% if item.quantity > 1 %}
+                    <p class="cart__item-price-one">
+                      {{ item.price }} ₽ / шт.
+                    </p>
+                    {% endif %}
+                  </div>
+
+                  {% if item.oldPrice %}
+                  <div class="card__price-box ">
+                    <p class="card__price card__price--new">
+                      {{item.price}}
+                    </p>
+                    <p class="card__old-price">
+                      {{item.oldPrice}}
+                    </p>
+                  </div>
+                  {% else %}
+
+                  <div class="card__price-box">
+                    <p class="card__price">
+                      {{item.price}}
+                    </p>
+                  </div>
+                  {% endif %}
+                </div>
+                <button class="cart__i delete-icon">
+                  <svg class="cart__item-delete-icon">
+                    <use href="#delete-icon"></use>
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+            <hr class="cart__divider">
+            {% endfor %}
+
+          </div>
+          <div class="cart__unavailable-section">
+            <div class="cart__unavailable-header">
+              <h3 class="cart__unavailable-title">Недоступно к заказу</h3>
+            </div>
+
+            <div class="cart__items-list cart__items-list--unavailable">
+              {% for item in productsCards %}
+              <div class="cart__item-row cart__item-row--disabled">
+                <label class="cart__checkbox-control cart__item-checkbox">
+                  <span class="custom-checkbox">
+                    <input class="custom-checkbox__input" type="checkbox" disabled>
+                    <span class="custom-checkbox__box"></span>
+                  </span>
+                </label>
+                <div class="cart__item cart__item--disabled"> 
+                  <div class="cart__item-info">
+                    {% if not item.img %}
+                    {{ 'assets/img/no-image.jpg' | picture( "Изображение на товар отсуствует", 'cart__item-image no-img') | safe }}
+                    {% else %}
+                    <div class="card__img-box">
+                      {{ item.img | picture(item.alt or item.title, 'cart__item-image') | safe }}
+                    </div>
+                    {% endif %}
+                    <div class="cart__item-details">
+                      <p class="cart__item-name">{{ item.title }}</p> 
+                      <p class="cart__item-weight">{{ item.weight }}</p>
+                      <p class="cart__item-sku">Арт: {{ item.sku or 'Не указан' }}</p>
+                    </div>
+                  </div>
+
+                  <div class="cart__price">
+                    <p>
+                      Нет в наличии
+                    </p>
+                  </div>
+
+
+                  <button class="cart__i delete-icon">
+                    <svg class="cart__item-delete-icon">
+                      <use href="#delete-icon"></use>
+                    </svg>
+                  </button>
+                </div>
+
+              </div>
+              <hr class="cart__divider">
+              {% endfor %}
+            </div>
+          </div>
+
+
+
+
+
+        </div>
+        <aside class="cart__summary-column">
+          <div class="cart__summary-box cart__promo-box">
+            <h3 class="cart__promo-title">Промокод</h3>
+            <div class="cart__promo-input">
+              <svg class="promo-icon" width="24" height="24">
+                <use href="#promo-icon"></use>
+              </svg>
+              <input class="cart__promo-input-field" type="text" placeholder="Введите промокод">
+            </div>
+          </div>
+
+          <div class="cart__loader-wrapper">
+            <div class="cart__loader" style="display: none;">
+              <svg class="cart__loader-icon" width="24" height="24">
+                <use href="#spinner-icon"></use>
+              </svg>
+            </div>
+
+            <div class="cart__summary-box cart__summary-box--price">
+              <div class="cart__order-summary">
+                <div class="cart__summary-row">
+                  <span class="cart__summary-text">Товары ({{ productsCards.length }})</span>
+                  <span class="cart__summary-text">5 000 ₽</span>
+                </div>
+
+                <div class="cart__discount-row">
+                  <span class="cart__discount-text">Скидка</span>
+                  <span class="cart__discount-text">-2 000 ₽</span>
+                </div>
+                <div class="cart__discount-row cart__discount-row--promo" style="display: none;">
+                  <span class="cart__discount-text">Скидка по промокоду</span>
+                  <span class="cart__discount-text">- 500 ₽</span>
+                </div>
+
+                <div class="cart__summary-row cart__summary-row--total">
+                  <strong class="cart__summary-total">Итого</strong>
+                  <strong class="cart__summary-total">2 500 ₽</strong>
+                </div>
+              </div>
+              <button class="cart__checkout-btn btn">К способам получения</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      {% set titleSplide = "Сопутствующие товары" %}
+      {% include 'includes/popular-splide.html' %}
+    </div>
+  </section>
+
+</main>
+
+
+{% endblock %}

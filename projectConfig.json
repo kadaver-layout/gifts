@@ -7,10 +7,11 @@
                 "/**/*.html"
             ],
             "style": [
-                "/assets/styles/main.sass"
+                "/assets/styles/libs/*.*",
+                "/assets/styles/*.*"
             ],
             "script": [
-                "/assets/js/app.js"
+                "/assets/js/*.js"
             ],
             "libs": [
                 "/assets/libs/*.*"
@@ -20,9 +21,6 @@
             ],
             "font": [
                 "/assets/fonts/**/*.*"
-            ],
-            "video": [
-                "/assets/video/*.*"
             ]
         },
         "dist": {
@@ -32,8 +30,7 @@
             "script": "/assets/js/",
             "libs": "/assets/libs/",
             "image": "/assets/img/",
-            "font": "/assets/fonts/",
-            "video": "/assets/video/"
+            "font": "/assets/fonts/"
         }
     }
 }

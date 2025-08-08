@@ -1,4 +1,5 @@
 
+@use "_vars" as *
 .calendar
   &__area
     overflow-x: auto
@@ -149,7 +150,7 @@
     margin-bottom: 32px
     display: grid
     gap: 24px
-    grid-template-columns: repeat(4, 1fr)
+    grid-template-columns: repeat(5, 1fr)
     @media all and ($xl)
       grid-template-columns: repeat(3, 1fr)
     @media all and ($m)
@@ -161,12 +162,13 @@
   &__item
     border-radius: 8px
     padding: 32px 24px
-    height: 408px
+    height: 336px
     position: relative
     overflow: hidden
+    background: $gray-lighten-1
     &:active, &:focus, &:hover
       .catalog__background
-        clip-path: ellipse(240px 229px at 100% 100%)
+        clip-path: ellipse(50% 50% at 50% 50%)
         @media all and ($m)
           clip-path: ellipse(85px 85px at 80% 80%)
     @media all and ($m)
@@ -178,11 +180,11 @@
     position: absolute
     background-repeat: no-repeat
     background-size: cover
-    width: 362px
-    height: 362px
-    right: 0
-    bottom: 0
-    clip-path: ellipse(230px 219px at 100% 100%)
+    width: 300px
+    height: 300px
+    right: -63px
+    bottom: -63px
+    clip-path: ellipse(45% 45% at 50% 50%)
     transition: clip-path $anim
     overflow: hidden
     @media all and ($m)

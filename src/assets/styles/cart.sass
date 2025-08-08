@@ -1,0 +1,368 @@
+@use "_vars" as *
+
+$white: #fff
+
+.cart
+  padding-top: 40px
+  &__header
+    display: flex
+    align-items: baseline
+    gap: 16px
+    margin-bottom: 40px
+  &__title
+    font-size: 40px
+    font-weight: 500
+    line-height: 1.2
+    margin: 0
+  &__item-count
+    font-size: 20px
+    color: $gray-text
+    margin: 0
+  &__layout
+    display: grid
+    grid-auto-flow: column
+    gap: 168px
+    position: relative
+    align-items: start
+    grid-template-columns: 1fr 408px
+    @media all and ($xl)
+      gap: 64px
+      grid-template-columns: 1fr 335px
+    @media all and ($m)
+      grid-auto-flow: row
+      grid-template-columns: 1fr
+      gap: 32px
+
+  .card__price
+    @media all and ($m)
+      font-size: 16px
+
+  &__controls
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 24px
+  &__checkbox-control
+    display: flex
+    align-items: center
+    gap: 8px
+    cursor: pointer
+    font-size: 14px
+    font-weight: 400
+    color: $gray-darken-3
+  &__delete-selected-btn
+    font-size: 14px
+    color: $gray-text
+    background: none
+    border: none
+    cursor: pointer
+    padding: 0
+  &__divider
+    border: none
+    border-top: 1px solid $gray-lighten-2
+    margin: 24px 0 24px 0
+    @media all and ($s)
+      margin: 16px 0
+  &__items-list
+    display: flex
+    flex-direction: column
+  &__item-row
+    display: grid
+    grid-template-columns: 20px 1fr
+    gap: 16px
+    @media all and ($s)
+      grid-template-columns: 16px 1fr
+  &__item
+    display: grid
+    grid-template-columns: 1fr auto 24px
+    align-items: center
+    justify-content: space-between
+    gap: 56px
+    @media all and ($xl)
+      gap: 32px
+    @media all and ($s)
+      gap: 16px
+      grid-template-columns: 1fr 24px
+  &__item-info
+    display: grid
+    gap: 24px
+    grid-template-columns: 120px 1fr
+    @media all and ($xl)
+      grid-template-columns: 96px 1fr
+    @media all and ($s)
+      gap: 16px
+      grid-template-columns: 64px 1fr
+  &__item-checkbox
+    margin-right: 8px
+    align-self: start
+  &__item-image
+    width: 120px
+    height: 120px
+    object-fit: cover
+    border-radius: 4px
+    @media all and ($xl)
+      width: 96px
+      height: 96px
+    @media all and ($s)
+      width: 64px
+      height: 64px
+  &__item-details
+    flex-grow: 1
+    display: flex
+    flex-direction: column
+    gap: 8px
+  &__item-name
+    font-size: 16px
+    font-weight: 400
+    margin: 0
+    color: $gray-darken-3
+    @media all and ($m)
+      font-size: 14px
+  &__item-weight
+    font-size: 16px
+    color: $gray-text
+    margin: 0
+    @media all and ($m)
+      font-size: 12px
+  &__item-sku
+    font-size: 12px
+    color: $gray-text
+    margin: 0
+  &__item-quantity-stepper
+    display: grid
+    grid-template-columns: 20px 1fr 20px
+    align-items: center
+    justify-content: center
+    padding: 5px 8px
+    gap: 8px
+    min-width: 112px
+    border-radius: 4px
+    border: 1px solid $gray-lighten-2
+    @media all and ($s)
+      min-width: 96px
+  &__item-quantity-btn
+    width: 20px
+    height: 20px
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 4px
+    cursor: pointer
+    font-size: 20px
+    font-weight: bold
+    color: $gray-darken-3
+  &__item-quantity-value
+    font-size: 16px
+    font-weight: 400
+    min-width: 30px
+    text-align: center
+    margin: 0
+    @media all and ($s)
+      min-width: 24px
+  &__item-price
+    font-size: 20px
+    font-weight: 500
+    width: 140px
+    text-align: right
+    margin: 0
+  &__item-delete-btn
+    margin-left: 32px
+    background: none
+    border: none
+    cursor: pointer
+    padding: 8px
+    display: flex
+    align-items: center
+    justify-content: center
+  &__item-delete-icon
+    width: 24px
+    height: 24px
+    color: #C8C8CC
+  &__summary-column
+    display: flex
+    flex-direction: column
+    gap: 24px
+    position: sticky
+    top: 30px
+    @media all and ($m)
+      position: static
+
+  &__summary-box
+    background-color: $white
+    border-radius: 8px
+    box-shadow: 0px 4px 12.2px 0px rgba(0, 0, 0, 0.11)
+    padding: 24px
+    display: grid
+    @media all and ($m)
+      padding: 16px
+    &--price
+      display: grid
+      gap: 24px
+      position: relative
+      @media all and ($m)
+        position: sticky
+        bottom: 30px
+  &__promo-title
+    font-size: 16px
+    font-weight: 500
+    margin: 0 0 16px 0
+    @media all and ($m)
+      font-size: 14px
+  &__promo-input
+    display: flex
+    align-items: center
+    gap: 12px
+    padding: 12px 16px
+    border: 1px solid $gray-lighten-2
+    border-radius: 4px
+    @media all and ($m)
+      padding: 8px 16px
+  &__promo-input-field
+    border: none
+    outline: none
+    width: 100%
+    font-size: 14px
+    &::placeholder
+      color: $gray-text
+  &__order-summary
+    display: flex
+    flex-direction: column
+    gap: 8px
+  &__summary-row
+    display: flex
+    justify-content: space-between
+    align-items: center
+    &--total
+      font-size: 20px
+      font-weight: 500
+      padding-top: 8px
+  &__summary-text
+    font-size: 14px
+  &__summary-total
+    font-size: 20px
+    font-weight: 500
+    @media all and ($m)
+      font-size: 18px
+  &__checkout-btn
+    width: 100%
+    padding: 16px
+    font-size: 18px
+    font-weight: 500
+  &__discount-row
+    display: flex
+    justify-content: space-between
+    align-items: center
+    span
+      color: $green
+      font-size: 14px
+  &__item-price-one
+    font-size: 12px
+    color: $gray-darken-3
+    font-weight: 400
+    line-height: 130%
+    text-align: center
+  &__item-price-box
+    display: grid
+    gap: 8px
+  &__price
+    display: grid
+    gap: 24px
+    justify-content: space-between
+    grid-auto-flow: column
+    align-items: start
+    align-self: start
+    @media all and ($s)
+      grid-row: 2 / 3
+      grid-column: 1 / 3
+      margin-left: 80px
+  .card__price-box
+    grid-auto-flow: row
+    justify-items: end
+    min-width: 128px
+    justify-content: end
+    @media all and ($xl)
+      min-width: 96px
+  &__i
+    align-self: start
+
+  &__loader
+    width: 24px
+    height: 24px
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    z-index: 3
+    background: url(/assets/img/loader.svg) no-repeat
+    background-size: contain
+    animation: rotateSpinner 1s linear infinite
+
+  &__loader-wrapper
+    position: relative
+
+  ///недоступные товары
+  &__unavailable-section
+    margin-top: 64px
+  &__unavailable-header
+    background-color: #f8f8f8
+    padding: 24px
+    border-radius: 8px
+    margin-bottom: 32px
+  & .cart__unavailable-title
+    font-size: 16px
+    font-weight: 500
+
+  &__items-list--unavailable
+    .cart__item
+      border: none
+      box-shadow: none
+      background-color: transparent
+  &__item--disabled
+    opacity: 0.6
+    .custom-checkbox__box
+      background-color: #ccc
+      border-color: #ccc
+
+    .cart__item-quantity-btn
+      cursor: not-allowed
+      background-color: #f0f0f0
+      color: #999
+
+    .cart__i
+      cursor: pointer
+      opacity: 0.6
+
+
+@keyframes rotateSpinner
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)
+
+.promo-valid
+  border-color: $green
+  input
+    color: $green
+
+.promo-invalid
+  border-color: $error
+  input
+    color: $error
+
+@media all and ($m)
+  .cart__checkout-btn
+    position: fixed
+    bottom: 0
+    left: 0
+    right: 0
+    width: auto 
+    margin: 10px 
+    z-index: 1000
+    border-radius: 8px
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1)
+    &.cart__checkout-btn--static
+      position: static 
+      width: 100% 
+      margin: 0 
+      border-radius: 8px 
+      box-shadow: none 

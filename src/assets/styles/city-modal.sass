@@ -1,0 +1,67 @@
+
+@use "_vars" as *
+
+.city-modal
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: rgba(0, 0, 0, 0.5)
+  display: none
+  justify-content: center
+  align-items: center
+  z-index: 1000
+  &.open
+    display: flex
+  &__content
+    background-color: white
+    border-radius: 8px
+    padding: 40px
+    max-width: 400px
+    width: 100%
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
+    position: relative
+    min-width: 552px
+  &__title
+    font-size: 24px
+    font-weight: 500
+    color: $gray-darken-3
+    margin-bottom: 32px
+  &__city-list
+    list-style: none
+    padding: 0
+    margin: 0
+  &__city-item
+    display: flex
+    align-items: center
+    gap: 10px
+    margin-bottom: 16px
+    cursor: pointer
+
+    &:last-child
+      margin-bottom: 0
+    &--selected
+      .city-modal__check-icon
+        display: block
+      .city-modal__city-name
+        color: $green
+  &__city-name
+    font-size: 16px
+    font-weight: 400
+    color: $gray-darken-3
+  &__check-icon
+    width: 15px
+    height: 11px
+    display: none
+  &__close-btn
+    position: absolute
+    top: 16px
+    right: 16px
+    background: none
+    border: none
+    color: $gray-darken-3
+    cursor: pointer
+  &__close-icon
+    width: 32px
+    height: 32px

@@ -1,0 +1,58 @@
+@use "_vars" as *
+.title
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 20px
+
+  &__heading
+    margin: 0
+.slider-nav-box
+  position: relative
+  top: 0
+  bottom: 0
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 24px
+  @media all and ($m)
+    display: none
+
+.slider-nav
+  z-index: 10
+  .arrow-right-icon
+    width: 24px
+    height: 24px
+    transform: rotate(180deg)
+  .arrow-left-icon
+    width: 24px
+    height: 24px
+
+.slider
+  position: relative
+  &__pagination
+    display: none
+  &__track
+    overflow: hidden
+  &__slide
+    width: 20%
+    padding: 10px
+    box-sizing: border-box
+  &::before,
+  &::after
+    content: ""
+    position: absolute
+    top: 0
+    bottom: 0
+    width: 100px
+    z-index: 1
+  &::before
+    left: -10px
+    background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%)
+  &::after
+    right: -10px
+    left: auto
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%)
+
+// Скрытие стандартной пагинации Splide
+.splide__pagination
+  display: none !important

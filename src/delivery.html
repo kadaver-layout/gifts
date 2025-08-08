@@ -1,0 +1,136 @@
+{% set title = "Натуральная фермерская" %}
+{% extends "layouts/default--delivery.html" %}
+{% block content %}
+<main class="">
+  <section id="delivery-options" class="delivery delivery--section">
+    <div class="delivery__container">
+      <aside class="delivery__options-panel">
+        <div class="delivery__options-content">
+          <header class="delivery__options-header">
+            <p class="delivery__title">Способ получения</p>
+            <a class="delivery__back-link">
+              <svg class="delivery__back-icon">
+                <use xlink:href="#icon-back"></use>
+              </svg>
+              <span class="delivery__back-text">Назад</span>
+            </a>
+          </header>
+          <div class="delivery__tabs">
+            <input type="radio" id="tab-pickup" name="delivery-type" class="delivery__tab-input" checked>
+            <input type="radio" id="tab-delivery" name="delivery-type" class="delivery__tab-input">
+            <div class="delivery__toggle">
+              <label for="tab-pickup" class="delivery__toggle-btn">Самовывоз</label>
+              <label for="tab-delivery" class="delivery__toggle-btn">Доставка</label>
+            </div>
+            <div class="delivery__form-group">
+              <label for="city-input" class="delivery__form-label">Город</label>
+              <div class="delivery__city-selector">
+                <div class="delivery__city-info">
+                  <svg class="delivery__city-icon">
+                    <use xlink:href="#icon-map-pin"></use>
+                  </svg>
+                  <span class="delivery__city-name">Москва</span>
+                </div>
+                <a href="#" class="delivery__change-link delivery__change-link--active" data-toggle="city-modal">
+                  Изменить
+                </a>
+              </div>
+            </div>
+            <!-- /// самовывоз -->
+            <div class="delivery__form-sections delivery__tab-content delivery__pickup-content">
+              <div class="delivery__fairs-section">
+                <h2 class="delivery__fairs-title">Доступные ярмарки</h2>
+                <ul class="delivery__fairs-list" id="pickup-points-list">
+                  <!-- Адреса будут вставлены сюда через JS -->
+                </ul>
+              </div>
+            </div>
+            <!-- ///доставка -->
+            <form class="delivery__form delivery__tab-content delivery__delivery-content">
+              <div class="delivery__form-group">
+                {% set inputName = "" %}
+                <div class="delivery__details">
+                  <label class="delivery__form-label-title">Данные для доставки</label>
+                  <div class="delivery__input-group">
+                    <label for="address" class="delivery__form-label">Адрес*</label>
+                    <input value="{{inputName}}" required type="text" id="address" class="delivery__form-input"
+                      placeholder="Улица, номер дома">
+
+
+                    <!--  -->
+                    <ul class="suggestions" id="suggestions">
+                    </ul>
+                    <!--  -->
+                  </div>
+                  <div class="delivery__input-row">
+                    <div class="delivery__input-group">
+                      <label for="apartment" class="delivery__form-label">Кв/офис</label>
+                      <input type="text" id="apartment" class="delivery__form-input" placeholder="">
+                    </div>
+                    <div class="delivery__input-group">
+                      <label for="entrance" class="delivery__form-label">Подъезд</label>
+                      <input type="text" id="entrance" class="delivery__form-input" placeholder="">
+                    </div>
+                    <div class="delivery__input-group">
+                      <label for="floor" class="delivery__form-label">Этаж</label>
+                      <input type="text" id="floor" class="delivery__form-input" placeholder="">
+                    </div>
+                    <div class="delivery__input-group">
+                      <label for="intercom" class="delivery__form-label">Домофон</label>
+                      <input type="text" id="intercom" class="delivery__form-input" placeholder="">
+                    </div>
+                  </div>
+                  <div class="delivery__input-group">
+                    <label for="comment" class="delivery__form-label">Комментарий к заказу</label>
+                    <input type="text" id="comment" class="delivery__form-input">
+                  </div>
+                </div>
+                {% if inputName == "Москва" %}
+                <div class="delivery__price-block">
+                  <p class="delivery__price-title">Стоимость доставки</p>
+                  <p class="delivery__price">1 200 ₽</p>
+                </div>
+                {% endif %}
+                {% if inputName != "Москва" and inputName != "" %}
+                <div class="delivery__error">
+                  <svg class="delivery__attention-icon">
+                    <use xlink:href="#icon-attention"></use>
+                  </svg>
+                  <p class="delivery__error-text">
+                    Адрес не входит в зону доставки. Укажите другой адрес или выберите другой способ получения
+                  </p>
+                </div>
+                <div class="delivery__price-block">
+                  <p class="delivery__price-title">Стоимость доставки</p>
+                  <p class="delivery__price delivery__price--error">0 ₽</p>
+                </div>
+                {% endif %}
+                {% if inputName == "" %}
+                {% endif %}
+              </div>
+              <div class="delivery__form-btn">
+                <button disabled id="submit-btn" form="delivery-form" type="submit" class="delivery__btn-submit">
+                  Далее
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <button class="delivery__map-btn delivery__map-btn--open">
+          Показать на карте
+        </button>
+
+        {% include 'includes/overlay-delivery.html' %}
+      </aside>
+      <div class="delivery__map-container">
+        <div id="map">
+        </div>
+        <button class="delivery__map-btn delivery__map-btn--close">
+          Показать списком
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

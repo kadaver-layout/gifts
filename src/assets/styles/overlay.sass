@@ -1,0 +1,189 @@
+@use "_vars" as *
+.delivery__pickup-overlay
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: #fff
+  z-index: 20
+  display: none
+  flex-direction: column
+  box-sizing: border-box
+  gap: 40px
+  &.active
+    display: flex
+  .delivery__details-box
+    display: grid
+    gap: 40px 
+    padding: 0 56px 56px 56px
+    @media  all and ($m)
+      padding: 0 20px 20px 20px
+      
+  .delivery__back-link
+    align-self: flex-start
+    margin-bottom: 20px
+  .delivery__details
+    align-items: start
+    flex-grow: 0
+  .delivery__back-link--overlay
+    display: flex
+    align-items: center
+    gap: 4px
+    font-weight: 400
+    font-size: 14px
+    line-height: 1.3
+    color: #242427
+    text-decoration: none
+    cursor: pointer
+  .delivery__address
+    color: #242427
+    font-family: 'Inter', sans-serif
+    font-weight: 500
+    font-size: 16px
+    line-height: 20.8px
+
+  .delivery__working-hours
+    color: #73737c
+    font-family: 'Inter', sans-serif
+    font-weight: 400
+    font-size: 14px
+    line-height: 18.2px
+  .info-panel
+    flex: 0 0 663px
+    padding: 56px 72px 56px 108px
+    background-color: #ffffff
+    box-shadow: 0px 4px 12.2px 0px rgba(0, 0, 0, 0.11)
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    z-index: 10
+
+    &-content
+      display: flex
+      flex-direction: column
+      gap: 40px
+
+  .info-header
+    display: flex
+    flex-direction: column
+    gap: 8px
+  .delivery__details
+    display: flex
+    gap: 16px
+  .icon-pin-small
+    position: relative
+    width: 36px
+    height: 49px
+    flex-shrink: 0
+  .delivery__address
+    display: flex
+    flex-direction: column
+    gap: 4px
+
+    & p
+      margin: 0
+
+  .pickup-today-section
+    display: flex
+    flex-direction: column
+    gap: 16px
+
+  .pickup-title
+    margin: 0
+    color: #242427
+    font-family: 'Inter', sans-serif
+    font-weight: 500
+    font-size: 20px
+    line-height: 26px
+
+  .product-list
+    display: flex
+    align-items: center
+    gap: 8px
+
+  .product-item
+    position: relative
+    width: 112px
+    height: 112px
+    border: 1px solid #f7f7f8
+    border-radius: 4px
+    overflow: hidden
+    background-color: #f7f7f8
+
+  .product-image
+    width: 89.6px
+    height: 89.6px
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    object-fit: cover
+
+  .quantity-badge
+    position: absolute
+    bottom: 0
+    right: 0
+    background-color: #ffffff
+    padding: 1px 2px
+    border-radius: 4px 0px 0px 0px
+    width: 28px
+    height: 16px
+    display: flex
+    justify-content: center
+    align-items: center
+
+    & span
+      color: #242427
+      font-family: 'Inter', sans-serif
+      font-weight: 600
+      font-size: 10px
+      line-height: 13px
+
+  .pickup-button
+    width: 100%
+    padding: 13px 16px
+    background-color: #51b774
+    color: #ffffff
+    font-family: 'Inter', sans-serif
+    font-weight: 500
+    font-size: 16px
+    line-height: 20.8px
+    border: none
+    border-radius: 4px
+    cursor: pointer
+    text-align: center
+
+  .delivery__marker
+    display: flex
+    align-items: center
+    width: 36px
+    height: 49px
+
+  .delivery__address-box
+    display: flex
+    align-items: center
+    gap: 16px
+  .delivery__address-info
+    display: flex
+    flex-direction: column
+    gap: 4px
+  .delivery__product-info
+    position: absolute
+    bottom: 0
+    right: 0
+    border-radius: 4px 0 0 0
+    background: #fff
+  .delivery__product-card
+    position: relative
+    border-radius: 4px
+    border: 1px solid $gray-lighten-1
+    img
+      max-width: 112px
+      object-fit: cover
+  .delivery__product-quantity
+    padding: 1px 2px
+    font-size: 10px
+    font-weight: 600
+    line-height: 130%
+    color: $gray-darken-3

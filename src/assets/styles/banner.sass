@@ -1,20 +1,28 @@
+@use "_vars" as *
 .banner
   position: relative
-  height: 1000px
-  background: url(../../assets/img/banner.jpg)
-  background-repeat: no-repeat
-  width: 100%
-  background-size: cover
-  background-position: center top
-  border-radius: 0px 0px 24px 24px
+  &__img-box
+    display: grid
+    background: url(/assets/img/banner.jpg)
+    background-repeat: no-repeat
+    width: 100%
+    background-size: cover
+    background-position: center top
+    border-radius: 24px
+    height: 100%
+    min-height: 656px
+    align-items: center
+    align-content: center
   &__box
     max-width: 899px
     display: grid
-    gap: 56px
-    margin-top: 213px
+    gap: 32px
+    padding-left: 104px
+    height: 100%
+    align-items: center
   &__title
     color: #fff
-    font-size: 64px
+    font-size: 40px
     font-weight: 500
   &__subtitle
     color: #fff

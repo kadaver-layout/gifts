@@ -1,0 +1,37 @@
+<div class="title">
+  <h2>{{titleSplide}}</h2>
+  <div class="slider-nav-box">
+    <button class="slider-nav slider-nav--prev">
+      <svg class="arrow-left-icon" width="40" height="40" aria-hidden="true">
+        <use href="#arrow-left-icon"></use>
+      </svg>
+    </button>
+    <button class="slider-nav slider-nav--next">
+      <svg class="arrow-right-icon" width="40" height="40" aria-hidden="true">
+        <use href="#arrow-left-icon"></use>
+      </svg>
+    </button>
+
+
+  </div>
+</div>
+
+<div class="slider splide">
+  <div class="slider__track splide__track">
+    <ul class="slider__list splide__list">
+
+      {% for product in productsCards %}
+      <li class="slider__slide splide__slide cards__list">
+        {% set img = product.img %}
+        {% set alt = product.alt %}
+        {% set title = product.title %}
+        {% set oldPrice = product.oldPrice %}
+        {% set price = product.price %}
+        {% set weight = product.weight %}
+        {% set id = product.id %}
+        {% include 'includes/card.html' %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,142 @@
+{% set title = "Натуральная фермерская " %}
+
+{% extends "layouts/default.html" %}
+
+{% block content %}
+
+<main class="catalog-page">
+  <div class="container">
+    <section class="page-intro">
+      {% include "includes/breadcrumbs.html" %}
+      <h1 class="page-title">Икра, консервы</h1>
+    </section>
+
+    <div class="catalog-layout">
+      <aside class="catalog-sidebar">
+        <div class="sidebar-block">
+          <h2 class="sidebar-title">Категории</h2>
+          <nav class="category-nav">
+            <ul class="category-nav__list">
+              {% for category in categoryNav %}
+              <li class="category-nav__item">
+                <button class="category-nav__btn">
+                  <p class="category-nav__title">
+                    {{ category.categoryTitle }}
+                  </p>
+                  <img class="svg category-nav__arrow-btn" src="assets/img/all-btn.svg" alt="">
+                </button>
+                <ul class="category-nav__subcategory-list">
+                  {% for subcategory in category.subcategory %}
+                  <li class="category-nav__subcategory-item">
+                    <a href="#" class="category-nav__subcategory-link">
+                      {{ subcategory }}
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+        <div class="sidebar-block">
+          <h2 class="sidebar-title">Фильтры</h2>
+          <div class="filter-group">
+            <h3 class="filter-label">Цена</h3>
+            <div class="price-filter">
+              <div class="price-input-wrapper">
+                <span>от</span>
+                <input type="text" value="832">
+              </div>
+              <div class="price-input-wrapper">
+                <span>до</span>
+                <input type="text" value="100 586">
+              </div>
+            </div>
+          </div>
+          <div class="filter-group discount-filter">
+            <label for="discount-toggle" class="filter-label">Только со скидкой</label>
+            <div class="toggle-switch">
+              <input type="checkbox" id="discount-toggle" class="toggle-switch__checkbox">
+              <label for="discount-toggle" class="toggle-switch__label"></label>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="products-area">
+        <div class="products-toolbar">
+
+          <!-- Dropdown с сортировкой -->
+          <div class="sort-container">
+            <button class="sort-toggle" type="button">
+              <div class="icon-wrapper">
+                <svg class="icon icon-current" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <use xlink:href="#sort-both"></use>
+                </svg>
+                <span class="selected-text">По популярности</span>
+              </div>
+            </button>
+
+            <ul class="sort-menu">
+              <li data-sort="popularity" data-icon="sort-both" class="active">
+                <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <use xlink:href="#sort-both"></use>
+                </svg>
+                <span>По популярности</span>
+              </li>
+              <li data-sort="price_asc" data-icon="sort-up">
+                <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <use xlink:href="#sort-up"></use>
+                </svg>
+                <span>По возрастанию цены</span>
+              </li>
+              <li data-sort="price_desc" data-icon="sort-down">
+                <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <use xlink:href="#sort-down"></use>
+                </svg>
+                <span>По убыванию цены</span>
+              </li>
+              <li data-sort="newest" data-icon="sort-both">
+                <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <use xlink:href="#sort-both"></use>
+                </svg>
+                <span>Сначала новинки</span>
+              </li>
+              <li data-sort="discount" data-icon="discount">
+                <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <use xlink:href="#discount"></use>
+                </svg>
+                <span>Сначала со скидкой</span>
+              </li>
+            </ul>
+          </div>
+
+          <!--  -->
+          <span class="product-count">49 товаров</span>
+        </div>
+
+        <ul class="products-grid">
+          {% for product in productsCards %}
+          <li class="product-card">
+            {% set img = product.img %}
+            {% set alt = product.alt %}
+            {% set title = product.title %}
+            {% set oldPrice = product.oldPrice %}
+            {% set price = product.price %}
+            {% set weight = product.weight %}
+            {% set id = product.id %}
+            {% include 'includes/card.html' %}
+          </li>
+          {% endfor %}
+        </ul>
+        {% include 'includes/pagination.html' %}
+    </div>
+
+
+    </section>
+  </div>
+  </div>
+</main>
+
+{% endblock %}

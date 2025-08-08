@@ -1,0 +1,13 @@
+<!-- Простое использование -->
+{{ '/assets/img/header.jpg' | picture('Заголовок', 'hero-image') | safe }}
+
+<!-- С несколькими форматами -->
+{{ '/assets/img/photo.jpg' | picture('Фото', 'img-fluid', ['webp', 'avif']) | safe }}
+
+<!-- С адаптивными вариантами -->
+{{ '/assets/img/banner.jpg' | picture('Баннер', 'banner-img', ['webp', 'small', 'medium', 'large']) | safe }}
+
+<!-- В цикле с данными -->
+{% for item in gallery %}
+  {{ item.image | picture(item.title, 'gallery-item', ['webp', 'thumb', 'preview']) | safe }}
+{% endfor %}

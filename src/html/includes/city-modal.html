@@ -1,0 +1,28 @@
+<div class="city-modal" id="city-modal">
+  <div class="city-modal__content">
+    <h3 class="city-modal__title">Выберите город</h3>
+    <ul class="city-modal__city-list">
+
+      {% for city in cities %}
+      {% if city.select == true %}
+      <li class="city-modal__city-item city-modal__city-item--selected">
+        <svg class="city-modal__check-icon">
+          <use xlink:href="#icon-check"></use>
+        </svg>
+        <span class="city-modal__city-name">{{ city.name }}</span>
+      </li>
+      {% else %}
+      <li class="city-modal__city-item">
+        <span class="city-modal__city-name">{{ city.name }}</span>
+      </li>
+      {% endif %}
+      {% endfor %}
+
+    </ul>
+    <button class="city-modal__close-btn" data-close="city-modal">
+      <svg class="city-modal__close-icon">
+        <use xlink:href="#icon-close"></use>
+      </svg>
+    </button>
+  </div>
+</div>

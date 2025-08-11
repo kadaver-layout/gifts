@@ -1,8 +1,5 @@
 @use "_vars" as *
 
-.header__nav-box-mobile
-  display: none
-
 .burger
   display: grid
   position: relative
@@ -15,11 +12,16 @@
   align-items: center
   grid-auto-flow: column
   gap: 8px
+  @media all and ($m)
+    grid-area: burger
+    background: transparent
   &__text
     font-weight: 500
     font-size: 14px
     line-height: 130%
     color: #fff
+    @media all and ($m)
+      display: none
   &__box
     display: grid
     position: relative
@@ -31,6 +33,8 @@
     width: 30px
     height: 3px
     background-color: #fff
+    @media all and ($m)
+      background: $gray-darken-3
   &__line:first-child
     top: 7px
   &__line:last-child
@@ -39,20 +43,28 @@
     top: 50%
     transform: translate(-50%, -50%)
 
-
-.burger--active
+.burger.active
   z-index: 1001
-  padding-left: 50px
+  @media all and ($m)
+    background: transparent
+  .burger__box
+    display: grid
+    align-items: center
+    justify-content: center
   .burger__line
-    background: $gray-lighten-4
+    background: $gray-darken-3
     transition: transform $anim, top $anim, left $anim, color $anim
+    background: #fff
+    width: 14px
+    @media all and ($m)
+      background: $gray-darken-3
   .burger__line:first-child
-    left: 25%
+    left: 0
     top: 50%
     transform: rotate(45deg)
     transform-origin: center
   .burger__line:last-child
-    left: 25%
+    left: 0
     top: 50%
     transform: rotate(-45deg)
     transform-origin: center
@@ -62,3 +74,126 @@
   overflow: hidden
 .header__list
   display: none
+
+.header
+  position: relative
+  &__nav-box
+    background: #fff
+    box-shadow: 0 4px 12.2px 0 rgba(0, 0, 0, 0.11)
+    padding-top: 40px
+    padding-bottom: 64px
+    position: absolute
+    top: 100%
+    left: 0
+    width: 100%
+    transform: translateY(-100%)
+    opacity: 0
+    visibility: hidden
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease
+    @media all and ($m)
+      padding-top: 16px
+  &__list
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(264px, 276px))
+    justify-content: space-between
+    gap: 24px
+    @media all and ($m)
+      display: grid
+      grid-template-columns: 1fr
+      gap: 0
+  &__nav-title
+    font-size: 16px
+    font-style: normal
+    font-weight: 500
+    line-height: 130%
+    color: $gray-darken-3
+    margin-bottom: 16px
+  &__nav-link
+    font-size: 16px
+    font-style: normal
+    font-weight: 400
+    line-height: 130%
+    color: $gray-darken-3
+    text-decoration: none
+    transition: color $anim
+    &:hover
+      color: $green
+  &__nav-list
+    display: grid
+    gap: 8px
+
+  &__nav-container
+    position: absolute
+    top: 100%
+    left: 0
+    width: 100%
+    visibility: hidden
+    opacity: 0
+    transition: opacity 0.3s ease, visibility 0.3s ease
+    pointer-events: none
+    z-index: 1000
+
+  &__nav-container.active
+    visibility: visible
+    opacity: 1
+    pointer-events: auto
+
+  &__overlay
+    position: absolute
+    top: 0
+    left: 0
+    width: 100vw
+    min-height: 100vh
+    background-color: rgba(0, 0, 0, 0.5)
+    cursor: pointer
+    z-index: -1
+
+  &__nav-box
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    background-color: #fff
+    transform: translateY(-100%)
+    opacity: 0
+    visibility: hidden
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1)
+    @media all and ($m)
+      min-height: 100vh
+
+  &__nav-box.active
+    transform: translateY(0)
+    opacity: 1
+    visibility: visible
+  &__nav
+    @media all and ($m)
+      display: none
+  &__nav-mobile
+    display: none
+    @media all and ($m)
+      display: grid
+    .category-nav__title, category-nav__subcategory-link
+      font-size: 16px
+    .header__bottom-list
+      display: grid
+      grid-auto-flow: row
+      grid-template-columns: 1fr
+      justify-items: start
+      gap: 16px
+    .header__bottom-list-link
+      display: grid
+      grid-template-columns: 1fr
+      justify-items: start
+      gap: 16px
+    .header__link 
+      justify-content: start
+    .delivery__city-name
+      font-size: 14px
+    .delivery__city-icon
+      width: 20px
+      height: 20px
+    .delivery__change-link
+      font-size: 12px
+    .header__link
+      font-size: 16px

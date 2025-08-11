@@ -94,6 +94,59 @@ $(document).ready(function () {
       console.error("Ошибка загрузки SVG спрайта:", error);
     }
   }
+  function initSortDropdown() {
+    const sortContainers = document.querySelectorAll(".sort-container");
+    sortContainers.forEach((container) => {
+      const sortToggle = container.querySelector(".sort-toggle");
+      const sortMenu = container.querySelector(".sort-menu");
+      const selectedText = container.querySelector(".selected-text");
+      const currentIcon = container.querySelector(".icon-current use");
+      const menuItems = sortMenu.querySelectorAll("li");
+
+      // Переключение видимости меню
+      sortToggle.addEventListener("click", function (e) {
+        e.stopPropagation();
+        closeAllSortDropdowns();
+        sortToggle.classList.toggle("active");
+        sortMenu.classList.toggle("active");
+      });
+
+      // Обработка выбора элемента меню
+      menuItems.forEach((item) => {
+        item.addEventListener("click", function (e) {
+          e.stopPropagation();
+          const sortType = this.dataset.sort;
+          const iconName = this.dataset.icon;
+          const text = this.querySelector("span").textContent.trim();
+          menuItems.forEach((el) => el.classList.remove("active"));
+          this.classList.add("active");
+          if (selectedText) {
+            selectedText.textContent = text;
+          }
+          if (currentIcon && iconName) {
+            currentIcon.setAttribute("xlink:href", `#${iconName}`);
+          }
+          sortToggle.classList.remove("active");
+          sortMenu.classList.remove("active");
+        });
+      });
+    });
+
+    // Закрытие всех выпадающих списков при клике вне их
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(".sort-container")) {
+        closeAllSortDropdowns();
+      }
+    });
+
+    // Закрывает все активные выпадающие списки сортировки
+    function closeAllSortDropdowns() {
+      const activeToggles = document.querySelectorAll(".sort-toggle.active");
+      const activeMenus = document.querySelectorAll(".sort-menu.active");
+      activeToggles.forEach((toggle) => toggle.classList.remove("active"));
+      activeMenus.forEach((menu) => menu.classList.remove("active"));
+    }
+  }
 
   // Загрузка SVG спрайта и инициализация выпадающего списка сортировки
   loadSvgSprite().then(() => {
@@ -139,37 +192,84 @@ $(document).ready(function () {
   Svg();
 
   // Инициализация мобильного меню
-  let burger = document.querySelector(".burger");
-  let menu = document.querySelector(".header__list-mobile");
-  if (burger && menu) {
-    let menuLinks = menu.querySelectorAll(".header__link");
-    burger.addEventListener("click", function () {
-      burger.classList.toggle("burger--active");
-      menu.classList.toggle("header__list-mobile--active");
-      document.body.classList.toggle("stop-scroll");
-    });
-    menuLinks.forEach(function (el) {
-      el.addEventListener("click", function () {
-        burger.classList.remove("burger--active");
-        menu.classList.remove("header__list-mobile--active");
-        document.body.classList.remove("stop-scroll");
-      });
+
+  const burger = document.querySelector(".header__burger");
+  const navContainer = document.querySelector(".header__nav-container");
+  const navBox = document.querySelector(".header__nav-box");
+  const navOverlay = document.querySelector(".header__nav-overlay");
+  const body = document.body;
+  const pageHeight = document.documentElement.scrollHeight;
+
+
+  // Функция для открытия меню
+  function openMenu() {
+    if (navContainer && navBox) {
+      navContainer.classList.add("active");
+      navBox.classList.add("active");
+    }
+    if (burger) {
+      burger.classList.add("active");
+    }
+    // Скрываем скролл только если ширина больше 1199.9px
+    if (window.innerWidth > 1199.9) {
+      body.style.overflow = "hidden";
+    }
+    if (window.innerWidth <= 1199.9) {
+      navBox.style.height = pageHeight + "px";
+    }
+  }
+
+  // Функция для закрытия меню
+  function closeMenu() {
+    if (navContainer && navBox) {
+      navContainer.classList.remove("active");
+      navBox.classList.remove("active");
+    }
+    if (burger) {
+      burger.classList.remove("active");
+    }
+    if (window.innerWidth > 1199.9) {
+      body.style.overflow = "";
+    }
+  }
+
+  // Обработчик клика на бургер
+  if (burger) {
+    burger.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (navContainer && navContainer.classList.contains("active")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
   }
 
-  // Инициализация видео плееров
-  let videoBox = document.querySelectorAll(".reviews__video-box");
-  videoBox.forEach((elem) => {
-    const videoElem = elem.querySelector(".reviews__video");
-    const dataVideo = videoElem.getAttribute("data-video");
-    const dataImg = videoElem.getAttribute("data-image");
-    const dataId = videoElem.getAttribute("id");
-    new Playerjs({
-      id: dataId,
-      file: dataVideo,
-      poster: dataImg,
+  // Обработчик клика на оверлей для закрытия меню
+  if (navOverlay) {
+    navOverlay.addEventListener("click", closeMenu);
+  }
+
+  ///поиск
+
+  const searchButton = document.querySelector(".header__search-button");
+  const searchInput = document.querySelector(".header__input");
+
+  if (searchButton && searchInput) {
+    searchButton.addEventListener("click", () => {
+      searchInput.classList.toggle("active");
     });
-  });
+
+    // Закрываем строку поиска при клике вне нее
+    document.addEventListener("click", (event) => {
+      if (
+        !searchInput.contains(event.target) &&
+        !searchButton.contains(event.target)
+      ) {
+        searchInput.classList.remove("active");
+      }
+    });
+  }
 
   // Класс для инициализации кастомных селектов с помощью Select2
   class Select {
@@ -968,7 +1068,12 @@ function initMobileSort() {
         sortModal.querySelector(".modal-close")
       : null;
 
-    if (!mobileSortButton || !sortModal || !sortModalClose || !sortModalOverlay) {
+    if (
+      !mobileSortButton ||
+      !sortModal ||
+      !sortModalClose ||
+      !sortModalOverlay
+    ) {
       console.warn("Мобильные элементы сортировки не найдены или неполные:", {
         mobileSortButton,
         sortModal,
@@ -1007,7 +1112,8 @@ function initMobileSort() {
     const modalItems = modalMenu.querySelectorAll("li");
     const desktopItems = desktopMenu.querySelectorAll("li");
     const mobileButtonText = mobileSortButton.querySelector(".selected-text");
-    const mobileButtonIcon = mobileSortButton.querySelector(".icon-current use");
+    const mobileButtonIcon =
+      mobileSortButton.querySelector(".icon-current use");
 
     const initialActiveDesktopItem = desktopMenu.querySelector("li.active");
     if (initialActiveDesktopItem) {
@@ -1039,9 +1145,11 @@ function initMobileSort() {
           desktopItems.forEach((el) => el.classList.remove("active"));
           desktopItems[index].classList.add("active");
 
-          const desktopContainer = desktopItems[index].closest(".sort-container");
+          const desktopContainer =
+            desktopItems[index].closest(".sort-container");
           if (desktopContainer) {
-            const desktopText = desktopContainer.querySelector(".selected-text");
+            const desktopText =
+              desktopContainer.querySelector(".selected-text");
             const desktopIcon =
               desktopContainer.querySelector(".icon-current use");
             if (desktopText) desktopText.textContent = text;

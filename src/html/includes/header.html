@@ -20,51 +20,29 @@
           <a href="" class="header__logo">
             <img width="148" height="48" src="/assets/img/logo.png" alt="Logo">
           </a>
-          <div class="header__castalog-box">
-            <button aria-label=" Кнопка открыть меню" class="header__burger burger">
-              <div class="burger__box">
-                <span class="burger__line"></span>
-                <span class="burger__line"></span>
-                <span class="burger__line"></span>
-              </div>
-              <p class="burger__text">
-                Каталог
-              </p>
-            </button>
-
-            <div class="header__search-box">
-              <input type="text" class="header__input search" placeholder="Найти в каталоге">
+          <button aria-label=" Кнопка открыть меню" class="header__burger burger">
+            <div class="burger__box">
+              <span class="burger__line"></span>
+              <span class="burger__line"></span>
+              <span class="burger__line"></span>
             </div>
-          </div>
+            <p class="burger__text">
+              Каталог
+            </p>
+          </button>
+
+
+          <form class="header__search-box">
+            <input type="text" class="header__input" placeholder="Поиск..." />
+            <button type="submit" class="header__search-button"></button>
+          </form>
+
 
           <div class="header__cart-box ">
             <button aria-label=" Кнопка открыть корзину" class="header__cart">
               <img class="svg" src="/assets/img/cart.svg" alt="Cart">
               <p class="header__cart-text">Корзина</p>
             </button>
-          </div>
-          <div class="header__nav-box header__nav-box-mobile">
-
-            <div class="header__list-mobile">
-              <nav class="header__nav header__nav-mobile">
-                <a href="#calendar" class="header__link">
-                  Расписание ярмарок
-                </a>
-                <a href="#catalog" class="header__link">
-                  Каталог продукции
-                </a>
-                <a href="#map-block" class="header__link">
-                  Карта ярмарок
-                </a>
-                <a href="#footer" class="header__link">
-                  Контакты
-                </a>
-              </nav>
-              <button data-fancybox data-src="#modal" class="header__btn header__btn-mobile">
-                <p class="header__link">Отравить заявку</p>
-              </button>
-            </div>
-
           </div>
         </div>
 
@@ -105,4 +83,113 @@
     </div>
   </div>
 
+
+  <div class="header__nav-container">
+    <div class="header__overlay">
+    </div>
+    <div class="header__nav-box">
+      <div class="container">
+        <nav class="header__nav">
+          <ul class="header__list">
+            {% for category in categoryNav %}
+            <li>
+              <p class="header__nav-title">
+                {{ category.categoryTitle }}
+              </p>
+              <ul class="header__nav-list">
+                {% for subcategory in category.subcategory %}
+                <li>
+                  <a class="header__nav-link" href="#">
+                    {{ subcategory }}
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+            </li>
+            {% endfor %}
+          </ul>
+        </nav>
+        <div class="header__nav-mobile">
+          <div class="header__list mobile">
+            <nav class="category-nav">
+              <ul class="category-nav__list">
+                {% for category in categoryNav %}
+                <li class="category-nav__item">
+                  <button class="category-nav__btn">
+                    <p class="category-nav__title">
+                      {{ category.categoryTitle }}
+                    </p>
+                    <img class="svg category-nav__arrow-btn" src="assets/img/all-btn.svg" alt="">
+                  </button>
+                  <ul class="category-nav__subcategory-list">
+                    {% for subcategory in category.subcategory %}
+                    <li class="category-nav__subcategory-item">
+                      <a href="#" class="category-nav__subcategory-link">
+                        {{ subcategory }}
+                      </a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                {% endfor %}
+              </ul>
+            </nav>
+            <hr class="cart__divider">
+            <div class="header__bottom-list">
+              <ul class="header__bottom-list-link">
+                <li class="header__bottom-item-link">
+                  <a class="header__link header__link--schedule" href="http://">
+                    Расписание ярмарок
+                  </a>
+                </li>
+                <li class="header__bottom-item-link">
+                  <a class="header__link header__link--map" href="http://">
+                    Карта ярмарок
+                  </a>
+                </li>
+                <li class="header__bottom-item-link">
+                  <a class="header__link header__link--sale" href="http://">
+                    Получить скидку
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__bottom-list-link">
+                <li class="header__bottom-item-link">
+                  <a class="header__link header__link--jobs" href="http://">
+                    Работа у нас
+                  </a>
+                </li>
+                <li class="header__bottom-item-link">
+                  <a class="header__link header__link--contacts" href="http://">
+                    Контакты
+                  </a>
+                </li>
+              </ul>
+
+            </div>
+            <hr class="cart__divider">
+
+
+            <div class="delivery__form-group">
+              <div class="delivery__city-selector">
+                <div class="delivery__city-info">
+                  <svg class="delivery__city-icon">
+                    <use xlink:href="#icon-map-pin"></use>
+                  </svg>
+                  <span class="delivery__city-name">Москва</span>
+                </div>
+                <a href="#" class="delivery__change-link delivery__change-link--active" data-toggle="city-modal">
+                  Изменить
+                </a>
+              </div>
+              <a class="header__link header__link--tel" href="tel:+79536236283">
+                +7 (953) 623-62-83
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </header>

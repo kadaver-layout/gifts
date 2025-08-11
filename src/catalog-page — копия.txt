@@ -146,12 +146,11 @@
           </button>
 
           <!-- Модальное окно для сортировки на мобильных -->
-          <div class="sort-modal-overlay">
-          </div>
           <div class="sort-modal">
-
-            <button class="modal-close sort-modal-close">×</button>
-
+            <div class="modal-header">
+              <p class="sidebar-title">Сортировка</p>
+              <span class="modal-close sort-modal-close">&times;</span>
+            </div>
             <div class="modal-body">
               <ul class="sort-menu-modal">
                 <li data-sort="popularity" data-icon="sort-both" class="active">

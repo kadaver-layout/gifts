@@ -95,6 +95,178 @@ $(document).ready(function () {
     }
   }
 
+  // Инициализирует выпадающий список и модальное окно сортировки
+  function initSortDropdown() {
+    // --- Логика для десктопного выпадающего списка ---
+    const sortContainers = document.querySelectorAll(
+      ".sort-container:not(.mobile-clone)"
+    ); // Защита от клонов
+    sortContainers.forEach((container) => {
+      const sortToggle = container.querySelector(".sort-toggle");
+      const sortMenu = container.querySelector(".sort-menu");
+      if (!sortToggle || !sortMenu) return; // Проверка существования
+      const selectedText = container.querySelector(".selected-text");
+      const currentIcon = container.querySelector(".icon-current use");
+      const menuItems = sortMenu.querySelectorAll("li");
+
+      // Переключение видимости меню (десктоп)
+      sortToggle.addEventListener("click", function (e) {
+        e.stopPropagation();
+        closeAllSortDropdowns();
+        sortToggle.classList.toggle("active");
+        sortMenu.classList.toggle("active");
+      });
+
+      // Обработка выбора элемента меню (десктоп)
+      menuItems.forEach((item) => {
+        item.addEventListener("click", function (e) {
+          e.stopPropagation();
+          const sortType = this.dataset.sort;
+          const iconName = this.dataset.icon;
+          const text = this.querySelector("span").textContent.trim();
+          menuItems.forEach((el) => el.classList.remove("active"));
+          this.classList.add("active");
+          updateSortDisplay(selectedText, currentIcon, text, iconName); // Централизованное обновление
+          sortToggle.classList.remove("active");
+          sortMenu.classList.remove("active");
+        });
+      });
+    });
+
+    // --- Логика для мобильного модального окна ---
+    const mobileSortButton = document.querySelector(".mobile-sort-button");
+    const sortModal = document.querySelector(".sort-modal");
+    const sortModalClose = sortModal
+      ? sortModal.querySelector(".sort-modal-close") ||
+        sortModal.querySelector(".modal-close")
+      : null;
+
+    if (mobileSortButton && sortModal && sortModalClose) {
+      const modalMenuItems = sortModal.querySelectorAll(".sort-menu-modal li");
+      const mobileSelectedText =
+        mobileSortButton.querySelector(".selected-text");
+      const mobileCurrentIcon =
+        mobileSortButton.querySelector(".icon-current use");
+
+      // Копируем начальное состояние из активного десктопного элемента
+      const desktopActiveItem = document.querySelector(".sort-menu li.active");
+      if (desktopActiveItem) {
+        const text = desktopActiveItem.querySelector("span").textContent.trim();
+        const icon = desktopActiveItem.dataset.icon;
+        updateSortDisplay(mobileSelectedText, mobileCurrentIcon, text, icon);
+      }
+
+      // Открытие модального окна
+      mobileSortButton.addEventListener("click", function () {
+        sortModal.classList.add("active");
+        // Предотвращаем прокрутку фона (опционально)
+        // document.body.style.overflow = 'hidden';
+      });
+
+      // Закрытие модального окна - крестик
+      sortModalClose.addEventListener("click", function () {
+        sortModal.classList.remove("active");
+        // document.body.style.overflow = '';
+      });
+
+      // Закрытие модального окна при клике вне его (на оверлей модального окна)
+      sortModal.addEventListener("click", function (e) {
+        if (e.target === sortModal) {
+          sortModal.classList.remove("active");
+          // document.body.style.overflow = '';
+        }
+      });
+
+      // Обработка выбора элемента в модальном окне
+      modalMenuItems.forEach((item) => {
+        item.addEventListener("click", function () {
+          const sortType = this.dataset.sort;
+          const iconName = this.dataset.icon;
+          const text = this.querySelector("span").textContent.trim();
+
+          // Обновляем активный элемент в модальном меню
+          modalMenuItems.forEach((el) => el.classList.remove("active"));
+          this.classList.add("active");
+
+          // Обновляем текст и иконку на МОБИЛЬНОЙ кнопке
+          updateSortDisplay(
+            mobileSelectedText,
+            mobileCurrentIcon,
+            text,
+            iconName
+          );
+
+          // --- Синхронизация с десктопным меню ---
+          const desktopMenuItems = document.querySelectorAll(".sort-menu li");
+          desktopMenuItems.forEach((el) => {
+            el.classList.remove("active");
+            if (el.dataset.sort === sortType) {
+              el.classList.add("active");
+              // Обновляем десктопный dropdown
+              const desktopContainer = el.closest(".sort-container");
+              if (desktopContainer) {
+                // Убедимся, что контейнер найден
+                const desktopSelectedText =
+                  desktopContainer.querySelector(".selected-text");
+                const desktopCurrentIcon =
+                  desktopContainer.querySelector(".icon-current use");
+                updateSortDisplay(
+                  desktopSelectedText,
+                  desktopCurrentIcon,
+                  text,
+                  iconName
+                );
+              }
+            }
+          });
+
+          // Закрываем модальное окно
+          sortModal.classList.remove("active");
+          // document.body.style.overflow = '';
+        });
+      });
+    } else {
+      console.warn("Элементы мобильной сортировки не найдены:", {
+        mobileSortButton,
+        sortModal,
+        sortModalClose,
+      });
+    }
+
+    // Централизованная функция обновления отображения сортировки
+    function updateSortDisplay(
+      selectedTextElement,
+      iconElement,
+      text,
+      iconName
+    ) {
+      if (selectedTextElement) {
+        selectedTextElement.textContent = text;
+      }
+      if (iconElement && iconName) {
+        iconElement.setAttribute("xlink:href", `#${iconName}`);
+      }
+    }
+
+    // --- Общие функции ---
+    // Закрытие всех выпадающих списков при клике вне их (десктоп)
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(".sort-container")) {
+        closeAllSortDropdowns();
+      }
+    });
+
+    // Закрывает все активные выпадающие списки сортировки (десктоп)
+    function closeAllSortDropdowns() {
+      const activeToggles = document.querySelectorAll(".sort-toggle.active");
+      const activeMenus = document.querySelectorAll(".sort-menu.active");
+      activeToggles.forEach((toggle) => toggle.classList.remove("active"));
+      activeMenus.forEach((menu) => menu.classList.remove("active"));
+    }
+  }
+
+  // Убедитесь, что эта функция вызывается после загрузки DOM
+  // document.addEventListener('DOMContentLoaded', initSortDropdown);
   // Загрузка SVG спрайта и инициализация выпадающего списка сортировки
   loadSvgSprite().then(() => {
     setTimeout(initSortDropdown, 100);
@@ -807,7 +979,7 @@ $(document).ready(function () {
       }
     });
   }
-  initMobileSort();
+
   // Проверяем при загрузке страницы
   handleScroll();
   // Добавляем обработчик события прокрутки
@@ -954,105 +1126,5 @@ function handleScroll() {
   } else {
     // Иначе держим кнопку фиксированной
     checkoutBtn.classList.remove("cart__checkout-btn--static");
-  }
-}
-
-// Инициализация мобильной сортировки
-function initMobileSort() {
-  if (window.matchMedia("(max-width: 1199.9px)").matches) {
-    const mobileSortButton = document.querySelector(".mobile-sort-button");
-    const sortModal = document.querySelector(".sort-modal");
-    const sortModalOverlay = document.querySelector(".sort-modal-overlay");
-    const sortModalClose = sortModal
-      ? sortModal.querySelector(".sort-modal-close") ||
-        sortModal.querySelector(".modal-close")
-      : null;
-
-    if (!mobileSortButton || !sortModal || !sortModalClose || !sortModalOverlay) {
-      console.warn("Мобильные элементы сортировки не найдены или неполные:", {
-        mobileSortButton,
-        sortModal,
-        sortModalClose,
-        sortModalOverlay,
-      });
-      return;
-    }
-
-    mobileSortButton.addEventListener("click", function () {
-      console.log("Клик по мобильной кнопке сортировки");
-      sortModal.classList.add("active");
-      sortModalOverlay.classList.add("active");
-      document.body.style.overflow = "hidden";
-    });
-
-    function closeSortModal() {
-      sortModal.classList.remove("active");
-      sortModalOverlay.classList.remove("active");
-      document.body.style.overflow = "";
-    }
-
-    sortModalClose.addEventListener("click", closeSortModal);
-    sortModalOverlay.addEventListener("click", closeSortModal);
-
-    const modalMenu = sortModal.querySelector(".sort-menu-modal");
-    const desktopMenu = document.querySelector(".sort-menu");
-    if (!modalMenu || !desktopMenu) {
-      console.warn("Один из списков сортировки не найден:", {
-        modalMenu,
-        desktopMenu,
-      });
-      return;
-    }
-
-    const modalItems = modalMenu.querySelectorAll("li");
-    const desktopItems = desktopMenu.querySelectorAll("li");
-    const mobileButtonText = mobileSortButton.querySelector(".selected-text");
-    const mobileButtonIcon = mobileSortButton.querySelector(".icon-current use");
-
-    const initialActiveDesktopItem = desktopMenu.querySelector("li.active");
-    if (initialActiveDesktopItem) {
-      const initialText = initialActiveDesktopItem
-        .querySelector("span")
-        .textContent.trim();
-      const initialIcon = initialActiveDesktopItem.dataset.icon;
-      if (mobileButtonText) mobileButtonText.textContent = initialText;
-      if (mobileButtonIcon && initialIcon) {
-        mobileButtonIcon.setAttribute("xlink:href", `#${initialIcon}`);
-      }
-    }
-
-    modalItems.forEach((modalItem, index) => {
-      modalItem.addEventListener("click", function () {
-        const sortType = this.dataset.sort;
-        const iconName = this.dataset.icon;
-        const text = this.querySelector("span").textContent.trim();
-
-        modalItems.forEach((el) => el.classList.remove("active"));
-        this.classList.add("active");
-
-        if (mobileButtonText) mobileButtonText.textContent = text;
-        if (mobileButtonIcon && iconName) {
-          mobileButtonIcon.setAttribute("xlink:href", `#${iconName}`);
-        }
-
-        if (desktopItems[index]) {
-          desktopItems.forEach((el) => el.classList.remove("active"));
-          desktopItems[index].classList.add("active");
-
-          const desktopContainer = desktopItems[index].closest(".sort-container");
-          if (desktopContainer) {
-            const desktopText = desktopContainer.querySelector(".selected-text");
-            const desktopIcon =
-              desktopContainer.querySelector(".icon-current use");
-            if (desktopText) desktopText.textContent = text;
-            if (desktopIcon && iconName) {
-              desktopIcon.setAttribute("xlink:href", `#${iconName}`);
-            }
-          }
-        }
-
-        closeSortModal();
-      });
-    });
   }
 }

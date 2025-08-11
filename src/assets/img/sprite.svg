@@ -68,4 +68,8 @@
   <symbol id="arrow-left-icon" viewBox="0 0 40 40">
     <path d="M18.0466 20.0002L26.2966 28.2502L23.9399 30.6069L13.3333 20.0002L23.9399 9.39355L26.2966 11.7502L18.0466 20.0002Z" fill="#242427"/>
   </symbol>
+  <!-- икнока фильтра -->
+  <symbol id="filter-icon" viewBox="0 0 16 16">
+    <path fill="currentColor" d="M14 2.667V4h-.667L10 9v5.667H6V9L2.667 4H2V2.667h12ZM4.27 4l3.063 4.596v4.737h1.334V8.596L11.73 4H4.269Z"/>
+  </symbol>
 </svg>

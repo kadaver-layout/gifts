@@ -6,181 +6,214 @@
   height: 20px
   object-fit: contain
 
-/* CSS from section:products */
-
 .catalog-page
   padding: 40px 0 112px
 
-  .page-intro
-    display: flex
-    flex-direction: column
+.page-intro
+  display: flex
+  flex-direction: column
+  gap: 24px
+  margin-bottom: 48px
+  @media all and ($m)
+    margin-bottom: 12px
+
+.breadcrumbs
+  display: flex
+  align-items: center
+  gap: 4px
+  font-size: 14px
+  color: $gray-darken-1
+
+.page-title
+  font-size: 40px
+  font-weight: 500
+  line-height: 1.2
+  @media all and ($m)
+    font-size: 24px
+
+.catalog-layout
+  display: grid
+  grid-template-columns: 264px 1fr
+  gap: 24px
+  @media all and ($xl)
+    grid-template-columns: 274px 1fr
+    gap: 30px
+  @media all and ($l)
+    grid-template-columns: 264px 1fr
     gap: 24px
-    margin-bottom: 48px
-
-  .breadcrumbs
-    display: flex
-    align-items: center
-    gap: 4px
-    font-size: 14px
-    color: $gray-darken-1
-
-  .page-title
-    font-size: 40px
-    font-weight: 500
-    line-height: 1.2
-
-  .catalog-layout
-    display: flex
-    gap: 24px
-    align-items: flex-start
-
-  .catalog-sidebar
-    width: 264px
-    flex-shrink: 0
-    display: flex
-    flex-direction: column
-    gap: 32px
-
-  .sidebar-block
-    display: flex
-    flex-direction: column
-    gap: 12px
-
-  .sidebar-title
-    font-size: 16px
-    font-weight: 500
-
-  .filter-group
-    display: flex
-    flex-direction: column
-    gap: 12px
-
-  .filter-label
-    font-size: 14px
-    font-weight: 500
-
-  .price-filter
-    display: flex
-    gap: 8px
-
-  .price-input-wrapper
-    display: flex
-    align-items: center
-    gap: 8px
-    border: 1px solid $gray-lighten-2
-    border-radius: 4px
-    padding: 8px 16px
-    font-size: 14px
-    flex: 1
-    & span
-      color: $gray-lighten-4
-    & input
-      border: none
-      outline: none
-      width: 100%
-      font-size: 14px
-
-  .discount-filter
-    flex-direction: row
-    justify-content: space-between
-    align-items: center
-    padding: 8px 0
-
-  .toggle-switch
-    position: relative
-    width: 38px
-    height: 20px
-    &__checkbox
-      opacity: 0
-      width: 0
-      height: 0
-    &__label
-      display: block
-      width: 38px
-      height: 20px
-      background-color: #efeff0
-      border-radius: 99px
-      cursor: pointer
-      transition: background-color $anim
-    &__label::after
-      content: ''
-      position: absolute
-      top: 3px
-      left: 3px
-      width: 14px
-      height: 14px
-      background-color: #d8d8db
-      border-radius: 50%
-      transition: transform $anim, background-color $anim
-    &__checkbox:checked + .toggle-switch__label
-      background-color: $green
-    &__checkbox:checked + .toggle-switch__label::after
-      background-color: #fff
-      transform: translateX(18px)
-
-  .products-area
-    flex-grow: 1
-
-  .products-toolbar
-    display: flex
-    justify-content: space-between
-    align-items: center
-    margin-bottom: 24px
-
-  .sort-button
-    font-size: 14px
-    font-weight: 500
-    line-height: 130%
-    color: $gray-darken-3
-
-  .product-count
-    font-size: 14px
-    color: $gray-text
-
-  .products-grid
-    display: grid
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))
-    gap: 64px 24px
-    margin-bottom: 64px
-
-  .show-more-button
+  @media all and ($m)
+    grid-template-columns: 1fr
+.catalog-sidebar
+  width: 264px
+  flex-shrink: 0
+  display: flex
+  flex-direction: column
+  gap: 32px
+  @media all and ($m)
+    position: absolute
+    right: 0
+    background: #fff
+    z-index: 1000
     width: 100%
-    background-color: #efeff0
-    color: #1a1a1b
-    font-size: 16px
-    font-weight: 500
-    padding: 13px 16px
-    border-radius: 4px
+    padding: 24px
 
-  .page-link
-    display: flex
-    justify-content: center
-    align-items: center
-    width: 48px
-    height: 48px
-    border-radius: 4px
-    font-size: 16px
-    font-weight: 500
-    color: $gray-text
+.sidebar-block
+  display: flex
+  flex-direction: column
+  gap: 12px
 
+.sidebar-title
+  font-size: 16px
+  font-weight: 500
+
+.filter-group
+  display: flex
+  flex-direction: column
+  gap: 12px
+
+.filter-label
+  font-size: 14px
+  font-weight: 500
+
+.price-filter
+  display: flex
+  gap: 8px
+
+.price-input-wrapper
+  display: flex
+  align-items: center
+  gap: 8px
+  border: 1px solid $gray-lighten-2
+  border-radius: 4px
+  padding: 8px 16px
+  font-size: 14px
+  flex: 1
+  & span
+    color: $gray-lighten-4
+  & input
+    border: none
+    outline: none
+    width: 100%
+    font-size: 14px
+
+.discount-filter
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+  padding: 8px 0
+
+.toggle-switch
+  position: relative
+  width: 38px
+  height: 20px
+  &__checkbox
+    opacity: 0
+    width: 0
+    height: 0
+  &__label
+    position: absolute
+    cursor: pointer
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: #ddd
+    border-radius: 10px
+    transition: background-color $anim
+  &__label::after
+    content: ''
+    position: absolute
+    top: 3px
+    left: 3px
+    width: 14px
+    height: 14px
+    background-color: #fff
+    border-radius: 50%
+    transition: transform $anim, background-color $anim
+  &__checkbox:checked + .toggle-switch__label
+    background-color: $green
+  &__checkbox:checked + .toggle-switch__label::after
+    background-color: #fff
+    transform: translateX(18px)
+  &__label::before
+    content: ''
+    position: absolute
+    top: 3px
+    left: 3px
+    width: 14px
+    height: 14px
+    background-color: white
+    border-radius: 50%
+    transition: transform $anim
+  &__checkbox:checked + &__label::before
+    transform: translateX(19px)
+
+.products-area
+  flex-grow: 1
+
+.products-toolbar
+  display: grid
+  grid-template-areas: 'sort count'
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 24px
+  @media all and ($m)
+    grid-template-areas: 'count count' 'sort filters'
+
+.sort-button
+  font-size: 14px
+  font-weight: 500
+  line-height: 130%
+  color: $gray-darken-3
+
+.product-count
+  font-size: 14px
+  color: $gray-text
+  grid-area: count
+
+.products-grid
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+  gap: 64px 24px
+  margin-bottom: 64px
+  @media all and ($xl)
+    grid-template-columns: repeat(3, 1fr)
+    gap: 64px 30px
+  @media all and ($l)
+    gap: 64px 24px
+  @media all and ($m)
+    grid-template-columns: repeat(4, 1fr)
+    gap: 24px 16px
+  @media all and ($s)
+    grid-template-columns: repeat(3, 1fr)
+  @media all and ($xs)
+    grid-template-columns: repeat(2, 1fr)
+    gap: 24px 8px
+
+.show-more-button
+  width: 100%
+  background-color: #efeff0
+  color: #1a1a1b
+  font-size: 16px
+  font-weight: 500
+  padding: 13px 16px
+  border-radius: 4px
+
+.page-link
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 48px
+  height: 48px
+  border-radius: 4px
+  font-size: 16px
+  font-weight: 500
+  color: $gray-text
   &.active
     background-color: $green
     color: #fff
-
   &.ellipsis
     color: $gray-text
-
-  @media (max-width: 1024px)
-    .catalog-layout
-      flex-direction: column
-
-    .catalog-sidebar
-      width: 100%
-
-  @media (max-width: 768px)
-    .products-grid
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
-      gap: 32px 16px
 
 .category-nav
   &__list
@@ -198,7 +231,11 @@
       .category-nav__subcategory-list
         display: grid
   &__title
-    font-weight: 500
+    font-size: 14px
+    font-style: normal
+    font-weight: 400
+    line-height: 130%
+    color: $gray-darken-3
   &__btn
     display: flex
     flex-wrap: nowrap
@@ -235,44 +272,6 @@
       &::before
         opacity: 1
 
-// Переключатель 
-
-/* Стили для контейнера */
-.toggle-switch
-  position: relative
-  display: inline-block
-  width: 38px
-  height: 20px
-  &__checkbox
-    opacity: 0
-    width: 0
-    height: 0
-  &__label
-    position: absolute
-    cursor: pointer
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
-    background-color: #ddd
-    border-radius: 10px
-    transition: background-color $anim
-  &__label::before
-    content: ''
-    position: absolute
-    top: 3px
-    left: 3px
-    width: 14px
-    height: 14px
-    background-color: white
-    border-radius: 50%
-    transition: transform $anim
-  // &__checkbox:checked + &__label
-  //   background-color: #2ecc71
-
-  &__checkbox:checked + &__label::before
-    transform: translateX(19px)
-
 /// выпадающий список 
 
 .sort-container
@@ -283,8 +282,9 @@
   max-width: 250px
 
 .sort-toggle
+  grid-area: sort
   border-radius: 4px
-  padding: 12px 16px
+  padding: 12px 16px 12px 0
   cursor: pointer
   display: flex
   align-items: center
@@ -349,7 +349,7 @@
     display: block
 
   & li
-    padding: 12px 
+    padding: 12px
     cursor: pointer
     display: flex
     align-items: center
@@ -379,14 +379,149 @@
   overflow: hidden
   text-overflow: ellipsis
 
+.apply-button, .sidebar-header, .filter-item, .filters-button, .category-modal, .price-modal, .sidebar-body
+  display: none
+
 @media screen and ($s)
   .sort-container
     max-width: 100%
 
   .sort-toggle
-    padding: 10px 14px
+    padding: 10px 14px 10px 0
     font-size: 13px
 
   .sort-menu li
     padding: 10px 14px
     font-size: 13px
+
+@media all and ($m)
+  .sidebar-body
+    display: grid
+    align-content: start
+  // Кнопка "Фильтры" поверх контента
+  .filters-button
+    grid-area: filters
+    display: grid
+    align-items: center
+    gap: 8px
+    grid-template-columns: 16px 1fr
+    font-size: 14px
+    font-style: normal
+    font-weight: 500
+    line-height: 130%
+    color: $gray-darken-3
+    cursor: pointer
+    transition: color $anim
+    &:hover,
+    &:hover .icon-current
+      color: $green
+
+  // Боковая панель как модальное окно слева
+  .catalog-sidebar
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100vh
+    background: white
+    z-index: 1000
+    display: flex
+    flex-direction: column
+    transform: translateX(-100%)
+    transition: transform $anim
+    padding: 0
+    gap: 0
+    overflow: hidden
+    &.active
+      transform: translateX(0)
+    .sidebar-header
+      display: flex
+      justify-content: space-between
+      align-items: center
+      padding: 16px
+      font-size: 18px
+      font-weight: 500
+      border-bottom: 1px solid $gray-lighten-2
+    .sidebar-close
+      cursor: pointer
+      font-size: 24px
+      line-height: 1
+    .sidebar-body
+      flex: 1
+      overflow-y: auto
+      padding: 16px
+    .filter-item
+      display: flex
+      justify-content: space-between
+      align-items: center
+      padding: 12px 0
+      font-weight: 500
+      font-size: 14px
+      cursor: pointer
+    .category-nav__arrow-btn
+      cursor: pointer
+      transform: rotate(-90deg)
+    .category-nav,
+    .price-filter,
+    .discount-filter:not(.filter-item)
+      display: none
+    .sidebar-block
+      display: none
+
+  .category-modal,
+  .price-modal
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100vh
+    background: white
+    z-index: 1001
+    display: flex
+    flex-direction: column
+    transform: translateX(-100%)
+    &.active
+      transform: translateX(0)
+    .modal-header
+      display: flex
+      justify-content: space-between
+      align-items: center
+      padding: 16px
+      font-size: 18px
+      font-weight: 500
+      border-bottom: 1px solid $gray-lighten-2
+    .modal-close
+      cursor: pointer
+      font-size: 24px
+      line-height: 1
+    .modal-body
+      flex: 1
+      overflow-y: auto
+      padding: 16px
+    .category-nav
+      display: block
+    .price-filter
+      display: flex
+      @media all and ($s)
+        display: grid
+        gap: 16px
+    .apply-button
+      background: $green
+      color: white
+      padding: 16px
+      text-align: center
+      font-weight: 500
+      cursor: pointer
+      display: grid
+      margin: 16px
+      border-radius: 4px
+      transition: background $anim
+      &:hover, &:active, &:focus
+        background: $green-darken
+  .category-header__btn
+    display: grid
+    grid-template-columns: 16px 1fr
+    gap: 16px
+    align-items: center
+    .category-nav__arrow-btn
+      transform: rotate(90deg)

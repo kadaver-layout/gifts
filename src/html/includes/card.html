@@ -1,7 +1,9 @@
 <div class="card">
   <a href="#" class="card__link">
     {% if not img %}
-    {{ 'assets/img/no-image.jpg' | picture( "Изображение на товар отсуствует", 'card__img no-img') | safe }}
+    <div class="card__img-box no-image">
+      {{ 'assets/img/no-image.jpg' | picture( "Изображение на товар отсуствует", 'card__img no-img') | safe }}
+    </div>
     {% else %}
     <div class="card__img-box">
       {{ img | picture(alt, 'card__img') | safe }}

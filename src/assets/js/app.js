@@ -580,13 +580,13 @@ $(document).ready(function () {
     ymaps.ready(initMain);
     function initMain() {
       let destinations = {
-        OR: [52.973583, 36.096968], 
-        KOM: [52.937419, 36.041649], 
-        MIX: [52.993878, 36.114596], 
-        LOM: [52.981875, 36.069292], 
+        OR: [52.973583, 36.096968],
+        KOM: [52.937419, 36.041649],
+        MIX: [52.993878, 36.114596],
+        LOM: [52.981875, 36.069292],
       };
       let myMap = new ymaps.Map("mapMain", {
-        center: destinations["OR"], 
+        center: destinations["OR"],
         zoom: 13.5,
       });
 
@@ -869,6 +869,104 @@ $(document).ready(function () {
   document.addEventListener("scroll", handleScroll);
   // Добавляем обработчик изменения размера окна
   document.addEventListener("resize", handleScroll);
+
+  // фильтры на странице
+  // Получаем основные элементы
+  const filtersButton = document.querySelector(".filters-button");
+  const catalogSidebar = document.querySelector(".catalog-sidebar");
+  const sidebarClose = document.querySelector(".sidebar-close");
+  const filterItems = document.querySelectorAll(".filter-item[data-modal]");
+  const modals = {
+    category: document.querySelector(".category-modal"),
+    price: document.querySelector(".price-modal"),
+  };
+
+  // Функции для управления видимостью
+  function closeAllModals() {
+    Object.values(modals).forEach((modal) => {
+      if (modal && modal.classList.contains("active")) {
+        modal.classList.remove("active");
+      }
+    });
+  }
+
+  function closeSidebar() {
+    if (catalogSidebar && catalogSidebar.classList.contains("active")) {
+      catalogSidebar.classList.remove("active");
+      document.body.style.overflowY = "auto";
+    }
+  }
+
+  function openSidebar() {
+    if (catalogSidebar) {
+      catalogSidebar.classList.add("active");
+      document.body.style.overflowY = "hidden";
+    }
+  }
+
+  // 1. Открытие боковой панели фильтров
+  if (filtersButton) {
+    filtersButton.addEventListener("click", (e) => {
+      openSidebar();
+    });
+  }
+
+  // 2. Закрытие боковой панели фильтров
+  if (sidebarClose) {
+    sidebarClose.addEventListener("click", (e) => {
+      closeSidebar();
+    });
+  }
+
+  // 3. Открытие модальных окон из сайдбара
+  if (filterItems.length > 0) {
+    filterItems.forEach((item) => {
+      item.addEventListener("click", (e) => {
+        const modalType = item.getAttribute("data-modal");
+        if (modals[modalType]) {
+          closeSidebar();
+          modals[modalType].classList.add("active");
+        }
+      });
+    });
+  }
+
+  // 4. Обработка кнопок "Применить"
+  const applyButtons = document.querySelectorAll(".apply-button");
+  if (applyButtons.length > 0) {
+    applyButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        closeAllModals();
+        closeSidebar();
+      });
+    });
+  }
+
+  // 5. Обработка кнопок закрытия модалок (.modal-close)
+  const modalCloseButtons = document.querySelectorAll(".modal-close");
+  if (modalCloseButtons.length > 0) {
+    modalCloseButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        const currentModal = e.target.closest(".category-modal, .price-modal");
+        if (currentModal) {
+          currentModal.classList.remove("active");
+        }
+      });
+    });
+  }
+
+  // 6. Обработка кликов на кнопку ".category-header__btn" в модалках
+  const categoryHeaderButtons = document.querySelectorAll(
+    ".category-header__btn"
+  );
+  if (categoryHeaderButtons.length > 0) {
+    categoryHeaderButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        closeAllModals();
+        openSidebar();
+      });
+    });
+  }
 });
 
 // Проверка состояния поля адреса при загрузке

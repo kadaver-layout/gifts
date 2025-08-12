@@ -4,9 +4,24 @@
     <div class="container">
       <div class="header__top-box">
 
-        <a class="header__link header__link--city" href="">
-          Москва
-        </a>
+        <div class="header__city-wrapper">
+          <button id="open-popup" class="header__link header__link--city">
+            Москва
+          </button>
+
+          <!-- Попап -->
+          <div class="popup__overlay" id="city-popup">
+            <div class="popup">
+              <p class="popup__text">Ваш город: Москва?</p>
+              <div class="popup__buttons">
+                <button id="change-city">Нет, другой</button>
+                <button id="confirm-city">Да, верно</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
         <a class="header__link header__link--tel" href="tel:+79536236283">
           +7 (953) 623-62-83
         </a>

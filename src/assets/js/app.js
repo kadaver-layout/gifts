@@ -200,7 +200,6 @@ $(document).ready(function () {
   const body = document.body;
   const pageHeight = document.documentElement.scrollHeight;
 
-
   // Функция для открытия меню
   function openMenu() {
     if (navContainer && navBox) {
@@ -249,6 +248,27 @@ $(document).ready(function () {
   if (navOverlay) {
     navOverlay.addEventListener("click", closeMenu);
   }
+
+  ///popup выбора города
+  const popup = document.getElementById("city-popup");
+  const openBtnPopup = document.getElementById("open-popup");
+  const confirmBtn = document.getElementById("confirm-city");
+  const changeBtn = document.getElementById("change-city");
+
+  // Открыть попап
+  openBtnPopup.addEventListener("click", () => {
+    popup.style.display = "flex";
+  });
+
+  // Подтверждение города
+  confirmBtn.addEventListener("click", () => {
+    popup.style.display = "none";
+  });
+
+  // Изменить город
+  changeBtn.addEventListener("click", () => {
+    popup.style.display = "none";
+  });
 
   ///поиск
 

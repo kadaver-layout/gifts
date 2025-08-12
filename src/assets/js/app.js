@@ -277,6 +277,7 @@ $(document).ready(function () {
 
   if (searchButton && searchInput) {
     searchButton.addEventListener("click", () => {
+      event.preventDefault();
       searchInput.classList.toggle("active");
     });
 

@@ -6,7 +6,6 @@
     justify-content: center
     width: 100%
     margin-bottom: 0
-    overflow: hidden
   &__container
     display: grid
     grid-template-columns: 660px 1fr
@@ -19,7 +18,7 @@
       grid-template-columns: 1fr 0
       &:has(.delivery__map-container.active)
         grid-template-columns: 1fr
-        height: 100vh
+        min-height: 100vh
   &__options-panel
     background-color: #fff
     box-shadow: 0px 4px 12.2px 0px rgba(0, 0, 0, 0.11)
@@ -28,10 +27,12 @@
     z-index: 10
     position: relative
     @media all and ($m)
-      height: 100vh
       &.d-n
         width: 0
-
+    &:has(#tab-delivery:checked) .delivery__map-btn.delivery__map-btn--open
+      display: none
+    &:has(#tab-pickup:checked) .delivery__map-btn.delivery__map-btn--open
+      display: flex
   &__options-content
     display: flex
     flex-direction: column
@@ -41,11 +42,11 @@
   &__options-header
     display: grid
     gap: 8px
-    padding: 56px 56px 0 56px 
+    padding: 56px 56px 0 56px
     @media all and ($m)
       grid-auto-flow: column
       justify-content: start
-      padding: 20px 
+      padding: 20px
       border-bottom: 1px solid $gray-lighten-2
       align-items: center
       .delivery__back-icon

@@ -255,21 +255,22 @@ $(document).ready(function () {
   const confirmBtn = document.getElementById("confirm-city");
   const changeBtn = document.getElementById("change-city");
 
-  // Открыть попап
-  openBtnPopup.addEventListener("click", () => {
-    popup.style.display = "flex";
-  });
+  if (popup) {
+    // Открыть попап
+    openBtnPopup.addEventListener("click", () => {
+      popup.style.display = "flex";
+    });
 
-  // Подтверждение города
-  confirmBtn.addEventListener("click", () => {
-    popup.style.display = "none";
-  });
+    // Подтверждение города
+    confirmBtn.addEventListener("click", () => {
+      popup.style.display = "none";
+    });
 
-  // Изменить город
-  changeBtn.addEventListener("click", () => {
-    popup.style.display = "none";
-  });
-
+    // Изменить город
+    changeBtn.addEventListener("click", () => {
+      popup.style.display = "none";
+    });
+  }
   ///поиск
 
   const searchButton = document.querySelector(".header__search-button");

@@ -158,13 +158,20 @@ function html(done) {
     .on("end", done);
 }
 
-function copyVideos() {
+function copyVideos(done) {
   return gulp
-    .src("src/assets/video/**/*.{mp4,webm,mov,ogg}")
-    .pipe(newer("dist/assets/video"))
-    .pipe(gulp.dest("dist/assets/video"));
+    .src("src/assets/video/**/*.{mp4,webm,mov,ogg}", {
+      encoding: false,
+      allowEmpty: true,
+    })
+    .pipe(newer(path.dist.base + "assets/video"))
+    .pipe(gulp.dest(path.dist.base + "assets/video"))
+    .pipe(server.reload({ stream: true }))
+    .on("error", (err) => {
+      console.log("Video copying error:", err.message);
+    })
+    .on("end", done);
 }
-
 function copyCssLibs() {
   return gulp
     .src("src/assets/styles/libs/**/*.css")
@@ -268,7 +275,6 @@ function createWebP() {
     });
 }
 
-
 function image(done) {
   return gulp.series(
     copyImages,
@@ -277,7 +283,7 @@ function image(done) {
     if (!err) {
       server.reload({ stream: true });
     }
-    done(err); 
+    done(err);
   });
 }
 
@@ -358,5 +364,5 @@ const build = gulp.series(
 );
 const dev = gulp.series(build, gulp.parallel(watch, serverStart));
 
-export { build, dev, htmlAndPicture, wrapImagesInPicture };
+export { build, dev, htmlAndPicture, wrapImagesInPicture, copyVideos };
 export default dev;

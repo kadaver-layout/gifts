@@ -433,41 +433,11 @@ $(document).ready(function () {
   }
 
   // Инициализация слайдера
-  if (document.querySelector(".slider")) {
-    const splide = new Splide(".slider", {
-      perPage: 5,
-      arrows: false,
-      pagination: false,
-      breakpoints: {
-        1919: {
-          perPage: 4,
-        },
-        1344: {
-          perPage: 4,
-        },
-        1199: {
-          perPage: 4,
-        },
-        959: {
-          perPage: 3,
-        },
-        599: {
-          perPage: 2,
-        },
-      },
-    });
-    splide.mount();
-    document
-      .querySelector(".slider-nav--next")
-      .addEventListener("click", function () {
-        splide.go(">");
-      });
-    document
-      .querySelector(".slider-nav--prev")
-      .addEventListener("click", function () {
-        splide.go("<");
-      });
-  }
+
+  initializeSlider(".popular-slider");
+  initializeSlider(".viewed-slider");
+  initializeSlider(".similar-slider");
+ 
 
   // Обработка навигации по категориям каталога
   const catalogNavBtn = document.querySelectorAll(".category-nav__btn");
@@ -1034,7 +1004,157 @@ $(document).ready(function () {
       });
     });
   }
+
+  /// cладейр
+  const gallery = document.querySelector(".gallery-slider");
+  const slide = gallery.querySelectorAll(".splide__slide");
+  console.log(slide.length);
+  if (slide.length > 1) {
+    initializeProductGallery();
+  } else {
+    gallery.classList.remove("splide");
+    document.querySelector(".video-btn").style.display = "none";
+  }
+
+  /// показать все в карточке
+
+  const showMoreLinks = document.querySelectorAll(".show-more");
+  if (showMoreLinks.length > 0) {
+    showMoreLinks.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const parent = this.closest(".product-details-section");
+        if (!parent) return; // На всякий случай проверим
+
+        const truncatedText = parent.querySelector(".detail-text--truncated");
+        const fullText = parent.querySelector(".detail-text--full");
+
+        // Если нет полного текста - ничего не делаем
+        if (!fullText) return;
+
+        if (
+          fullText.style.display === "none" ||
+          fullText.style.display === ""
+        ) {
+          // Показываем полный текст
+          if (truncatedText) truncatedText.style.display = "none";
+          fullText.style.display = "block";
+          this.textContent = "Скрыть";
+        } else {
+          // Показываем краткий текст
+          if (truncatedText) truncatedText.style.display = "block";
+          fullText.style.display = "none";
+          // Восстанавливаем оригинальный текст кнопки
+          const originalText = this.dataset.originalText || this.textContent;
+          if (!this.dataset.originalText) {
+            // Если это первый клик, сохраняем оригинальный текст, если он не "Скрыть"
+            if (this.textContent !== "Скрыть") {
+              this.dataset.originalText = this.textContent;
+            } else {
+              this.dataset.originalText = "Показать полностью"; // fallback
+            }
+          }
+          this.textContent = this.dataset.originalText;
+        }
+      });
+    });
+  }
+
+  /// кнопка "в корзину" на мобильной версии
+  if (document.querySelector(".product-section")) {
+    initVisibilityHandler();
+  }
 });
+/// кнопка "в корзину" на мобильной версии
+function isElementInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+// Элемент, за которым мы следим
+const targetElement = document.querySelector(".add-to-cart-btn");
+
+// Элемент, который нужно скрывать/показывать
+const toggleElement = document.querySelector(".add-to-cart-btn--mobile");
+
+// Media query для мобильных экранов
+const mobileMediaQuery = window.matchMedia("(max-width: 1199.9px)");
+
+// Функция для обработки видимости
+function handleVisibility() {
+  if (targetElement && toggleElement) {
+    if (mobileMediaQuery.matches) {
+      // Работаем только на мобильных экранах
+      if (isElementInViewport(targetElement)) {
+        // Если основная кнопка видна, скрываем мобильную кнопку
+        toggleElement.style.display = "none";
+      } else {
+        // Если основная кнопка не видна, показываем мобильную кнопку
+        toggleElement.style.display = "block";
+      }
+    } else {
+      // На десктопах скрываем элемент
+      toggleElement.style.display = "none";
+    }
+  }
+}
+
+// Функция для инициализации
+function initVisibilityHandler() {
+  if (targetElement && toggleElement) {
+    // Слушаем события прокрутки
+    window.addEventListener("scroll", handleVisibility);
+
+    // Слушаем изменения размера экрана через media query
+    mobileMediaQuery.addEventListener("change", handleVisibility);
+
+    // Проверяем видимость при загрузке страницы
+    document.addEventListener("DOMContentLoaded", handleVisibility);
+
+    // Также проверяем после полной загрузки страницы
+    window.addEventListener("load", handleVisibility);
+
+    // Первичная проверка
+    handleVisibility();
+  }
+}
+// слайдер на странице продукта
+function initializeProductGallery() {
+  const splide = new Splide(".splide-gallery", {
+    type: "loop",
+    perPage: 1,
+    perMove: 1,
+  });
+
+  splide.mount();
+
+  const videoBtn = document.querySelector(".video-btn");
+
+  // Скрываем кнопку видео, когда активен слайд с видео (индекс 2)
+  splide.on("moved", function () {
+    const currentIndex = splide.index;
+    if (currentIndex === 2 && videoBtn) {
+      videoBtn.style.display = "none";
+    } else if (videoBtn) {
+      videoBtn.style.display = "flex";
+    }
+  });
+
+  // Кнопка видео
+  if (videoBtn) {
+    videoBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      splide.go(2);
+    });
+  }
+}
 
 // Проверка состояния поля адреса при загрузке
 function checkAddressInput() {
@@ -1185,4 +1305,54 @@ function initMobileSort() {
       });
     });
   }
+}
+
+// Универсальная функция для инициализации слайдера с заданным классом
+function initializeSlider(sliderClass) {
+  const sliders = document.querySelectorAll(sliderClass);
+
+  sliders.forEach((slider) => {
+    const splide = new Splide(slider, {
+      perPage: 5,
+      arrows: false,
+      pagination: false,
+      breakpoints: {
+        1919: {
+          perPage: 4,
+        },
+        1344: {
+          perPage: 4,
+        },
+        1199: {
+          perPage: 4,
+        },
+        959: {
+          perPage: 3,
+        },
+        599: {
+          perPage: 2,
+        },
+      },
+    });
+
+    splide.mount();
+    const sliderContainer =
+      slider.closest(".slider-container") || slider.parentElement;
+    if (sliderContainer) {
+      const nextBtn = sliderContainer.querySelector(".slider-nav--next");
+      const prevBtn = sliderContainer.querySelector(".slider-nav--prev");
+
+      if (nextBtn) {
+        nextBtn.addEventListener("click", function () {
+          splide.go(">");
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener("click", function () {
+          splide.go("<");
+        });
+      }
+    }
+  });
 }

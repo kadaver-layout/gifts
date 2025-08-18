@@ -248,6 +248,14 @@ $white: #fff
     padding: 16px
     font-size: 18px
     font-weight: 500
+    background: $green
+    color: $white
+    border-radius: 8px
+    cursor: pointer
+    border: none
+    transition: background $anim
+    &:hover
+      background: $green-darken
   &__discount-row
     display: flex
     justify-content: space-between
@@ -332,7 +340,6 @@ $white: #fff
       cursor: pointer
       opacity: 0.6
 
-
 @keyframes rotateSpinner
   from
     transform: rotate(0deg)
@@ -355,14 +362,14 @@ $white: #fff
     bottom: 0
     left: 0
     right: 0
-    width: auto 
-    margin: 10px 
+    width: auto
+    margin: 10px
     z-index: 1000
     border-radius: 8px
     box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1)
     &.cart__checkout-btn--static
-      position: static 
-      width: 100% 
-      margin: 0 
-      border-radius: 8px 
-      box-shadow: none 
+      position: static
+      width: 100%
+      margin: 0
+      border-radius: 8px
+      box-shadow: none

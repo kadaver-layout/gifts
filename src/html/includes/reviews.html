@@ -1,0 +1,144 @@
+<section id="reviews" class="reviews-section">
+  <div class="container">
+    <h2 class="section-title">Отзывы покупателей</h2>
+    <div class="reviews-layout">
+      <div class="rating-summary">
+        <div class="overall-rating">
+          <span class="rating-value">4.6</span>
+          <div class="rating-details">
+            <!--merged image-->
+            <div class="star-rating">
+              {% for i in range(4) %}
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <use class="icon-gold-star" href="#icon-fullstar"></use>
+              </svg>
+              {% endfor %}
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <use href="#icon-partstar"></use>
+              </svg>
+            </div>
+            <span class="rating-count">49 оценок</span>
+          </div>
+        </div>
+        <div class="rating-breakdown">
+          <div class="rating-bar-row">
+            <!--merged image-->
+            <div class="star-rating">
+              {% for i in range(5) %}
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <use class="icon-gold-star" href="#icon-fullstar"></use>
+              </svg>
+              {% endfor %}
+            </div>
+            <div class="rating-bar">
+              <div class="rating-bar-filled" style="width: 81.6%;"></div>
+            </div>
+            <span>40</span>
+          </div>
+          <div class="rating-bar-row">
+            <!--merged image-->
+            <div class="star-rating">
+              {% for i in range(4) %}
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <use class="icon-gold-star" href="#icon-fullstar"></use>
+              </svg>
+              {% endfor %}
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <use class="icon-gray-star" href="#icon-fullstar"></use>
+              </svg>
+            </div>
+            <div class="rating-bar">
+              <div class="rating-bar-filled" style="width: 8.2%;"></div>
+            </div>
+            <span>4</span>
+          </div>
+          <div class="rating-bar-row">
+            <!--merged image-->
+            <div class="star-rating">
+              {% for i in range(3) %}
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <use class="icon-gold-star" href="#icon-fullstar"></use>
+              </svg>
+              {% endfor %}
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <use class="icon-gray-star" href="#icon-fullstar"></use>
+              </svg>
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <use class="icon-gray-star" href="#icon-fullstar"></use>
+              </svg>
+            </div>
+            <div class="rating-bar">
+              <div class="rating-bar-filled" style="width: 6.1%;"></div>
+            </div>
+            <span>3</span>
+          </div>
+          <div class="rating-bar-row">
+            <!--merged image-->
+            <div class="star-rating">
+              {% for i in range(2) %}
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <use class="icon-gold-star" href="#icon-fullstar"></use>
+              </svg>
+              {% endfor %}
+              {% for i in range(3) %}
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <use class="icon-gray-star" href="#icon-fullstar"></use>
+              </svg>
+              {% endfor %}
+            </div>
+            <div class="rating-bar">
+              <div class="rating-bar-filled" style="width: 4.1%;"></div>
+            </div>
+            <span>2</span>
+          </div>
+          <div class="rating-bar-row">
+            <!--merged image-->
+            <div class="star-rating">
+
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <use class="icon-gold-star" href="#icon-fullstar"></use>
+              </svg>
+
+              {% for i in range(4) %}
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <use class="icon-gray-star" href="#icon-fullstar"></use>
+              </svg>
+              {% endfor %}
+            </div>
+            <div class="rating-bar">
+              <div class="rating-bar-filled" style="width: 0%;"></div>
+            </div>
+            <span>0</span>
+          </div>
+        </div>
+        <button class="reviews-btn">Оставить отзыв</button>
+      </div>
+      <div class="review-list">
+
+        {% for i in range(5) %}
+        <article class="review-card">
+          <header class="review-header">
+            <div class="review-author">
+              <h3>Андрей А.</h3>
+              <time datetime="2025-05-31">31 мая 2025</time>
+            </div>
+            <div class="review-rating">
+              <!--merged image-->
+              <div class="star-rating">
+                {% for i in range(5) %}
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                  <use class="icon-gold-star" href="#icon-fullstar"></use>
+                </svg>
+                {% endfor %}
+              </div>
+              <span>5</span>
+            </div>
+          </header>
+          <p>Отличная икра. Очень понравилась</p>
+        </article>
+        {% endfor %}
+        <button class="reviews-btn__more">Показать еще</button>
+      </div>
+    </div>
+  </div>
+</section>

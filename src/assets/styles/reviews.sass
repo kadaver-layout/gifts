@@ -1,0 +1,157 @@
+@use "vars" as * 
+
+.section-title
+  font-size: 48px
+  font-weight: 500
+  line-height: 1.2
+  margin: 0 0 40px 0
+  @media all and ($m)
+    font-size: 24px
+    margin: 0 0 24px 0
+
+.reviews-layout
+  display: grid
+  grid-template-columns: 408px 1fr
+  gap: 96px
+  @media all and ($xl)
+    grid-template-columns: 378px 1fr
+  @media all and ($m)
+    grid-template-columns: 1fr
+    gap: 32px
+    svg
+      width: 16px
+      height: 16px
+.rating-summary
+  display: flex
+  flex-direction: column
+  gap: 24px
+  @media all and ($m)
+    gap: 16px
+
+.overall-rating
+  display: flex
+  align-items: center
+  gap: 8px
+
+.rating-value
+  font-size: 48px
+  font-weight: 500
+  line-height: 1
+  @media all and ($m)
+    font-size: 32px
+
+.rating-details
+  display: flex
+  flex-direction: column
+  gap: 4px
+
+.rating-count
+  font-size: 16px
+  color: $gray-text 
+  @media all and ($m)
+    font-size: 12px
+
+.rating-breakdown
+  display: flex
+  flex-direction: column
+  gap: 24px
+
+.rating-bar-row
+  display: flex
+  align-items: center
+  gap: 16px
+
+.rating-bar-row .star-rating
+  flex-shrink: 0
+
+.rating-bar
+  flex-grow: 1
+  height: 2px
+  background-color: $gray-lighten-3 // var(--color-border-medium)
+  border-radius: 999px
+
+.rating-bar-filled
+  height: 100%
+  background-color: $rating-color // var(--color-rating)
+  border-radius: 999px
+
+.rating-bar-row span
+  font-size: 16px
+  color: $gray-text // var(--color-text-light)
+  min-width: 20px
+  text-align: right
+
+.review-list
+  display: flex
+  flex-direction: column
+  gap: 24px
+
+.review-card
+  background-color: $gray-lighten-1 // var(--color-background-light)
+  border-radius: 8px
+  padding: 24px
+  @media all and ($m)
+    padding: 16px
+
+.review-header
+  display: flex
+  justify-content: space-between
+  align-items: flex-start
+  margin-bottom: 16px
+
+.review-author h3
+  font-size: 16px
+  font-weight: 500
+  margin: 0 0 4px 0
+
+.review-author time
+  font-size: 12px
+  color: $gray-text // var(--color-text-light)
+
+.review-rating
+  display: flex
+  align-items: center
+  gap: 8px
+
+.review-rating span
+  font-size: 16px
+  color: $gray-text // var(--color-text-light)
+
+.review-card p
+  margin: 0
+  font-size: 16px
+  line-height: 1.5
+
+.review-list .btn-secondary
+  align-self: center
+  margin-top: 24px
+
+.icon-gray-star
+  color: $gray-text
+.icon-gold-star
+  color: $rating-color
+
+.reviews-btn
+  padding: 13px 16px
+  border-radius: 4px
+  background-color: #51B774
+  color: white
+  font-weight: 500
+  font-size: 16px
+  border: none
+  cursor: pointer
+  transition: background-color 0.3s ease
+  margin-top: 16px
+
+  &:hover
+    background-color: $green-darken
+  &__more
+    height: 48px
+    padding: 16px 32px
+    border-radius: 4px
+    background: $gray-lighten-2
+    font-size: 16px
+    font-style: normal
+    font-weight: 500
+    line-height: 130%
+    margin: 0 auto

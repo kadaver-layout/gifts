@@ -149,16 +149,15 @@
     margin-top: 32px
     margin-bottom: 32px
     display: grid
-    gap: 24px
+    gap: 16px
     grid-template-columns: repeat(5, 1fr)
-    @media all and ($xl)
-      grid-template-columns: repeat(3, 1fr)
+    @media all and ($m)
+      gap: 12px
     @media all and ($m)
       gap: 16px
+      grid-template-columns: repeat(3, 1fr)
     @media all and ($s)
       grid-template-columns: repeat(2, 1fr)
-    @media all and ($xs)
-      grid-template-columns: 1fr
   &__item
     border-radius: 8px
     padding: 32px 24px
@@ -171,8 +170,12 @@
         clip-path: ellipse(50% 50% at 50% 50%)
         @media all and ($m)
           clip-path: ellipse(85px 85px at 80% 80%)
+    @media all and ($xl)
+      height: 288px
+    @media all and ($l)
+      height: 280px
     @media all and ($m)
-      height: 260px
+      height: auto
     &.hidden
       @media all and ($s)
         display: none
@@ -187,10 +190,27 @@
     clip-path: ellipse(45% 45% at 50% 50%)
     transition: clip-path $anim
     overflow: hidden
+    @media all and ($xl)
+      width: 224px
+      height: 224px
+      right: -64px
+      bottom: -64px
+    @media all and ($xl)
+      width: 208px
+      height: 208px
     @media all and ($m)
-      width: 192px
-      height: 192px
-      clip-path: ellipse(80px 80px at 80% 80%)
+      width: 48px
+      height: 48px
+      clip-path: none
+      right: 0
+      bottom: 0
+      position: relative
+  &__link
+    @media all and ($m)
+      display: flex
+      flex-direction: column-reverse
+      gap: 24px
+
   &__content
     display: grid
     gap: 16px
@@ -200,7 +220,7 @@
     font-weight: 500
     line-height: 130%
     @media all and ($m)
-      font-style: 14px
+      font-size: 14px
   &__desc
     color: $gray-text
     overflow: hidden
@@ -323,21 +343,17 @@
 
 .reviews
   &__video
-    max-width: 264px
-    height: 383px
+    // height: 100%
+    // width: 100%
+    aspect-ratio: 11 / 16
     border-radius: 8px
-    @media all and ($xl)
-      max-width: 174px
-      height: 253px
   &__video-box
-    max-width: 264px
-    height: 383px
+    // height: 100%
+    // width: 100%
+    aspect-ratio: 11 / 16
     border-radius: 8px
     overflow: hidden
     position: relative
-    @media all and ($xl)
-      max-width: 174px
-      height: 253px
   &__video-desc-box
     position: absolute
     bottom: 16px
@@ -355,12 +371,6 @@
     font-size: 12px
     font-weight: 400
     line-height: 130%
-  .title
-    padding-bottom: 32px
-  .swiper-slide
-    width: 264px !important
-    @media all and ($xl)
-      width: 174px !important
 
 .map
   margin-top: 32px

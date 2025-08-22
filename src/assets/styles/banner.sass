@@ -13,6 +13,12 @@
     min-height: 656px
     align-items: center
     align-content: center
+    @media all and ($xl)
+      min-height: 460px
+    @media all and ($l)    
+      min-height: 434px
+    @media all and ($m)
+      min-height: 490px
   &__box
     max-width: 899px
     display: grid
@@ -20,6 +26,12 @@
     padding-left: 104px
     height: 100%
     align-items: center
+    @media all and ($xl)
+      padding-left: 72px
+    @media all and ($m)
+      padding-left: 20px
+    @media all and ($xs)
+      padding-left: 16px
   &__title
     color: #fff
     font-size: 40px
@@ -40,11 +52,9 @@
 
 @media all and ($m)
   .banner
-    height: 632px
     &__box
       max-width: 530px
       gap: 40px
-      margin-top: 96px
     &__title
       font-size: 32px
     &__subtitle

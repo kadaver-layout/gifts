@@ -95,7 +95,7 @@
           "name": "г. Москва, ул Малый Арбат, д. 20",
           "time": "31 мая с 11:00 до 17:00",
           "price": "Бесплатно"
-        }, 
+        },
         {
           "name": "г. Москва, ул Малый Арбат, д. 210",
           "time": "31 мая с 11:00 до 17:00",
@@ -110,7 +110,6 @@
       "name": "Севастополь"
     }
   ],
-
   "catalog": [
     {
       "title": "Рыба",
@@ -121,7 +120,7 @@
       "img": "assets/img/catalog2.png"
     },
     {
-      "title": "Специии, соусы, масла, чай",
+      "title": "Специи, соусы, масла, чай",
       "img": "assets/img/catalog3.png"
     },
     {
@@ -248,24 +247,111 @@
   "categoryNav": [
     {
       "categoryTitle": "Рыба",
-      "subcategory": ["Икра, консервы", "Рыба Астрахань", "Рыба Камчатка"],
+      "subcategory": [
+        "Икра, консервы",
+        "Рыба Астрахань",
+        "Рыба Камчатка"
+      ],
       "active": true
     },
     {
       "categoryTitle": "Мясо",
-      "subcategory": ["Колбасы", "Соусы", "Мясо"]
+      "subcategory": [
+        "Колбасы",
+        "Соусы",
+        "Мясо"
+      ]
     },
     {
       "categoryTitle": "Специи, соусы, масла, чай",
-      "subcategory": ["Cпеции", "Соусы", "Масла", "Чай"]
+      "subcategory": [
+        "Cпеции",
+        "Соусы",
+        "Масла",
+        "Чай"
+      ]
     },
     {
       "categoryTitle": "Сладости",
-      "subcategory": ["Конфеты", "Шоколад", "Сладости"]
+      "subcategory": [
+        "Конфеты",
+        "Шоколад",
+        "Сладости"
+      ]
     },
     {
       "categoryTitle": "Сыры",
-      "subcategory": ["Сыры", "Сыры", "Сыры"]
+      "subcategory": [
+        "Сыры",
+        "Сыры",
+        "Сыры"
+      ]
+    }
+  ],
+  "reviewsVideo": [
+    {
+      "id": "reviews1",
+      "title": "Анастасия",
+      "city": "г. Санкт-Петербург",
+      "video": "assets/video/1.mp4",
+      "alt": "Видео отзыв",
+      "img": "assets/img/video1.jpg"
+    },
+    {
+      "id": "reviews2",
+      "title": "Евгений",
+      "city": "г. Новосибирск",
+      "video": "assets/video/2.mp4",
+      "alt": "Видео отзыв",
+      "img": "assets/img/video2.jpg"
+    },
+    {
+      "id": "reviews3",
+      "title": "Иван",
+      "city": "г. Нижний-Новгород",
+      "video": "assets/video/3.mp4",
+      "alt": "Видео отзыв",
+      "img": "assets/img/video3.jpg"
+    },
+    {
+      "id": "reviews4",
+      "title": "Павел",
+      "city": "г. Санкт-Петербург",
+      "video": "assets/video/4.mp4",
+      "alt": "Видео отзыв",
+      "img": "assets/img/video4.jpg"
+    },
+    {
+      "id": "reviews5",
+      "title": "Дмитрий",
+      "city": "г. Омск",
+      "video": "assets/video/5.mp4",
+      "alt": "Видео отзыв",
+      "img": "assets/img/video5.jpg"
+    },
+    {
+      "id": "reviews6",
+      "title": "Андрей",
+      "city": "г. Ростов-на-Дону",
+      "video": "assets/video/6.mp4",
+      "alt": "Видео отзыв",
+      "img": "assets/img/video4.jpg"
+    },
+    {
+      "id": "reviews7",
+      "title": "Андрей",
+      "city": "г. Ростов-на-Дону",
+      "video": "assets/video/7.mp4",
+      "alt": "Видео отзыв",
+      "img": "assets/img/video1.jpg"
+    },
+    {
+      "id": "reviews8",
+      "title": "Андрей",
+      "city": "г. Ростов-на-Дону",
+      "video": "assets/video/7.mp4",
+      "alt": "Видео отзыв",
+      "img": "assets/img/video1.jpg"
     }
   ]
 }

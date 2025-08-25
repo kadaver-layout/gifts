@@ -1124,6 +1124,17 @@ $(document).ready(function () {
   if (document.querySelector(".product-section")) {
     initVisibilityHandler();
   }
+
+
+  //чекбокс для страницы "оформление заказа"
+  const agreePolicyCheckbox = document.getElementById('agreePolicy');
+  const checkoutButton = document.getElementById('checkout-submit-btn');
+
+  if (agreePolicyCheckbox && checkoutButton) {
+    agreePolicyCheckbox.addEventListener('change', () =>
+      checkoutButton.disabled = !agreePolicyCheckbox.checked
+    );
+  }
 });
 /// кнопка "в корзину" на мобильной версии
 function isElementInViewport(el) {

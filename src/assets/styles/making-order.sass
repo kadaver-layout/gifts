@@ -1,0 +1,109 @@
+@use "_vars" as *
+
+.making-order
+  margin-top: 40px
+  &__title-box
+    display: grid
+    gap: 16px
+    margin-bottom: 56px
+  .title
+    margin-bottom: 0
+  &__back-link
+    display: grid
+    grid-auto-flow: column
+    gap: 8px
+    align-items: center
+    cursor: pointer
+    justify-content: start
+  &__box
+    display: grid
+    grid-auto-flow: column
+    gap: 168px
+    position: relative
+    align-items: start
+    grid-template-columns: 1fr 408px
+  &__cart-list
+    .cart__item
+      grid-template-columns: 1fr 264px
+    .cart__item-price-box
+      min-width: 80px
+  &__subtitle
+    font-size: 24px
+    font-weight: 500
+    color: $gray-darken-3
+  &__cart
+    display: grid
+    gap: 16px
+  .cart__checkout-box
+    display: grid
+    gap: 16px
+  .cart__checkout-text, .cart__checkout-text a
+    font-size: 12px
+    font-weight: 400
+    line-height: 130%
+    color: $gray-darken-3
+  .cart__checkout-check
+    display: grid
+    gap: 12px
+  .cart__checkbox-control
+    align-items: flex-start
+  .cart__checkout-btn:disabled
+    cursor: not-allowed
+    background: #B3DCC1
+  &__content
+    display: grid
+    gap: 56px
+
+  &__tabs
+    position: relative
+    display: flex
+    flex-direction: column
+    flex-grow: 1
+
+  &__tab-input
+    display: none
+
+  &__toggle
+    display: flex
+    border-radius: 4px
+    overflow: hidden
+
+  &__toggle-btn
+    flex: 1
+    padding: 12px 20px
+    text-align: center
+    background-color: #f8f9fa
+    cursor: pointer
+    transition: all 0.3s ease
+    margin: 0
+
+    &:first-child
+      border-right: none
+      border-radius: 4px 0 0 4px
+
+    &:last-child
+      border-radius: 0 4px 4px 0
+
+    &:hover
+      background-color: #e9ecef
+
+  // Стили для активной кнопки
+  #tab-making-order-pickup:checked ~ .making-order__toggle .making-order__toggle-btn[for="tab-making-order-pickup"],
+  #tab-making-order-delivery:checked ~ .making-order__toggle .making-order__toggle-btn[for="tab-making-order-delivery"]
+    background-color: $green
+    color: white
+    border-color: $green
+  &__pickup-content,
+  &__delivery-content
+    display: none
+
+  #tab-making-order-pickup:checked ~ .making-order__pickup-content,
+  #tab-making-order-delivery:checked ~ .making-order__delivery-content
+    display: flex
+
+  // &__pickup-content
+  //   flex-direction: row 
+
+  // &__delivery-content
+  //   flex-direction: column
+  //   flex-grow: 1

@@ -56,54 +56,134 @@
 
   &__tabs
     position: relative
-    display: flex
-    flex-direction: column
-    flex-grow: 1
+    display: grid
+    gap: 16px
 
   &__tab-input
     display: none
 
   &__toggle
-    display: flex
+    display: grid
+    grid-auto-flow: column
+    gap: 24px
     border-radius: 4px
     overflow: hidden
 
-  &__toggle-btn
-    flex: 1
-    padding: 12px 20px
-    text-align: center
-    background-color: #f8f9fa
+  &__toggle-btn, &__payment-toggle
+    align-items: center
+    padding: 24px
+    border-radius: 4px
+    border: 1px solid $gray-lighten-2
     cursor: pointer
     transition: all 0.3s ease
     margin: 0
-
-    &:first-child
-      border-right: none
-      border-radius: 4px 0 0 4px
-
-    &:last-child
-      border-radius: 0 4px 4px 0
-
+    font-size: 16px
+    font-style: normal
+    font-weight: 500
+    line-height: 130%
+    color: $gray-darken-3
+    display: grid
+    grid-auto-flow: column
+    gap: 12px
+    justify-content: start
+    position: relative
+    &::before
+      content: ""
+      display: block
+      width: 20px
+      height: 20px
+      border-radius: 50%
+      border: 1px solid $gray-lighten-2
+      transition: border-color $anim
+    &::after
+      position: absolute
+      top: 50%
+      left: 29px
+      content: ""
+      display: block
+      width: 12px
+      height: 12px
+      border-radius: 50%
+      background: $green
+      transform: translateY(-50%)
+      opacity: 0
     &:hover
-      background-color: #e9ecef
+      // background-color: #e9ecef
 
   // Стили для активной кнопки
   #tab-making-order-pickup:checked ~ .making-order__toggle .making-order__toggle-btn[for="tab-making-order-pickup"],
   #tab-making-order-delivery:checked ~ .making-order__toggle .making-order__toggle-btn[for="tab-making-order-delivery"]
-    background-color: $green
-    color: white
+    // background-color: $green
     border-color: $green
+    &::after
+      opacity: 1
+    &::before
+      border-color: $green
+  #tab-making-payment-online:checked ~ .making-order__toggle .making-order__payment-toggle[for="tab-making-payment-online"],
+  #tab-making-payment-sbp:checked ~ .making-order__toggle .making-order__payment-toggle[for="tab-making-payment-sbp"]
+    border-color: $green
+    &::after
+      opacity: 1
+    &::before
+      border-color: $green
+
   &__pickup-content,
   &__delivery-content
     display: none
 
   #tab-making-order-pickup:checked ~ .making-order__pickup-content,
   #tab-making-order-delivery:checked ~ .making-order__delivery-content
-    display: flex
+    display: grid
 
-  // &__pickup-content
-  //   flex-direction: row 
-
-  // &__delivery-content
-  //   flex-direction: column
-  //   flex-grow: 1
+  &__address-box
+    display: grid
+    align-items: center
+    grid-auto-flow: column
+    grid-template-columns: auto 1fr
+    gap: 16px
+  &__address-text
+    color: $gray-darken-3
+    font-family: "Inter", sans-serif
+    font-weight: 500
+    font-size: 16px
+    line-height: 20.8px
+  &__working-hours
+    font-family: "Inter", sans-serif
+    font-weight: 400
+    font-size: 14px
+    line-height: 18.2px
+    color: $gray-text
+  &__address-info
+    display: grid
+    gap: 4px
+  &__city-box
+    display: grid
+    flex-direction: column
+    gap: 16px
+    padding: 24px
+    border-radius: 8px
+    background: $gray-lighten-1
+  &__city-title
+    font-size: 14px
+    font-weight: 500
+    line-height: 130%
+    color: $gray-darken-3
+  &__city-title-box
+    display: grid
+    gap: 12px
+    justify-content: space-between
+    grid-auto-flow: column
+  &__city-button
+    font-size: 14px
+    font-weight: 400
+    line-height: 130%
+    color: $green
+  &__delivery, &__payment, &__recipient
+    display: grid
+    gap: 32px
+  &__payment-toggle
+    grid-template-columns: 20px 1fr auto
+    justify-content: space-between
+  &__recipient-box
+    display: grid
+    gap: 24px

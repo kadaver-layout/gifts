@@ -1,0 +1,125 @@
+{% set title = "Оформление заказа" %}
+
+{% extends "layouts/default.html" %}
+
+{% block content %}
+
+  <main>
+
+    <section class="order-successful section">
+      <div class="container">
+
+        <h1 class="title">
+          Заказ успешно оформлен
+        </h1>
+
+        <div class="order-successful__box">
+
+          <div class="order-successful__content">
+            <div class="order-successful__subtitle-box">
+              <h2 class="order-successful__subtitle">
+            Заказ №123451
+            <span>
+              от 03.11.2025 16:45
+            </span>
+              </h2>
+              <p class="order-successful__price">
+              5 940 ₽
+            </p>
+
+            </div>
+            <div class="order-successful__info-box">
+              <h3 class="order-successful__info-title">
+              Самовывоз
+              </h3>
+              <p class="order-successful__info-text">
+              г. Москва, ул Малая Бронная, д. 41
+            </p>
+            </div>
+            <div class="order-successful__info-box">
+              <h3 class="order-successful__info-title">
+              Оплата
+            </h3>
+              <p class="order-successful__info-text">
+             Картой онлайн
+            </p>
+            </div>
+
+            <div class="order-successful__info-box">
+              <h3 class="order-successful__info-title">
+              Состав заказа
+            </h3>
+              <ul class="making-order__cart-list">
+
+                {% for item in productsCards %}
+
+                  <div class="cart__item">
+                    <a href="" class="cart__item-info">
+                      {% if not item.img %}
+                        {{ 'assets/img/no-image.jpg' | picture( "Изображение на товар отсуствует", 'cart__item-image no-img')|safe}}
+                      {% else %}
+                        <div class="card__img-box">
+                          {{ item.img | picture(alt, 'cart__item-image') | safe }}
+                        </div>
+                      {% endif %}
+                      <div class="cart__item-details">
+                        <div  class="cart__item-name">{{ item.title }}</div>
+                        <p class="cart__item-weight">{{ item.weight }}</p>
+                        <p class="cart__item-sku">Арт: {{ item.sku or 'Не указан' }}</p>
+                      </div>
+                    </a>
+                    <div class="cart__price">
+                      <div class="cart__item-price-box">
+                        <span class="cart__item-quantity-value">{{ item.quantity or 1 }} шт.</span>
+
+                        {% if item.quantity > 1 %}
+                          <p class="cart__item-price-one">
+                            {{ item.price }} ₽ / шт.
+                               </p>
+                        {% endif %}
+                      </div>
+
+                      {% if item.oldPrice %}
+                        <div class="card__price-box ">
+                          <p class="card__price card__price--new">
+                            {{item.price}}
+                          </p>
+                          <p class="card__old-price">
+                            {{item.oldPrice}}
+                          </p>
+                        </div>
+                      {% else %}
+
+                        <div class="card__price-box">
+                          <p class="card__price">
+                            {{item.price}}
+                          </p>
+                        </div>
+                      {% endif %}
+                    </div>
+
+                  </div>
+
+                  <hr class="cart__divider">
+                {% endfor %}
+
+              </ul>
+            </div>
+          </div>
+
+          <div class="order-successful__btn-box">
+            <p class="order-successful__info-title">
+              Оплатите заказ в течение 2 часов
+            </p>
+            <button class="order-successful__btn btn">
+              Оплатить
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+{% endblock %}

@@ -957,13 +957,14 @@ $(document).ready(function () {
     });
   }
   initMobileSort();
-  // Проверяем при загрузке страницы
-  handleScroll();
-  // Добавляем обработчик события прокрутки
-  document.addEventListener("scroll", handleScroll);
-  // Добавляем обработчик изменения размера окна
-  document.addEventListener("resize", handleScroll);
-
+  if (document.querySelector(".cart")) {
+    // Проверяем при загрузке страницы
+    handleScroll();
+    // Добавляем обработчик события прокрутки
+    document.addEventListener("scroll", handleScroll);
+    // Добавляем обработчик изменения размера окна
+    document.addEventListener("resize", handleScroll);
+  }
   // фильтры на странице
   // Получаем основные элементы
   const filtersButton = document.querySelector(".filters-button");
@@ -1363,8 +1364,14 @@ function handleScroll() {
   if (!mediaQuery.matches) {
     return;
   }
-  const checkoutBtn = document.querySelector(".cart__checkout-btn");
-  const summaryBox = document.querySelector(".cart__summary-box--price");
+  const cart = document.querySelector(".cart");
+  console.log(cart);
+
+  if (!cart) {
+    return;
+  }
+  const checkoutBtn = cart.querySelector(".cart__checkout-btn");
+  const summaryBox = cart.querySelector(".cart__summary-box--price");
   if (!checkoutBtn || !summaryBox) {
     return;
   }

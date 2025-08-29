@@ -2,10 +2,15 @@
 
 .making-order
   margin-top: 40px
+  .cart__divider
+    &:last-child
+      margin-bottom: 0
   &__title-box
     display: grid
     gap: 16px
     margin-bottom: 56px
+    @media all and ($m)
+      margin-bottom: 32px
   .title
     margin-bottom: 0
   &__back-link
@@ -22,18 +27,36 @@
     position: relative
     align-items: start
     grid-template-columns: 1fr 408px
+    @media all and ($xl)
+      gap: 82px
+      grid-template-columns: 1fr 326px
+    @media all and ($l)
+      gap: 64px
+    @media all and ($m)
+      grid-auto-flow: row
+      grid-template-columns: 1fr
+      gap: 32px
   &__cart-list
     .cart__item
       grid-template-columns: 1fr 264px
+      @media all and ($s)
+        grid-template-columns: 1fr
     .cart__item-price-box
       min-width: 80px
+    .cart__item-quantity-value
+      @media all and ($s)
+        text-align: start
   &__subtitle
     font-size: 24px
     font-weight: 500
     color: $gray-darken-3
+    @media all and ($m)
+      font-size: 20px
   &__cart
     display: grid
     gap: 16px
+    @media all and ($m)
+      gap: 8px
   .cart__checkout-box
     display: grid
     gap: 16px
@@ -53,6 +76,8 @@
   &__content
     display: grid
     gap: 56px
+    @media all and ($m)
+      gap: 32px
 
   &__tabs
     position: relative
@@ -65,10 +90,14 @@
   &__toggle
     display: grid
     grid-auto-flow: column
+    grid-template-columns: 1fr 1fr
     gap: 24px
     border-radius: 4px
     overflow: hidden
-
+    @media all and ($s)
+      grid-template-columns: 1fr
+      grid-auto-flow: row
+      gap: 8px
   &__toggle-btn, &__payment-toggle
     align-items: center
     padding: 24px
@@ -107,8 +136,13 @@
       background: $green
       transform: translateY(-50%)
       opacity: 0
-    &:hover
-      // background-color: #e9ecef
+      @media all and ($m)
+        left: 21px
+    @media all and ($m)
+      min-height: 56px
+      padding: 15px 16px
+      img
+        max-height: 24px
 
   // Стили для активной кнопки
   #tab-making-order-pickup:checked ~ .making-order__toggle .making-order__toggle-btn[for="tab-making-order-pickup"],
@@ -187,3 +221,12 @@
   &__recipient-box
     display: grid
     gap: 24px
+  @media all and ($m)
+    .cart__checkout-btn
+      width: 100%
+      margin: 0
+      border-radius: 8px
+      box-shadow: none
+      position: relative
+    .delivery__back-text
+      display: grid

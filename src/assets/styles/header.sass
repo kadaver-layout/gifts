@@ -338,15 +338,29 @@
     top: -12px
     left: 12px
     box-shadow: 0 4px 12.2px 0 rgba(0, 0, 0, 0.11)
-
   &__overlay
     position: absolute
-    display: none
+    display: flex
     z-index: 9999
     top: 30px
     left: 0
     min-width: 330px
     min-height: 131px
+    @media all and ($m)
+      display: none
+    &--mobile
+      z-index: 9999
+      display: none
+      top: auto
+      bottom: 0
+      position: fixed
+      width: 100%
+      .popup
+        border-radius: 8px 8px 0 0
+        &::before
+          display: none
+      @media all and ($m)
+        display: flex
   &__buttons
     margin-top: 15px
     display: grid
@@ -363,11 +377,11 @@
     font-weight: 500
     line-height: 130%
     text-align: start
+
 #confirm-city
   background: $green
   border-radius: 4px
   color: #fff
-
 #change-city
   border-radius: 4px
   background: $gray-lighten-2

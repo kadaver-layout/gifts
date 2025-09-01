@@ -250,12 +250,16 @@ $(document).ready(function () {
   }
 
   ///popup выбора города
-  const popup = document.getElementById("city-popup");
+  const overlay = document.createElement("div");
+  const popup = document.querySelector(".popup__overlay");
+  const popupMobile = document.querySelector(".popup__overlay--mobile");
   const openBtnPopup = document.getElementById("open-popup");
-  const confirmBtn = document.getElementById("confirm-city");
-  const changeBtn = document.getElementById("change-city");
+  console.log(popup, popupMobile);
+  
 
-  if (popup) {
+  if (popup && window.innerWidth >= 1199.9) {
+    const confirmBtn = popup.querySelector("#confirm-city");
+    const changeBtn = popup.querySelector("#change-city");
     // Открыть попап
     openBtnPopup.addEventListener("click", () => {
       popup.style.display = "flex";
@@ -269,6 +273,37 @@ $(document).ready(function () {
     // Изменить город
     changeBtn.addEventListener("click", () => {
       popup.style.display = "none";
+      cityModal.classList.add("open");
+    });
+  }
+
+  if (popupMobile && window.innerWidth <= 1199.9) {
+    const confirmBtn = popupMobile.querySelector("#confirm-city");
+    const changeBtn = popupMobile.querySelector("#change-city");
+    // Открыть попап
+    popup.style.display = "none";
+    popupMobile.style.display = "flex";
+    overlay.style.cssText = `
+          position: fixed;
+          inset: 0;   
+          width: 100vw;
+          height: 100vh;
+          background-color: rgba(23, 23, 23, 0.4); 
+          z-index: 98;
+        `;
+    document.body.appendChild(overlay);
+    overlay.classList.add("overlay-header");
+
+    // Подтверждение города
+    confirmBtn.addEventListener("click", () => {
+      popupMobile.style.display = "none";
+    });
+
+    // Изменить город
+    changeBtn.addEventListener("click", () => {
+      popupMobile.style.display = "none";
+
+      cityModal.classList.add("open");
     });
   }
 
@@ -278,7 +313,7 @@ $(document).ready(function () {
   const searchInput = document.querySelector(".header__input");
   const searchBtnBox = document.querySelector(".header__search-btns");
   const serachForm = document.querySelector(".header__search-box");
-  const overlay = document.createElement("div");
+
   const searchReset = document.querySelector(".header__reset-button");
   const searchResault = document.querySelector(".header__search-results");
   const searchBox = document.querySelector(".header__search-form");
@@ -345,7 +380,7 @@ $(document).ready(function () {
     serachForm.classList.remove("active-search");
     body.style.overflow = "";
     if (document.querySelector(".overlay-header")) {
-    document.body.removeChild(overlay);
+      document.body.removeChild(overlay);
     }
     burger.classList.remove("active");
     searchResault.classList.remove("active");
@@ -565,15 +600,19 @@ $(document).ready(function () {
     catalogNavBtn.forEach((el) => {
       el.addEventListener("click", () => {
         categoryModalHeader.classList.add("active");
-        categoryModalHeader.querySelector(".sidebar-title").textContent = el.textContent.trim();
-        categoryModalHeader.querySelector(".category-header__btn").addEventListener("click", () => {
-          categoryModalHeader.classList.remove("active");
-        })
-        categoryModalHeader.querySelector(".modal-close").addEventListener("click", () => {
-          categoryModalHeader.classList.remove("active");
-          closeMenu()
-        })
-        
+        categoryModalHeader.querySelector(".sidebar-title").textContent =
+          el.textContent.trim();
+        categoryModalHeader
+          .querySelector(".category-header__btn")
+          .addEventListener("click", () => {
+            categoryModalHeader.classList.remove("active");
+          });
+        categoryModalHeader
+          .querySelector(".modal-close")
+          .addEventListener("click", () => {
+            categoryModalHeader.classList.remove("active");
+            closeMenu();
+          });
       });
     });
   }

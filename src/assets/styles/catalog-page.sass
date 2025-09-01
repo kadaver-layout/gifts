@@ -632,3 +632,28 @@
     align-items: center
     .category-nav__arrow-btn
       transform: rotate(90deg)
+
+.no-search-results
+  &__box
+    display: grid
+    gap: 24px
+    justify-items: start
+  &__text
+    font-size: 20px
+    line-height: 130%
+    color: $gray-text
+    font-weight: 400
+    @media all and ($m)
+      font-size: 16px
+  &__button
+    border-radius: 4px
+    padding: 16px 32px
+    background: $green
+    transition: background $anim
+    a
+      font-weight: 500
+      font-size: 14px
+      line-height: 130%
+      color: #fff
+    &:hover, &:active, &:focus
+      background: $green-darken

@@ -10,7 +10,7 @@
 
       <div class="product-layout">
         <div class="gallery-container">
-          <div class="gallery-wrapper">
+          <div style="display: none;" class="gallery-wrapper">
             <div class="gallery-slider splide splide-gallery">
               <div class="splide__track">
                 <ul class="splide__list">
@@ -36,6 +36,10 @@
                 Видео
               </button>
             </div>
+
+          </div>
+          <div class="gallery__no-image">
+            {{ '/assets/img/no-image.jpg' | picture('Фото', 'img-fluid', ['webp', 'avif']) | safe }}
           </div>
         </div>
 
@@ -56,16 +60,8 @@
             <p class="product-weight">230 г</p>
           </div>
           <div class="product-purchase">
-
             <p class="product-price">3 100 ₽ / шт</p>
-
-            <!-- ЦЕНА СО СКИДКОЙ
-            <div class="product-discount">
-              <p class="product-old-price">5 600 ₽</p>
-              <p class="product-price">3 100 ₽ / шт</p>
-            </div> -->
-
-            <div class="card__button-box">
+            <div class="card__button-box" style="display: none;">
               <button data-count id='product-{{id}}' class="card__button add-to-cart-btn">
                 В корзину
               </button>
@@ -81,10 +77,10 @@
                 </button>
               </div>
             </div>
-            <!-- НЕТ В НАЛИЧИИ
+            <!-- НЕТ В НАЛИЧИИ -->
             <div class="product-not-available">
               <p class="product-not-available-text">Нет в наличии</p>
-            </div> -->
+            </div>
           </div>
 
           <!-- Описание -->
@@ -185,13 +181,28 @@
         </div>
       </div>
     </div>
-    <button class="add-to-cart-btn--mobile">
+    <button style="display: none;" class="add-to-cart-btn--mobile">
       В корзину
     </button>
   </section>
 </main>
 
-{% include 'includes/reviews.html' %}
+<section id="reviews" class="reviews-section">
+  <div class="container">
+    <h2 class="section-title">Отзывы покупателей</h2>
+    <div class="no-reviews__box">
+
+
+      <p class="no-reviews__text">
+        У данного товара пока нет ни одного отзыва
+      </p>
+
+      <button class="reviews-btn">Оставить отзыв</button>
+
+
+    </div>
+  </div>
+</section>
 
 
 <section class="popular">

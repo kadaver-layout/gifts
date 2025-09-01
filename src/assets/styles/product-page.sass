@@ -58,7 +58,13 @@
   display: flex
   flex-direction: column
   gap: 24px
-
+  .card__button-box
+    margin: 0
+.product-not-available-text
+  font-weight: 500
+  font-size: 24px
+  line-height: 130%
+  color: $gray-text
 .product-header
   display: flex
   justify-content: space-between
@@ -78,7 +84,7 @@
     width: 20px
     height: 20px
   @media all and ($m)
-    span, a 
+    span, a
       font-size: 12px
     svg
       width: 16px
@@ -119,9 +125,19 @@
   margin: 0
   @media all and ($m)
     font-size: 20px
+.product-old-price
+  font-size: 16px
+  color: $gray-text
+  text-decoration: line-through
+  @media all and ($m)
+    font-size: 14px
+
+.product-discount
+  .product-price
+    color: $green
 .add-to-cart-btn
   max-width: 320px
-  padding: 13px 16px
+  // padding: 13px 16px
   border-radius: 4px
   background-color: $green
   color: #fff
@@ -129,6 +145,7 @@
   font-size: 16px
   border: none
   cursor: pointer
+  margin: 0
   transition: background-color 0.3s ease
   &:hover
     background-color: $green-darken
@@ -232,7 +249,7 @@
   & .splide__track
     border-radius: 8px
 
-  & .splide__slide
+  & .splide__slide, .gallery__no-image
     height: 520px
     align-items: stretch
     justify-content: stretch
@@ -340,3 +357,39 @@
   .gallery-wrapper .splide__arrow
     width: 40px
     height: 40px
+
+.gallery__no-image
+  height: 520px
+  width: 100%
+  align-items: stretch
+  justify-content: stretch
+  display: grid
+  @media all and ($xl)
+    height: 378px
+  @media all and ($l)
+    height: 372px
+  @media all and ($m)
+    height: 622px
+  @media all and ($s)
+    height: 560px
+  @media all and ($xs)
+    height: 222px
+  img
+    width: 100%
+    height: 100%
+    object-fit: cover
+
+.no-reviews
+  &__box
+    display: grid
+    gap: 24px
+    justify-content: start
+    justify-items: start
+    background-color: #F7F7F8
+    border-radius: 8px
+    padding: 24px
+  &__text
+    font-weight: 400
+    font-size: 16px
+    line-height: 150%
+    color: $gray-darken-3

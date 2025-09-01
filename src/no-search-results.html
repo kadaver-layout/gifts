@@ -1,0 +1,32 @@
+{% set title = "Результаты поиска" %}
+
+{% extends "layouts/default.html" %}
+
+{% block content %}
+
+<main class="catalog-page">
+  <div class="container">
+    <section class="page-intro no-search-results">
+      {% include "includes/breadcrumbs.html" %}
+      <h1 class="page-title">Результаты поиска «икр»</h1>
+
+      <div class="no-search-results__box">
+        <p class="no-search-results__text">
+          Сожалеем, но по вашему запросу ничего не найдено.
+          <br>
+          Попробуйте изменить поисковый запрос или проверить правописание.
+        </p>
+
+        <button class="no-search-results__button btn"> 
+          <a href="http://" class="no-search-results__link">
+            Перейти на главную
+          </a>
+        </button>
+      </div>
+    </section>
+
+
+  </div>
+</main>
+
+{% endblock %}

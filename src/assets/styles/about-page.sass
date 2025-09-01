@@ -1,0 +1,21 @@
+@use "_vars" as *
+
+.about-page
+  padding: 40px 0 112px
+  @media all and ($m)
+    padding: 24px 0
+  &__content
+    margin-top: 24px
+  &__box
+    display: grid
+    gap: 32px
+    max-width: 696px
+    p
+      display: grid
+      gap: 16px
+      font-weight: 400
+      font-size: 20px
+      line-height: 130%
+      @media all and ($m)
+        font-size: 16px
+      

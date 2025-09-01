@@ -4,18 +4,17 @@
 
 {% block content %}
 
-<main>
-  <section class="making-order section">
-    <div class="container">
-      <div class="making-order__title-box">
-        <h1 class="title">Оформление заказа</h1>
-        <a class="making-order__back-link">
-          <svg class="delivery__back-icon">
-            <use xlink:href="#icon-back">
-          </svg>
-          <span class="delivery__back-text">Назад</span>
-        </a>
-      </div>
+  <main>
+    <section class="making-order section">
+      <div class="container">
+        <div class="making-order__title-box">
+          <h1 class="title">Оформление заказа</h1>
+          <a class="making-order__back-link">
+            <svg class="delivery__back-icon">
+              <use xlink:href="#icon-back"></svg>
+              <span class="delivery__back-text">Вернуться в корзину</span>
+            </a>
+          </div>
 
       <div class="making-order__box">
 
@@ -91,22 +90,97 @@
                   checked>
                 <input type="radio" id="tab-making-order-delivery" name="delivery-type" class="making-order__tab-input">
 
-                <div class="making-order__toggle">
-                  <label for="tab-making-order-pickup" class="making-order__toggle-btn">Самовывоз</label>
-                  <label for="tab-making-order-delivery" class="making-order__toggle-btn">Доставка</label>
-                </div>
+                    <div class="making-order__toggle">
+                      <label for="tab-making-order-pickup" class="making-order__toggle-btn">Самовывоз</label>
+                      <label for="tab-making-order-delivery" class="making-order__toggle-btn">Доставка курьером</label>
+                    </div>
 
-                <div class="making-order__tab-content making-order__pickup-content">
-                  11
+                    <div class="making-order__tab-content making-order__pickup-content">
+                      <div class="making-order__city-box">
+                        <div class="making-order__city-title-box">
+                          <p class="making-order__city-title">
+                            Адрес самовывоза
+                        </p>
+                          <button class="making-order__city-button">
+                          Изменить
+                        </button>
+                        </div>
+                        <div class="making-order__city-selector">
+                          <div class="making-order__address-box">
+                            <img class="delivery__marker" src="assets/img/overlay-marker.png" alt="маркет">
+                            <p class="making-order__address-info">
+                              <span class="making-order__address-text">г. Москва, ул Малая Бронная, д. 41</span>
+                              <span class="making-order__working-hours">Сегодня с 09:00 до 18:00</span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="making-order__tab-content making-order__delivery-content">
+                      <div class="making-order__city-box">
+                        <div class="making-order__city-title-box">
+                          <p class="making-order__city-title">
+                            Адрес доставки
+                        </p>
+                          <button class="making-order__city-button">
+                          Изменить
+                        </button>
+                        </div>
+                        <div class="making-order__city-selector">
+                          <div class="making-order__address-box">
+                            <img class="delivery__marker" src="assets/img/overlay-marker.png" alt="маркет">
+                            <p class="making-order__address-info">
+                              <span class="making-order__address-text">г. Москва, ул Малая Бронная, д. 41</span>
+
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="making-order__tab-content making-order__delivery-content">
-                  22
+              </div>
+
+              <div class="making-order__payment">
+                <h2 class="making-order__subtitle">
+                  Способ оплаты
+                </h2>
+                <div class="making-order__payment-box">
+                  <div class="making-order__tabs">
+                    <input type="radio" id="tab-making-payment-online" name="payment-type" class="making-order__tab-input" checked>
+                    <input type="radio" id="tab-making-payment-sbp" name="payment-type" class="making-order__tab-input">
+
+                    <div class="making-order__toggle">
+                      <label for="tab-making-payment-online" class="making-order__payment-toggle">Картой онлайн
+                        <img src="assets/img/kassa.png" alt="Юкасса">
+                      </label>
+                      <label for="tab-making-payment-sbp" class="making-order__payment-toggle">СБП
+                        <img src="assets/img/sbp.png" alt="СБП">
+                      </label>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="making-order__recipient">
+                <h2 class="making-order__subtitle">
+                  Данные получателя
+                </h2>
+
+                <div class="making-order__recipient-box">
+                  <label for="order-recipient">
+                    <input name="order-recipient" id="order-recipient" required type="text" class="delivery__form-input making-order__recipient-input" placeholder="ФИО *">
+                  </label>
+                  <label for="order-email">
+                    <input name="order-email" id="order-email" required type="email" class="delivery__form-input making-order__recipient-input" placeholder="Email *">
+                  </label>
+                  <label for="order-phone">
+                    <input name="order-phone" id="order-phone" required type="tel" class="delivery__form-input making-order__recipient-input" placeholder="Телефон *">
+                  </label>
                 </div>
               </div>
             </div>
-          </div>
-
-        </div>
 
         <aside class="cart__summary-column making-order__summary">
           <div class="cart__summary-box cart__promo-box">

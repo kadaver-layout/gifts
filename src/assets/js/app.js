@@ -479,40 +479,40 @@ $(document).ready(function () {
   }
 
   // Инициализация валидации формы
-  if (document.querySelector("#form")) {
-    const validation = new JustValidate("#form", {
-      errorFieldCssClass: "is-invalid",
-      errorLabelStyle: {
-        fontSize: "12px",
-        color: "#F65252",
-      },
-      focusInvalidField: true,
-      lockForm: true,
-    });
-    validation
-      .addField("#name_input", [
-        {
-          rule: "required",
-          errorMessage: "Вы не ввели имя",
-        },
-        {
-          rule: "minLength",
-          value: 3,
-          errorMessage: "Слишком короткое имя",
-        },
-        {
-          rule: "maxLength",
-          value: 30,
-          errorMessage: "Слишком длинное имя",
-        },
-      ])
-      .addField("#tel_input", [
-        {
-          rule: "required",
-          errorMessage: "Вы не ввели телефон",
-        },
-      ]);
-  }
+  // if (document.querySelector("#form")) {
+  //   const validation = new JustValidate("#form", {
+  //     errorFieldCssClass: "is-invalid",
+  //     errorLabelStyle: {
+  //       fontSize: "12px",
+  //       color: "#F65252",
+  //     },
+  //     focusInvalidField: true,
+  //     lockForm: true,
+  //   });
+  //   validation
+  //     .addField("#name_input", [
+  //       {
+  //         rule: "required",
+  //         errorMessage: "Вы не ввели имя",
+  //       },
+  //       {
+  //         rule: "minLength",
+  //         value: 3,
+  //         errorMessage: "Слишком короткое имя",
+  //       },
+  //       {
+  //         rule: "maxLength",
+  //         value: 30,
+  //         errorMessage: "Слишком длинное имя",
+  //       },
+  //     ])
+  //     .addField("#tel_input", [
+  //       {
+  //         rule: "required",
+  //         errorMessage: "Вы не ввели телефон",
+  //       },
+  //     ]);
+  // }
 
   // Обработка кнопки "Показать все" в каталоге (в новой версии нет)
   // let allBtn = document.querySelector(".catalog__all-btn");
@@ -1067,13 +1067,14 @@ $(document).ready(function () {
     });
   }
   initMobileSort();
-  // Проверяем при загрузке страницы
-  handleScroll();
-  // Добавляем обработчик события прокрутки
-  document.addEventListener("scroll", handleScroll);
-  // Добавляем обработчик изменения размера окна
-  document.addEventListener("resize", handleScroll);
-
+  if (document.querySelector(".cart")) {
+    // Проверяем при загрузке страницы
+    handleScroll();
+    // Добавляем обработчик события прокрутки
+    document.addEventListener("scroll", handleScroll);
+    // Добавляем обработчик изменения размера окна
+    document.addEventListener("resize", handleScroll);
+  }
   // фильтры на странице
   const filtersButton = document.querySelector(".filters-button");
   const catalogSidebar = document.querySelector(".catalog-sidebar");
@@ -1206,7 +1207,121 @@ $(document).ready(function () {
       () => (checkoutButton.disabled = !agreePolicyCheckbox.checked)
     );
   }
+
+
+
+  if (document.querySelector(".making-order__recipient-box")) {
+    const recipient = document.querySelector("#order-recipient");
+    const phone = document.querySelector("#order-phone");
+    const email = document.querySelector("#order-email");
+
+    const inputs = [recipient, phone, email].filter(Boolean);
+
+    inputs.forEach((input) => {
+      input.addEventListener("blur", () => {
+        validateInput(input);
+      });
+      input.addEventListener("focus", () => {
+        hideError(input);
+      });
+    });
+  }
+
+
+  if (document.querySelector(".form")) {
+    const name = document.querySelector("#name_input");
+    const tel = document.querySelector("#tel_input");
+
+    const inputs = [name, tel].filter(Boolean);
+
+    inputs.forEach((input) => {
+      input.addEventListener("blur", () => {
+        validateInput(input);
+      });
+      input.addEventListener("focus", () => {
+        hideError(input);
+      });
+    });
+  }
 });
+///новая валидация 
+
+const messages = {
+  required: "Это поле обязательно",
+  email: "Введите корректный email",
+  tel: "Введите корректный номер телефона",
+  minLength: (n) => `Минимум ${n} символов`,
+  maxLength: (n) => `Максимум ${n} символов`,
+};
+
+function showError(input, message) {
+  input.classList.add("is-invalid");
+  const id = input.id || input.name || "input";
+  let errorEl = document.querySelector(`.error-message[data-for="${id}"]`);
+
+  if (!errorEl) {
+    errorEl = document.createElement("div");
+    errorEl.className = "error-message";
+    errorEl.setAttribute("data-for", id);
+    errorEl.style.cssText = `
+        font-size: 12px;
+        color: #F65252;
+        margin-top: 4px;
+        display: block;
+      `;
+    input.parentNode.insertBefore(errorEl, input.nextSibling);
+  }
+  errorEl.textContent = message;
+}
+
+function hideError(input) {
+  input.classList.remove("is-invalid");
+  const id = input.id || input.name || "input";
+  const errorEl = document.querySelector(`.error-message[data-for="${id}"]`);
+  if (errorEl) errorEl.remove();
+}
+
+function validateInput(input) {
+  const value = input.value.trim();
+  const type = input.type;
+  const required = input.hasAttribute("required");
+  const minLength = input.getAttribute("minlength") ? parseInt(input.getAttribute("minlength")) : null;
+  const maxLength = input.getAttribute("maxlength") ? parseInt(input.getAttribute("maxlength")) : null;
+
+  // Сбрасываем предыдущую ошибку
+  hideError(input);
+
+  // Проверка только если поле не пустое ИЛИ оно required
+  // Но показываем ошибку, только если пользователь "трогал" поле
+
+  if (required && !value) {
+    showError(input, messages.required);
+    return false;
+  }
+
+  if (type === "email" && value && !/\S+@\S+\.\S+/.test(value)) {
+    showError(input, messages.email);
+    return false;
+  }
+
+  if (type === "tel" && value && !/^[\d\-\+\(\)\s]{10,}$/.test(value)) {
+    showError(input, messages.tel);
+    return false;
+  }
+
+  if (minLength && value && value.length < minLength) {
+    showError(input, messages.minLength(minLength));
+    return false;
+  }
+
+  if (maxLength && value && value.length > maxLength) {
+    showError(input, messages.maxLength(maxLength));
+    return false;
+  }
+
+  return true;
+}
+
 /// кнопка "в корзину" на мобильной версии
 function isElementInViewport(el) {
   const rect = el.getBoundingClientRect();
@@ -1320,8 +1435,14 @@ function handleScroll() {
   if (!mediaQuery.matches) {
     return;
   }
-  const checkoutBtn = document.querySelector(".cart__checkout-btn");
-  const summaryBox = document.querySelector(".cart__summary-box--price");
+  const cart = document.querySelector(".cart");
+  console.log(cart);
+
+  if (!cart) {
+    return;
+  }
+  const checkoutBtn = cart.querySelector(".cart__checkout-btn");
+  const summaryBox = cart.querySelector(".cart__summary-box--price");
   if (!checkoutBtn || !summaryBox) {
     return;
   }

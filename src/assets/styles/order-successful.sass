@@ -1,0 +1,109 @@
+@use "_vars" as *
+
+.order-successful
+  margin-top: 40px
+  @media all and ($m)
+    margin-top: 24px
+  .container
+    max-width: 840px
+    padding: 0
+    display: grid
+    gap: 40px
+    @media all and ($m)
+      width: 100%
+      max-width: none
+      padding-left: 20px
+      padding-right: 20px
+      gap: 32px
+    @media all and ($xs)
+      padding-left: 16px
+      padding-right: 16px
+  .cart__divider:last-child
+    display: none
+  .title
+    margin-bottom: 0
+    font-size: 40px
+    @media all and ($m)
+      font-size: 24px
+  &__content
+    display: grid
+    gap: 32px
+    padding: 32px
+    @media all and ($m)
+      gap: 24px
+      padding: 16px
+  &__subtitle-box
+    display: grid
+    grid-auto-flow: column
+    justify-content: space-between
+    gap: 16px
+  &__subtitle, &__price
+    font-weight: 500
+    font-size: 20px
+    line-height: 130%
+    color: $gray-darken-3
+    @media all and ($m)
+      font-size: 18px
+      display: grid
+    span
+      font-weight: 400
+      font-size: 14px
+      line-height: 130%
+      color: $gray-text
+      @media all and ($m)
+        font-size: 12px
+  &__info-title
+    font-weight: 500
+    font-size: 16px
+    line-height: 130%
+    color: $gray-darken-3
+  &__info-text
+    font-weight: 400
+    font-size: 14px
+    line-height: 130%
+    color: $gray-darken-3
+  &__info-box
+    display: grid
+    gap: 8px
+  &__box
+    border: 1px solid $gray-lighten-2
+    border-radius: 8px
+  &__btn-box
+    display: grid
+    grid-template-columns: 1fr auto
+    gap: 16px
+    justify-content: space-between
+    padding: 16px 32px
+    background: $gray-lighten-2
+    align-items: center
+    @media all and ($m)
+      padding: 16px
+      grid-template-columns: 1fr
+  &__btn
+    padding: 8px 23px
+    background: $green
+    border-radius: 4px
+    font-weight: 500
+    font-size: 16px
+    line-height: 130%
+    color: #fff
+    transition: background $anim
+    &:active, &:focus, &:hover
+      background: $green-darken
+  @media all and ($m)
+    .cart__item
+      gap: 16px
+      grid-template-columns: 1fr
+    .cart__item-info
+      gap: 16px
+      grid-template-columns: 64px 1fr
+    .cart__item-image
+      width: 64px
+      height: 64px
+    .cart__price
+      grid-row: 2 / 3
+      grid-column: 1 / 2
+      margin-left: 80px
+    .cart__item-quantity-value
+      text-align: start
+      font-size: 14px

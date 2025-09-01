@@ -58,10 +58,6 @@ $(document).ready(function () {
     document.getElementById("year").innerHTML = new Date().getFullYear();
   }
 
-
-
-
-
   // Инициализация модального окна выбора города
   const modal = document.getElementById("city-modal");
   const openBtn = document.querySelector('[data-toggle="city-modal"]');
@@ -275,26 +271,85 @@ $(document).ready(function () {
       popup.style.display = "none";
     });
   }
-  ///поиск
+
+  ///поиск мобльная
 
   const searchButton = document.querySelector(".header__search-button");
   const searchInput = document.querySelector(".header__input");
-
-  if (searchButton && searchInput) {
+  const searchBtnBox = document.querySelector(".header__search-btns");
+  const serachForm = document.querySelector(".header__search-box");
+  const overlay = document.createElement("div");
+  const searchReset = document.querySelector(".header__reset-button");
+  const searchResault = document.querySelector(".header__search-results");
+  const searchBox = document.querySelector(".header__search-form");
+  const searchCloseMobile = document.querySelector(
+    ".header__search-close--mobile"
+  );
+  if (searchButton && searchBox) {
     searchButton.addEventListener("click", () => {
       event.preventDefault();
-      searchInput.classList.toggle("active");
+      searchBox.classList.add("active");
+      burger.style.display = "none";
+      navContainer.classList.remove("active");
     });
 
     // Закрываем строку поиска при клике вне нее
     document.addEventListener("click", (event) => {
       if (
-        !searchInput.contains(event.target) &&
+        !searchBox.contains(event.target) &&
         !searchButton.contains(event.target)
       ) {
-        searchInput.classList.remove("active");
+        searchBox.classList.remove("active");
+        burger.style.display = "grid";
+        serchReset();
       }
     });
+
+    searchCloseMobile.addEventListener("click", () => {
+      searchBox.classList.remove("active");
+      burger.style.display = "grid";
+      serchReset();
+    });
+  }
+
+  overlay.style.cssText = `
+          position: fixed;
+          inset: 0;   
+          width: 100vw;
+          height: 100vh;
+          background-color: rgba(23, 23, 23, 0.4); 
+          z-index: 98;
+        `;
+
+  /// поиск всплывающее окно
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      if (searchInput.value.length > 0) {
+        searchBtnBox.classList.add("active");
+        serachForm.classList.add("active-search");
+        body.style.overflow = "hidden";
+        document.body.appendChild(overlay);
+        overlay.classList.add("overlay-header");
+        searchResault.classList.add("active");
+      } else {
+        serchReset();
+      }
+    });
+    if (searchReset) {
+      searchReset.addEventListener("click", serchReset);
+    }
+  }
+
+  function serchReset() {
+    searchBtnBox.classList.remove("active");
+    serachForm.classList.remove("active-search");
+    body.style.overflow = "";
+    if (document.querySelector(".overlay-header")) {
+    document.body.removeChild(overlay);
+    }
+    burger.classList.remove("active");
+    searchResault.classList.remove("active");
+    searchInput.value = "";
   }
 
   // Класс для инициализации кастомных селектов с помощью Select2
@@ -380,7 +435,7 @@ $(document).ready(function () {
         if (
           !withinBoundaries &&
           select.innerHTML ===
-          '<span class="select2-selection__placeholder"></span>'
+            '<span class="select2-selection__placeholder"></span>'
         ) {
           labelSelect.classList.remove("active");
         }
@@ -494,15 +549,31 @@ $(document).ready(function () {
     });
   });
 
-
-
   // Обработка навигации по категориям каталога
   const catalogNavBtn = document.querySelectorAll(".category-nav__btn");
-  if (catalogNavBtn) {
+  if (catalogNavBtn && window.innerWidth >= 1199.9) {
     catalogNavBtn.forEach((el) => {
       el.addEventListener("click", () => {
         const catalogNavItem = el.closest(".category-nav__item");
         catalogNavItem.classList.toggle("active");
+      });
+    });
+  }
+
+  const categoryModalHeader = document.querySelector(".category-modal-header");
+  if (catalogNavBtn && window.innerWidth <= 1199.9) {
+    catalogNavBtn.forEach((el) => {
+      el.addEventListener("click", () => {
+        categoryModalHeader.classList.add("active");
+        categoryModalHeader.querySelector(".sidebar-title").textContent = el.textContent.trim();
+        categoryModalHeader.querySelector(".category-header__btn").addEventListener("click", () => {
+          categoryModalHeader.classList.remove("active");
+        })
+        categoryModalHeader.querySelector(".modal-close").addEventListener("click", () => {
+          categoryModalHeader.classList.remove("active");
+          closeMenu()
+        })
+        
       });
     });
   }
@@ -965,7 +1036,6 @@ $(document).ready(function () {
   document.addEventListener("resize", handleScroll);
 
   // фильтры на странице
-  // Получаем основные элементы
   const filtersButton = document.querySelector(".filters-button");
   const catalogSidebar = document.querySelector(".catalog-sidebar");
   const sidebarClose = document.querySelector(".sidebar-close");
@@ -975,92 +1045,55 @@ $(document).ready(function () {
     price: document.querySelector(".price-modal"),
   };
 
-  // Функции для управления видимостью
   function closeAllModals() {
     Object.values(modals).forEach((modal) => {
-      if (modal && modal.classList.contains("active")) {
-        modal.classList.remove("active");
-      }
+      modal?.classList.remove("active");
     });
   }
 
   function closeSidebar() {
-    if (catalogSidebar && catalogSidebar.classList.contains("active")) {
-      catalogSidebar.classList.remove("active");
-      document.body.style.overflowY = "auto";
-    }
+    catalogSidebar?.classList.remove("active");
+    document.body.style.overflowY = "auto";
   }
 
   function openSidebar() {
-    if (catalogSidebar) {
-      catalogSidebar.classList.add("active");
-      document.body.style.overflowY = "hidden";
-    }
+    catalogSidebar?.classList.add("active");
+    document.body.style.overflowY = "hidden";
   }
 
-  // 1. Открытие боковой панели фильтров
-  if (filtersButton) {
-    filtersButton.addEventListener("click", (e) => {
-      openSidebar();
+  filtersButton?.addEventListener("click", openSidebar);
+  sidebarClose?.addEventListener("click", closeSidebar);
+
+  filterItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const modalType = item.getAttribute("data-modal");
+      if (modals[modalType]) {
+        closeSidebar();
+        modals[modalType].classList.add("active");
+      }
     });
-  }
+  });
 
-  // 2. Закрытие боковой панели фильтров
-  if (sidebarClose) {
-    sidebarClose.addEventListener("click", (e) => {
+  document.querySelectorAll(".apply-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      closeAllModals();
       closeSidebar();
     });
-  }
+  });
 
-  // 3. Открытие модальных окон из сайдбара
-  if (filterItems.length > 0) {
-    filterItems.forEach((item) => {
-      item.addEventListener("click", (e) => {
-        const modalType = item.getAttribute("data-modal");
-        if (modals[modalType]) {
-          closeSidebar();
-          modals[modalType].classList.add("active");
-        }
-      });
+  document.querySelectorAll(".modal-close").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const currentModal = e.target.closest(".category-modal, .price-modal");
+      currentModal?.classList.remove("active");
     });
-  }
+  });
 
-  // 4. Обработка кнопок "Применить"
-  const applyButtons = document.querySelectorAll(".apply-button");
-  if (applyButtons.length > 0) {
-    applyButtons.forEach((button) => {
-      button.addEventListener("click", (e) => {
-        closeAllModals();
-        closeSidebar();
-      });
+  document.querySelectorAll(".category-header__btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      closeAllModals();
+      openSidebar();
     });
-  }
-
-  // 5. Обработка кнопок закрытия модалок (.modal-close)
-  const modalCloseButtons = document.querySelectorAll(".modal-close");
-  if (modalCloseButtons.length > 0) {
-    modalCloseButtons.forEach((button) => {
-      button.addEventListener("click", (e) => {
-        const currentModal = e.target.closest(".category-modal, .price-modal");
-        if (currentModal) {
-          currentModal.classList.remove("active");
-        }
-      });
-    });
-  }
-
-  // 6. Обработка кликов на кнопку ".category-header__btn" в модалках
-  const categoryHeaderButtons = document.querySelectorAll(
-    ".category-header__btn"
-  );
-  if (categoryHeaderButtons.length > 0) {
-    categoryHeaderButtons.forEach((button) => {
-      button.addEventListener("click", (e) => {
-        closeAllModals();
-        openSidebar();
-      });
-    });
-  }
+  });
 
   /// cладейр
   const gallery = document.querySelector(".gallery-slider");
@@ -1073,7 +1106,6 @@ $(document).ready(function () {
       document.querySelector(".video-btn").style.display = "none";
     }
   }
-
 
   /// показать все в карточке
 
@@ -1125,14 +1157,14 @@ $(document).ready(function () {
     initVisibilityHandler();
   }
 
-
   //чекбокс для страницы "оформление заказа"
-  const agreePolicyCheckbox = document.getElementById('agreePolicy');
-  const checkoutButton = document.getElementById('checkout-submit-btn');
+  const agreePolicyCheckbox = document.getElementById("agreePolicy");
+  const checkoutButton = document.getElementById("checkout-submit-btn");
 
   if (agreePolicyCheckbox && checkoutButton) {
-    agreePolicyCheckbox.addEventListener('change', () =>
-      checkoutButton.disabled = !agreePolicyCheckbox.checked
+    agreePolicyCheckbox.addEventListener(
+      "change",
+      () => (checkoutButton.disabled = !agreePolicyCheckbox.checked)
     );
   }
 });
@@ -1143,7 +1175,7 @@ function isElementInViewport(el) {
     rect.top >= 0 &&
     rect.left >= 0 &&
     rect.bottom <=
-    (window.innerHeight || document.documentElement.clientHeight) &&
+      (window.innerHeight || document.documentElement.clientHeight) &&
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
 }
@@ -1277,7 +1309,7 @@ function initMobileSort() {
     const sortModalOverlay = document.querySelector(".sort-modal-overlay");
     const sortModalClose = sortModal
       ? sortModal.querySelector(".sort-modal-close") ||
-      sortModal.querySelector(".modal-close")
+        sortModal.querySelector(".modal-close")
       : null;
 
     if (
@@ -1377,9 +1409,7 @@ function initMobileSort() {
   }
 }
 
-
-
-/// новая функция слайдера 
+/// новая функция слайдера
 function initializeSlider(sliderClass, perPageConfig) {
   console.log(sliderClass, perPageConfig);
 
@@ -1413,5 +1443,4 @@ function initializeSlider(sliderClass, perPageConfig) {
     if (nextBtn) nextBtn.addEventListener("click", () => splide.go(">"));
     if (prevBtn) prevBtn.addEventListener("click", () => splide.go("<"));
   }
-
 }

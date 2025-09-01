@@ -1,5 +1,6 @@
 @use "_vars" as *
 .header
+  border-bottom: 1px solid $gray-lighten-2
   &__top
     padding: 18px 0
     background: $gray-lighten-1
@@ -60,6 +61,8 @@
       background-size: cover
   &__bottom
     padding: 25px 0
+    @media all and ($m)
+      padding: 11px 0
   &__bottom-list
     display: grid
     grid-auto-flow: column
@@ -100,9 +103,10 @@
       svg
         width: 24px
   &__input
-    padding: 12px 16px 12px 48px
-    border-radius: 4px
-    border: 1px solid $gray-lighten-2
+    padding: 10px 15px 10px 47px
+    border: none
+    // border-radius: 4px
+    // border: 1px solid $gray-lighten-2
     font-weight: 400
     font-size: 14px
     line-height: 130%
@@ -115,12 +119,20 @@
       line-height: 150%
       color: $gray-lighten-4
     &:active, &:focus-visible
-      border: 1px solid $gray-lighten-2
+      border: none
       outline: none
   &__search-box
+    background: #fff
+    padding-top: 3px
+    padding-bottom: 3px
+    display: grid
+    align-items: center
+    grid-template-columns: 1fr auto
+    border-radius: 4px
+    border: 1px solid $gray-lighten-2
     position: relative
+    max-height: 48px
     &::before
-      cursor: pointer
       content: ""
       display: grid
       width: 20px
@@ -131,10 +143,8 @@
       z-index: 1
       background-image: url(/assets/img/search.svg)
       left: 16px
-      @media all and ($m)
-        display: none
-    @media all and ($m)
-      grid-area: search
+    &.active-search
+      z-index: 999
   &__castalog-box
     display: grid
     grid-auto-flow: column
@@ -151,19 +161,143 @@
   &__bottom-list-link
     display: flex
     gap: 32px
-
   &__search-button
     display: none
-
+  &__search-btns
+    display: none
+    grid-auto-flow: column
+    align-items: center
+    gap: 16px
+    margin-right: 7px
+    &.active
+      display: grid
+  &__submit-icon
+    display: grid
+    padding: 7px
+    background: $green
+    border-radius: 4px
+    width: 40px
+    height: 40px
+    @media all and ($m)
+      display: none
+    &--mobile
+      display: none
+  &__reset-icon
+    width: 20px
+    height: 20px
+  &__search-form
+    position: relative
+  &__search-results
+    display: none
+    gap: 24px
+    position: absolute
+    top: calc( 100% + 8px )
+    left: 50%
+    width: 100%
+    transform: translateX(-50%)
+    z-index: 99
+    background: #fff
+    border-radius: 8px
+    padding: 24px
+    &.active
+      display: grid
+  &__result-info
+    display: grid
+    grid-auto-flow: column
+    align-items: center
+    gap: 16px
+    justify-content: start
+    .cart__item-image
+      width: 48px
+      height: 48px
+  &__result-price
+    font-weight: 500
+    font-size: 14px
+    line-height: 130%
+    color: $gray-darken-3
+  &__result-name
+    font-weight: 400
+    font-size: 14px
+    line-height: 130%
+    color: $gray-darken-1
+  &__result-button
+    display: grid
+    padding: 11px 31px
+    border-radius: 4px
+    background: $green
+    color: #fff
+    font-weight: 500
+    font-size: 16px
+    line-height: 130%
+    justify-self: start
+    transition: background $anim
+    &:hover, &:active, &:focus
+      background: $green-darken
+  &__result-text
+    font-weight: 400
+    font-size: 14px
+    line-height: 130%
+    color: $gray-darken-1
+  &__search-close--mobile
+    display: none
 @media all and ($m)
   .header
     &__search-box
+      border: none
+      width: 100%
+      display: grid
+      // grid-area: auto
+      padding: 0
+      &::before
+        display: none
+    &__search-form
       position: relative
-      justify-items: end
-      &:has(.header__input.active)::before
+      justify-self: end
+      grid-area: search
+      &.active
         display: grid
+        position: absolute
+        height: 100%
+        top: 0
+        width: 100%
+        left: 0
+        background: #fff
+        z-index: 99
+        justify-self: stretch
+        grid-template-columns: 24px 1fr
+        grid-template-rows: 1fr
+        gap: 16px
+        padding: 16px
+        .header__search-close--mobile
+          display: grid
+          align-items: center
+        .header__search-back
+          width: 24
+          height: 24
+        .header__input
+          display: grid
+        .header__search-button
+          display: none
+        .header__search-box
+          grid-area: auto
+          &::before
+            display: grid
+            right: 0
+            left: auto
+          &.active-search
+            &::before
+              display: none
+    &__submit-icon
+      display: none
+      &--mobile
+        width: 20px
+        height: 20px
+        display: grid
+    &__search-back
+      width: 24px
+      height: 24px
     &__search-button
-      display: block
+      display: grid
       cursor: pointer
       background: transparent
       border: none
@@ -175,24 +309,15 @@
       background-repeat: no-repeat
       background-size: cover
     &__input
+      padding: 0
       display: none
-      position: absolute
-      top: 50%
-      transform: translatex(-100%)
-      right: 0
-      padding: 12px 16px 12px 48px
-      border-radius: 4px
-      border: 1px solid $gray-lighten-2
+      height: 100%
       font-weight: 400
       font-size: 14px
       line-height: 130%
       color: $gray-darken-3
       transition: right $anim
       width: 100%
-      &.active
-        display: block
-        right: 0
-        transform: translatex(0) translateY(-50%)
 
 .popup
   background: #fff
@@ -205,12 +330,12 @@
   position: relative
   &::before
     content: ""
-    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-    width: 24px;
-    height: 24px;
-    background: #fff;
-    position: absolute;
-    top: -12px;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%)
+    width: 24px
+    height: 24px
+    background: #fff
+    position: absolute
+    top: -12px
     left: 12px
     box-shadow: 0 4px 12.2px 0 rgba(0, 0, 0, 0.11)
 
@@ -240,7 +365,7 @@
     text-align: start
 #confirm-city
   background: $green
-  border-radius: 4px;
+  border-radius: 4px
   color: #fff
 
 #change-city

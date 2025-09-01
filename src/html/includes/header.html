@@ -46,11 +46,70 @@
             </p>
           </button>
 
+          <div class="header__search-form">
+            <button class="header__search-close--mobile">
+              <svg class="header__search-back">
+                <use xlink:href="#icon-back"></use>
+              </svg>
 
-          <form class="header__search-box">
-            <input type="text" class="header__input" placeholder="Поиск..." />
-            <button  class="header__search-button"></button>
-          </form>
+            </button>
+            <form class="header__search-box">
+              <input type="text" class="header__input" placeholder="Найти в каталоге" />
+              <div class="header__search-btns">
+                <button type="reset" class="header__reset-button">
+                  <svg class="header__reset-icon">
+                    <use xlink:href="#reset-btn"></use>
+                  </svg>
+                </button>
+                <button type="submit" class="header__submit-button">
+                  <svg class="header__submit-icon">
+                    <use xlink:href="#submit-btn"></use>
+                  </svg>
+                  <svg class="header__submit-icon--mobile">
+                    <use xlink:href="#search-icon"></use>
+                  </svg>
+                </button>
+
+              </div>
+              <button class="header__search-button"></button>
+            </form>
+
+            <div class="header__search-results">
+              <ul class="header__result-list">
+                {% for item in productsCards %}
+                {% if loop.index0 < 4 %} <li>
+                  <a href="" class="header__result-info">
+                    {% if not item.img %}
+                    {{ 'assets/img/no-image.jpg' | picture("Изображение на товар отсутствует", 'cart__item-image
+                    no-img') | safe }}
+                    {% else %}
+                    <div class="card__img-box">
+                      {{ item.img | picture(alt, 'cart__item-image') | safe }}
+                    </div>
+                    {% endif %}
+                    <div class="header__result-details">
+                      <p class="header__result-price">
+                        {{ item.price }}
+                      </p>
+                      <div class="header__result-name">{{ item.title }}</div>
+                    </div>
+                  </a>
+                  </li>
+                  {% endif %}
+                  {% endfor %}
+              </ul>
+
+              <button class="header__result-button">
+                Все результаты
+              </button>
+
+              <!-- ЕСЛИ НЕТ РЕЗУЛЬТАТОВ -->
+
+              <!-- <p class="header__result-text">
+                Нет подходящих результатов по вашему запросу
+              </p> -->
+            </div>
+          </div>
 
 
           <div class="header__cart-box ">
@@ -138,11 +197,12 @@
                   </button>
                   <ul class="category-nav__subcategory-list">
                     {% for subcategory in category.subcategory %}
+                    <!-- 
                     <li class="category-nav__subcategory-item">
                       <a href="#" class="category-nav__subcategory-link">
                         {{ subcategory }}
                       </a>
-                    </li>
+                    </li> -->
                     {% endfor %}
                   </ul>
                 </li>
@@ -202,9 +262,55 @@
               </a>
             </div>
           </div>
+
+
         </div>
 
       </div>
     </div>
   </div>
+
+  <!-- Модальное окно для подкатегории -->
+  <div class="category-modal-header">
+    <div class="modal-header">
+      <button class="category-header__btn">
+
+        <svg class="delivery__back-icon">
+          <use xlink:href="#icon-back"></use>
+        </svg>
+        <!-- <img class="svg category-nav__arrow-btn" src="assets/img/all-btn.svg" alt=""> -->
+        <p class="sidebar-title">Категория</p>
+      </button>
+
+      <span class="modal-close">&times;</span>
+    </div>
+    <div class="modal-body">
+      <nav class="category-nav">
+        <ul class="category-nav__list">
+          {% for category in categoryNav %}
+
+          <li class="category-nav__item">
+            <button class="category-nav__btn">
+              <p class="category-nav__title">
+                {{ category.categoryTitle }}
+              </p>
+             
+            </button>
+            <ul class="category-nav__subcategory-list">
+              {% for subcategory in category.subcategory %}
+              <li class="category-nav__subcategory-item">
+                <a href="#" class="category-nav__subcategory-link">
+                  {{ subcategory }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+
 </header>

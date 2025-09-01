@@ -1,6 +1,10 @@
 @use "_vars" as *
 .banner
   position: relative
+  margin-top: 32px
+  @media all and ($m)
+    margin-top: 24px
+  
   &__img-box
     display: grid
     background: url(/assets/img/banner.jpg)

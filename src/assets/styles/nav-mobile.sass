@@ -1,5 +1,6 @@
 @use "_vars" as *
-
+.category-modal-header
+  display: none
 .burger
   display: grid
   position: relative
@@ -13,6 +14,7 @@
   grid-auto-flow: column
   gap: 8px
   @media all and ($m)
+    padding: 14px 0
     grid-area: burger
     background: transparent
   &__text
@@ -158,9 +160,10 @@
     opacity: 0
     visibility: hidden
     transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1)
     @media all and ($m)
       min-height: 100vh
+      box-shadow: none
+      border-top: 1px solid $gray-lighten-2
 
   &__nav-box.active
     transform: translateY(0)

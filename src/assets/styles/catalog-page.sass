@@ -217,6 +217,17 @@
   &.ellipsis
     color: $gray-text
 
+.category-modal 
+  .category-nav__btn 
+    display: flex
+    justify-content: start
+    gap: 4px
+  .category-nav__item.active
+    .category-nav__arrow-btn
+      transform: rotate(180deg)
+    .category-nav__subcategory-list
+      display: grid
+
 .category-nav
   &__list
     display: grid
@@ -227,11 +238,11 @@
     font-weight: 400
     line-height: 130%
     color: $gray-darken-3
-    &.active
-      .category-nav__arrow-btn
-        transform: rotate(180deg)
-      .category-nav__subcategory-list
-        display: grid
+    // &.active
+    //   .category-nav__arrow-btn
+    //     transform: rotate(180deg)
+    //   .category-nav__subcategory-list
+    //     display: grid
   &__title
     font-size: 14px
     font-style: normal
@@ -239,9 +250,11 @@
     line-height: 130%
     color: $gray-darken-3
   &__btn
-    display: flex
-    flex-wrap: nowrap
-    gap: 4px
+    display: grid
+    grid-auto-flow: column
+    justify-content: space-between
+    .category-nav__arrow-btn
+      transform: rotate(-90deg)
   &__subcategory-item
     padding: 8px 16px
   &__subcategory-list

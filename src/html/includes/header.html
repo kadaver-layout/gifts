@@ -183,17 +183,17 @@
                     <p class="category-nav__title">
                       {{ category.categoryTitle }}
                     </p>
-                    <img class="svg category-nav__arrow-btn" src="assets/img/all-btn.svg" alt="">
+                    <img class="svg category-nav__arrow-btn" src="@assets/img/all-btn.svg" alt="">
                   </button>
                   <ul class="category-nav__subcategory-list">
-                    {% for subcategory in category.subcategory %}
+                    <!-- {% for subcategory in category.subcategory %} -->
                     <!-- 
                     <li class="category-nav__subcategory-item">
                       <a href="#" class="category-nav__subcategory-link">
                         {{ subcategory }}
                       </a>
                     </li> -->
-                    {% endfor %}
+                    <!-- {% endfor %} -->
                   </ul>
                 </li>
                 {% endfor %}
@@ -281,9 +281,9 @@
 
           <li class="category-nav__item">
             <button class="category-nav__btn">
-              <p class="category-nav__title">
+              <a href="{{ category.categoryLink }}" class="category-nav__title">
                 {{ category.categoryTitle }}
-              </p>
+              </a>
 
             </button>
             <ul class="category-nav__subcategory-list">

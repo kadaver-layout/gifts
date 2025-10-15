@@ -255,7 +255,6 @@ $(document).ready(function () {
   const popupMobile = document.querySelector(".popup__overlay--mobile");
   const openBtnPopup = document.getElementById("open-popup");
   console.log(popup, popupMobile);
-  
 
   if (popup && window.innerWidth >= 1199.9) {
     const confirmBtn = popup.querySelector("#confirm-city");
@@ -585,17 +584,23 @@ $(document).ready(function () {
   });
 
   // Обработка навигации по категориям каталога
-  const catalogNavBtn = document.querySelectorAll(".category-nav__btn");
+  const categoryModalHeader = document.querySelector(".category-modal-header");
+  const catalogNavBody = document.querySelector(".header__nav-mobile");
+  const catalogNavBtn = catalogNavBody.querySelectorAll(".category-nav__btn");
+
   if (catalogNavBtn && window.innerWidth >= 1199.9) {
     catalogNavBtn.forEach((el) => {
+      console.log(el);
+
       el.addEventListener("click", () => {
         const catalogNavItem = el.closest(".category-nav__item");
+        console.log(catalogNavItem);
+
         catalogNavItem.classList.toggle("active");
       });
     });
   }
 
-  const categoryModalHeader = document.querySelector(".category-modal-header");
   if (catalogNavBtn && window.innerWidth <= 1199.9) {
     catalogNavBtn.forEach((el) => {
       el.addEventListener("click", () => {
@@ -1114,6 +1119,8 @@ $(document).ready(function () {
     });
   });
 
+  const filterCategoryBody = document.querySelector(".category-modal");
+
   document.querySelectorAll(".apply-button").forEach((button) => {
     button.addEventListener("click", () => {
       closeAllModals();
@@ -1128,12 +1135,24 @@ $(document).ready(function () {
     });
   });
 
-  document.querySelectorAll(".category-header__btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      closeAllModals();
-      openSidebar();
+  filterCategoryBody
+    .querySelectorAll(".category-nav__btn")
+    .forEach((button) => {
+      button.addEventListener("click", () => {
+        console.log(button);
+
+        // closeAllModals();
+        button.closest(".category-nav__item").classList.toggle("active");
+        // openSidebar();
+      });
     });
-  });
+
+  filterCategoryBody
+    .querySelector(".category-header__btn")
+    .addEventListener("click", () => {
+      catalogSidebar.classList.add("active");
+      filterCategoryBody.classList.remove("active");
+    });
 
   /// cладейр
   const gallery = document.querySelector(".gallery-slider");
@@ -1208,8 +1227,6 @@ $(document).ready(function () {
     );
   }
 
-
-
   if (document.querySelector(".making-order__recipient-box")) {
     const recipient = document.querySelector("#order-recipient");
     const phone = document.querySelector("#order-phone");
@@ -1227,7 +1244,6 @@ $(document).ready(function () {
     });
   }
 
-
   if (document.querySelector(".form")) {
     const name = document.querySelector("#name_input");
     const tel = document.querySelector("#tel_input");
@@ -1244,7 +1260,7 @@ $(document).ready(function () {
     });
   }
 });
-///новая валидация 
+///новая валидация
 
 const messages = {
   required: "Это поле обязательно",
@@ -1285,8 +1301,12 @@ function validateInput(input) {
   const value = input.value.trim();
   const type = input.type;
   const required = input.hasAttribute("required");
-  const minLength = input.getAttribute("minlength") ? parseInt(input.getAttribute("minlength")) : null;
-  const maxLength = input.getAttribute("maxlength") ? parseInt(input.getAttribute("maxlength")) : null;
+  const minLength = input.getAttribute("minlength")
+    ? parseInt(input.getAttribute("minlength"))
+    : null;
+  const maxLength = input.getAttribute("maxlength")
+    ? parseInt(input.getAttribute("maxlength"))
+    : null;
 
   // Сбрасываем предыдущую ошибку
   hideError(input);
@@ -1436,7 +1456,6 @@ function handleScroll() {
     return;
   }
   const cart = document.querySelector(".cart");
-  console.log(cart);
 
   if (!cart) {
     return;

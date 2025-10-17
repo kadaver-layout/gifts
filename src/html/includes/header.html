@@ -44,7 +44,7 @@
 
             </button>
             <form class="header__search-box">
-              <input type="text" class="header__input" placeholder="Найти в каталоге" />
+              <input type="text" class="header__input" placeholder="Найти в каталоге"/>
               <div class="header__search-btns">
                 <button type="reset" class="header__reset-button">
                   <svg class="header__reset-icon">
@@ -67,26 +67,27 @@
             <div class="header__search-results">
               <ul class="header__result-list">
                 {% for item in productsCards %}
-                {% if loop.index0 < 4 %} <li>
-                  <a href="" class="header__result-info">
-                    {% if not item.img %}
-                    {{ 'assets/img/no-image.jpg' | picture("Изображение на товар отсутствует", 'cart__item-image
+                  {% if loop.index0 < 4 %}
+                    <li>
+                      <a href="" class="header__result-info">
+                        {% if not item.img %}
+                          {{ 'assets/img/no-image.jpg' | picture("Изображение на товар отсутствует", 'cart__item-image
                     no-img') | safe }}
-                    {% else %}
-                    <div class="card__img-box">
-                      {{ item.img | picture(alt, 'cart__item-image') | safe }}
-                    </div>
-                    {% endif %}
-                    <div class="header__result-details">
-                      <p class="header__result-price">
-                        {{ item.price }}
-                      </p>
-                      <div class="header__result-name">{{ item.title }}</div>
-                    </div>
-                  </a>
-                  </li>
+                        {% else %}
+                          <div class="card__img-box">
+                            {{ item.img | picture(alt, 'cart__item-image') | safe }}
+                          </div>
+                        {% endif %}
+                        <div class="header__result-details">
+                          <p class="header__result-price">
+                            {{ item.price }}
+                          </p>
+                          <div class="header__result-name">{{ item.title }}</div>
+                        </div>
+                      </a>
+                    </li>
                   {% endif %}
-                  {% endfor %}
+                {% endfor %}
               </ul>
 
               <button class="header__result-button">
@@ -100,7 +101,6 @@
               </p> -->
             </div>
           </div>
-
 
           <div class="header__cart-box ">
             <button aria-label=" Кнопка открыть корзину" class="header__cart">
@@ -147,29 +147,27 @@
     </div>
   </div>
 
-
   <div class="header__nav-container">
-    <div class="header__overlay">
-    </div>
+    <div class="header__overlay"></div>
     <div class="header__nav-box">
       <div class="container">
         <nav class="header__nav">
           <ul class="header__list">
             {% for category in categoryNav %}
-            <li>
-              <a href="/" class="header__nav-title">
-                {{ category.categoryTitle }}
+              <li>
+                <a href="/" class="header__nav-title">
+                  {{ category.categoryTitle }}
                 </p>
                 <ul class="header__nav-list">
                   {% for subcategory in category.subcategory %}
-                  <li>
-                    <a class="header__nav-link" href="/">
-                      {{ subcategory }}
-                    </a>
-                  </li>
+                    <li>
+                      <a class="header__nav-link" href="/">
+                        {{ subcategory }}
+                      </a>
+                    </li>
                   {% endfor %}
                 </ul>
-            </li>
+              </li>
             {% endfor %}
           </ul>
         </nav>
@@ -178,24 +176,24 @@
             <nav class="category-nav">
               <ul class="category-nav__list">
                 {% for category in categoryNav %}
-                <li class="category-nav__item">
-                  <button class="category-nav__btn">
-                    <p class="category-nav__title">
-                      {{ category.categoryTitle }}
-                    </p>
-                    <img class="svg category-nav__arrow-btn" src="@assets/img/all-btn.svg" alt="">
-                  </button>
-                  <ul class="category-nav__subcategory-list">
-                    <!-- {% for subcategory in category.subcategory %} -->
-                    <!-- 
+                  <li class="category-nav__item">
+                    <button class="category-nav__btn">
+                      <p class="category-nav__title">
+                        {{ category.categoryTitle }}
+                      </p>
+                      <img class="svg category-nav__arrow-btn" src="@assets/img/all-btn.svg" alt="">
+                    </button>
+                    <ul class="category-nav__subcategory-list">
+                      <!-- {% for subcategory in category.subcategory %} -->
+                      <!-- 
                     <li class="category-nav__subcategory-item">
                       <a href="#" class="category-nav__subcategory-link">
                         {{ subcategory }}
                       </a>
                     </li> -->
-                    <!-- {% endfor %} -->
-                  </ul>
-                </li>
+                      <!-- {% endfor %} -->
+                    </ul>
+                  </li>
                 {% endfor %}
               </ul>
             </nav>
@@ -234,7 +232,6 @@
             </div>
             <hr class="cart__divider">
 
-
             <div class="delivery__form-group">
               <div class="delivery__city-selector">
                 <div class="delivery__city-info">
@@ -252,7 +249,6 @@
               </a>
             </div>
           </div>
-
 
         </div>
 
@@ -277,26 +273,18 @@
     <div class="modal-body">
       <nav class="category-nav">
         <ul class="category-nav__list">
-          {% for category in categoryNav %}
-
-          <li class="category-nav__item">
-            <button class="category-nav__btn">
-              <a href="{{ category.categoryLink }}" class="category-nav__title">
-                {{ category.categoryTitle }}
-              </a>
-
-            </button>
-            <ul class="category-nav__subcategory-list">
-              {% for subcategory in category.subcategory %}
-              <li class="category-nav__subcategory-item">
-                <a href="#" class="category-nav__subcategory-link">
+          {% set category = categoryNav[0] %}
+          {% for subcategory in category.subcategory %}
+            <li class="category-nav__item">
+              <div class="category-nav__btn">
+                <a href="{{ category.categoryLink }}" class="category-nav__title">
                   {{ subcategory }}
                 </a>
-              </li>
-              {% endfor %}
-            </ul>
-          </li>
+              </div>
+
+            </li>
           {% endfor %}
+
         </ul>
       </nav>
     </div>

@@ -590,8 +590,6 @@ $(document).ready(function () {
 
   if (catalogNavBtn && window.innerWidth >= 1199.9) {
     catalogNavBtn.forEach((el) => {
-      console.log(el);
-
       el.addEventListener("click", () => {
         const catalogNavItem = el.closest(".category-nav__item");
         console.log(catalogNavItem);
@@ -1134,6 +1132,21 @@ $(document).ready(function () {
       currentModal?.classList.remove("active");
     });
   });
+
+  const calatogSidebar = document.querySelector(".catalog-sidebar");
+  
+  console.log(calatogSidebar);
+  
+  if (calatogSidebar) {
+    const btnCatalogSidebar = catalogSidebar.querySelectorAll(".category-nav__btn");
+
+    btnCatalogSidebar.forEach((button) => {
+      button.addEventListener("click", () => {
+        button.closest(".category-nav__item").classList.toggle("active");
+      });
+    });
+  }
+
 
   filterCategoryBody
     .querySelectorAll(".category-nav__btn")

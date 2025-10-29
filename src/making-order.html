@@ -5,6 +5,7 @@
 {% block content %}
 
   <main>
+    <form id="saveOrder" action="#saveOrder"></form>
     <section class="making-order section">
       <div class="container">
         <div class="making-order__title-box">
@@ -170,13 +171,13 @@
 
                 <div class="making-order__recipient-box">
                   <label for="order-recipient">
-                    <input name="order-recipient" id="order-recipient" required type="text" class="delivery__form-input making-order__recipient-input" placeholder="ФИО *">
+                    <input form="saveOrder" name="order-recipient" id="order-recipient" required type="text" class="delivery__form-input making-order__recipient-input" placeholder="ФИО *">
                   </label>
                   <label for="order-email">
-                    <input name="order-email" id="order-email" required type="email" class="delivery__form-input making-order__recipient-input" placeholder="Email *">
+                    <input form="saveOrder" name="order-email" id="order-email" required type="email" class="delivery__form-input making-order__recipient-input" placeholder="Email *">
                   </label>
                   <label for="order-phone">
-                    <input name="order-phone" id="order-phone" required type="tel" class="delivery__form-input making-order__recipient-input" placeholder="Телефон *">
+                    <input form="saveOrder" name="order-phone" id="order-phone" required type="tel" class="delivery__form-input making-order__recipient-input" placeholder="Телефон *">
                   </label>
                 </div>
               </div>
@@ -189,7 +190,7 @@
               <svg class="promo-icon" width="24" height="24">
                 <use href="#promo-icon"></use>
               </svg>
-              <input class="cart__promo-input-field" type="text" placeholder="Введите промокод">
+              <input form="saveOrder" class="cart__promo-input-field" type="text" placeholder="Введите промокод">
             </div>
           </div>
 
@@ -226,12 +227,12 @@
                 </div>
               </div>
               <div class="cart__checkout-box">
-                <button disabled type="submit" id="checkout-submit-btn" class="cart__checkout-btn btn">Оформить
+                <button form="saveOrder" disabled type="submit" id="checkout-submit-btn" class="cart__checkout-btn btn">Оформить
                   заказ</button>
                 <div class="cart__checkout-check">
                   <label class="cart__checkbox-control cart__item-checkbox">
                     <span class="custom-checkbox">
-                      <input id="agreePolicy" required class="custom-checkbox__input" type="checkbox">
+                      <input form="saveOrder" id="agreePolicy" required class="custom-checkbox__input" type="checkbox">
                       <span class="custom-checkbox__box"></span>
                     </span>
                     <span class="cart__checkout-text">Я согласен с политикой <a href="http://"
@@ -240,7 +241,7 @@
                   </label>
                   <label class="cart__checkbox-control cart__item-checkbox">
                     <span class="custom-checkbox">
-                      <input checked class="custom-checkbox__input" type="checkbox">
+                      <input form="saveOrder" checked class="custom-checkbox__input" type="checkbox">
                       <span class="custom-checkbox__box"></span>
                     </span>
                     <span class="cart__checkout-text">Я согласен получать рекламные материалы от Дары Юга</a>
@@ -255,7 +256,7 @@
       </div>
     </div>
   </section>
-  <div class="overlay-delivery-modal hidden">
+  <div class="overlay-delivery-modal hidden"> // моё
     <section id="delivery-options" class="delivery delivery--section">
       <div class="delivery__container">
         <aside class="delivery__options-panel">
@@ -270,8 +271,8 @@
               </a>
             </header>
             <div class="delivery__tabs">
-              <input type="radio" id="tab-pickup" name="delivery-type" class="delivery__tab-input" value="pickup" checked>
-              <input type="radio" id="tab-delivery" name="delivery-type" class="delivery__tab-input" value="delivery">
+              <input form="saveOrder" type="radio" id="tab-pickup" name="delivery-type" class="delivery__tab-input" value="pickup" checked>
+              <input form="saveOrder" type="radio" id="tab-delivery" name="delivery-type" class="delivery__tab-input" value="delivery">
               <div class="delivery__toggle">
                 <label for="tab-pickup" class="delivery__toggle-btn">Самовывоз</label>
                 <label for="tab-delivery" class="delivery__toggle-btn">Доставка</label>
@@ -307,7 +308,7 @@
                     <label class="delivery__form-label-title">Данные для доставки</label>
                     <div class="delivery__input-group">
                       <label for="address" class="delivery__form-label">Адрес*</label>
-                      <input value="{{inputName}}" required type="text" id="address" class="delivery__form-input"
+                      <input form="saveOrder" value="{{inputName}}" required type="text" id="address" class="delivery__form-input"
                         placeholder="Улица, номер дома">
 
 
@@ -319,24 +320,24 @@
                     <div class="delivery__input-row">
                       <div class="delivery__input-group">
                         <label for="apartment" class="delivery__form-label">Кв/офис</label>
-                        <input type="text" id="apartment" class="delivery__form-input" placeholder="">
+                        <input form="saveOrder" type="text" id="apartment" class="delivery__form-input" placeholder="">
                       </div>
                       <div class="delivery__input-group">
                         <label for="entrance" class="delivery__form-label">Подъезд</label>
-                        <input type="text" id="entrance" class="delivery__form-input" placeholder="">
+                        <input form="saveOrder" type="text" id="entrance" class="delivery__form-input" placeholder="">
                       </div>
                       <div class="delivery__input-group">
                         <label for="floor" class="delivery__form-label">Этаж</label>
-                        <input type="text" id="floor" class="delivery__form-input" placeholder="">
+                        <input form="saveOrder" type="text" id="floor" class="delivery__form-input" placeholder="">
                       </div>
                       <div class="delivery__input-group">
                         <label for="intercom" class="delivery__form-label">Домофон</label>
-                        <input type="text" id="intercom" class="delivery__form-input" placeholder="">
+                        <input form="saveOrder" type="text" id="intercom" class="delivery__form-input" placeholder="">
                       </div>
                     </div>
                     <div class="delivery__input-group">
                       <label for="comment" class="delivery__form-label">Комментарий к заказу</label>
-                      <input type="text" id="comment" class="delivery__form-input">
+                      <input form="saveOrder" type="text" id="comment" class="delivery__form-input">
                     </div>
                   </div>
                   {% if inputName == "Москва" %}

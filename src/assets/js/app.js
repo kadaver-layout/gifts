@@ -1049,7 +1049,6 @@ $(document).ready(function () {
   if (modalDeliveruOpen) {
     modalDeliveruOpen.addEventListener("click", function (e) {
       mapModule.showDeliveryModalOverlay();
-      mapModule.init();
     });
   }
 

@@ -44,10 +44,28 @@ const citiesData = {
   ],
 };
 
-const cartItems = [
-  { id: 1, name: "Товар 1", image: "assets/img/product2.jpg", quantity: 1 },
-  { id: 2, name: "Товар 2", image: "assets/img/product1.jpg", quantity: 2 },
-];
+const cartItems = {
+  items: [
+    { id: 1, name: "Товар 1", image: "assets/img/product2.jpg", quantity: 1 },
+    { id: 2, name: "Товар 2", image: "assets/img/product1.jpg", quantity: 2 },
+  ]
+};
+
+try
+{
+    let response = await fetch('/local/ajax/?action=get-order-delivery-data');
+    
+    if (response)
+    {
+      let result = await response.json();
+      citiesData.cities = result.cities;
+      cartItems.items = result.cart;
+    }
+}
+catch(e)
+{
+  console.error(e);
+}
 
 // Инициализируем модуль карты
 let mapModule;
@@ -258,7 +276,7 @@ $(document).ready(function () {
 
   if (popup && window.innerWidth >= 1199.9) {
     const confirmBtn = popup.querySelector("#confirm-city");
-    const changeBtn = popup.querySelector("#change-city");
+    const changeBtn = popup.querySelector(".change-city");
     // Открыть попап
     openBtnPopup.addEventListener("click", () => {
       popup.style.display = "flex";
@@ -278,7 +296,7 @@ $(document).ready(function () {
 
   if (popupMobile && window.innerWidth <= 1199.9) {
     const confirmBtn = popupMobile.querySelector("#confirm-city");
-    const changeBtn = popupMobile.querySelector("#change-city");
+    const changeBtn = popupMobile.querySelector(".change-city");
     // Открыть попап
     popup.style.display = "none";
     popupMobile.style.display = "flex";
@@ -803,7 +821,7 @@ $(document).ready(function () {
         {
           //опции
           iconLayout: "default#image",
-          iconImageHref: "../assets/img/icon-map.svg",
+          iconImageHref: "/local/templates/catalog/assets/img/icon-map.svg",
           iconImageSize: [35, 45],
           iconImageOffset: [-20, -50],
         }
@@ -814,7 +832,7 @@ $(document).ready(function () {
         {
           //опции
           iconLayout: "default#image",
-          iconImageHref: "../assets/img/icon-map.svg",
+          iconImageHref: "/local/templates/catalog/assets/img/icon-map.svg",
           iconImageSize: [35, 45],
           iconImageOffset: [-20, -50],
         }
@@ -825,7 +843,7 @@ $(document).ready(function () {
         {
           //опции
           iconLayout: "default#image",
-          iconImageHref: "../assets/img/icon-map.svg",
+          iconImageHref: "/local/templates/catalog/assets/img/icon-map.svg",
           iconImageSize: [35, 45],
           iconImageOffset: [-20, -50],
         }
@@ -1023,7 +1041,15 @@ $(document).ready(function () {
   const backLinkMain = document.querySelector(".delivery__back-link");
   if (backLinkMain) {
     backLinkMain.addEventListener("click", function (e) {
-      e.preventDefault();
+      mapModule.hideDeliveryModalOverlay()
+    });
+  }
+
+  const modalDeliveruOpen = document.querySelector(".making-order__city-button");
+  if (modalDeliveruOpen) {
+    modalDeliveruOpen.addEventListener("click", function (e) {
+      mapModule.showDeliveryModalOverlay();
+      mapModule.init();
     });
   }
 

@@ -53,18 +53,16 @@ function initMapModule(citiesData, cartItems) {
       workingHoursElement.textContent = point.working_hours;
     if (productListElement) {
       productListElement.innerHTML = "";
-      cartItems.forEach((item) => {
-        if (point.available_products.includes(item.name)) {
+      cartItems.items.forEach((item) => {
           const productCard = document.createElement("div");
           productCard.classList.add("delivery__product-card");
           productCard.innerHTML = `
             <img src="${item.image}" alt="${item.name}" style="width: 50px; height: 50px; object-fit: cover;">
             <div class="delivery__product-info">
-              <p class="delivery__product-quantity">x${item.quantity}</p>
+              <p class="delivery__product-quantity">${item.quantity}</p>
             </div>
           `;
           productListElement.appendChild(productCard);
-        }
       });
     }
   }
@@ -103,6 +101,20 @@ function initMapModule(citiesData, cartItems) {
     }
   }
 
+  function hideDeliveryModalOverlay() {
+    const overlay = document.querySelector(".overlay-delivery-modal");
+    if (overlay) {
+      overlay.classList.add("hidden");
+    }
+  }
+
+  function showDeliveryModalOverlay() {
+    const overlay = document.querySelector(".overlay-delivery-modal");
+    if (overlay) {
+      overlay.classList.remove("hidden");
+    }
+  }
+
   // Обновляет карту с выбранной точкой.
   function updateMapWithPoint(point) {
     if (!map) {
@@ -119,7 +131,7 @@ function initMapModule(citiesData, cartItems) {
       },
       {
         iconLayout: "default#image",
-        iconImageHref: "assets/img/map-check.png",
+        iconImageHref: "/local/templates/catalog/assets/img/map-check.png",
         iconImageSize: [62, 85],
         iconImageOffset: [-31, -85],
       }
@@ -152,7 +164,7 @@ function initMapModule(citiesData, cartItems) {
         },
         {
           iconLayout: "default#image",
-          iconImageHref: "assets/img/map-marker.png",
+          iconImageHref: "/local/templates/catalog/assets/img/map-marker.png",
           iconImageSize: [62, 85],
           iconImageOffset: [-31, -85],
         }
@@ -243,7 +255,7 @@ function initMapModule(citiesData, cartItems) {
         },
         {
           iconLayout: "default#image",
-          iconImageHref: "assets/img/map-marker.png",
+          iconImageHref: "/local/templates/catalog/assets/img/map-marker.png",
           iconImageSize: [62, 85],
           iconImageOffset: [-31, -85],
         }
@@ -271,6 +283,8 @@ function initMapModule(citiesData, cartItems) {
     addMarkers, // Добавляет маркеры на карту
     findPointById, // Находит точку по ID
     hidePickupOverlay, // Скрывает оверлей
+    showDeliveryModalOverlay, // Скрывает оверлей
+    hideDeliveryModalOverlay, // Скрывает оверлей
     showDeliveryAddressOnMap, // Показывает адрес доставки
     clearMarkers, // Удаляет маркеры
     getMapInstance: () => map, // Получить экземпляр карты (если нужно)

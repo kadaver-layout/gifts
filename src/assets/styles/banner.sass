@@ -2,28 +2,61 @@
 .banner
   position: relative
   margin-top: 32px
+  height: 656px
+  min-height: 656px
+  @media all and ($xl)
+    height: 460px
+  @media all and ($l)
+    height: 434px
+  @media all and ($m)
+    height: 490px
   @media all and ($m)
     margin-top: 24px
-  
-  &__img-box
-    display: grid
-    background: url(/assets/img/banner.jpg)
-    background-repeat: no-repeat
-    width: 100%
-    background-size: cover
-    background-position: center top
-    border-radius: 24px
+  .container
     height: 100%
-    min-height: 656px
-    align-items: center
-    align-content: center
+    position: relative
+  &__bg-effects
+    position: absolute
+    object-fit: cover
+    top: 0
+    left: 50%
+    transform: translateX(-50%)
+    z-index: 2
+    width: calc( 100% - 108px * 2 )
+    padding: 0
+    height: 100%
+    background-color: rgba(0, 0, 0, 0.6)
+    border-radius: 24px
     @media all and ($xl)
-      min-height: 460px
-    @media all and ($l)    
-      min-height: 434px
+      width: calc( 100% - 100px * 2 )
+    @media all and ($l)
+      width: calc( 100% - 36px * 2 )
     @media all and ($m)
-      min-height: 490px
+      width: calc( 100% - 20px * 2 )
+    @media all and ($xs)
+      width: calc( 100% - 16px * 2 )
+  &__bg
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    top: 0
+    z-index: 1
+    width: calc( 100% - 108px * 2 )
+    height: 100%
+    object-fit: cover
+    border-radius: 24px
+    @media all and ($xl)
+      width: calc( 100% - 100px * 2 )
+    @media all and ($l)
+      width: calc( 100% - 36px * 2 )
+    @media all and ($m)
+      width: calc( 100% - 20px * 2 )
+    @media all and ($xs)
+      width: calc( 100% - 16px * 2 )
   &__box
+    align-content: center
+    position: relative
+    z-index: 2
     max-width: 899px
     display: grid
     gap: 32px

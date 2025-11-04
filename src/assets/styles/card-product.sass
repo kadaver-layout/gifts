@@ -56,7 +56,7 @@
         transform: none
     @media all and ($m)
       gap: 12px
-    
+
   &__img-box
     position: relative
     overflow: hidden
@@ -91,7 +91,7 @@
       height: 32px
   &__button
     border-radius: 4px
-    padding: 13px 16px
+    padding: 4.5px 16px
     display: grid
     place-items: center
     font-weight: 500
@@ -106,12 +106,15 @@
     transition: all $anim
     &:hover, &:focus, &:active
       background-color: $green-darken
+    span
+      font-weight: 400
+      font-size: 12px
     @media all and ($m)
       padding: 5px 16px
       height: 32px
   &__button-count
     border-radius: 4px
-    padding: 13px 16px
+    padding: 4.5px 16px
     display: grid
     font-weight: 500
     font-size: 16px
@@ -130,7 +133,7 @@
     @media all and ($m)
       padding: 5px 16px
       height: 32px
-    
+
   &__button-cart
     color: #fff
     font-weight: 300
@@ -154,6 +157,7 @@
       font-size: 18px
 
   &__button-count-text
+    display: grid
     user-select: none
     text-align: center
     min-width: 24px
@@ -162,7 +166,8 @@
     line-height: 130%
     @media all and ($m)
       font-size: 14px
-    
-
+    span
+      font-weight: 400
+      font-size: 12px
 .is-hidden
   display: none !important

@@ -196,12 +196,16 @@
   font-size: 14px
   line-height: 1.5
   color: $gray-darken-3
+  display: -webkit-box
+  -webkit-line-clamp: 5
+  -webkit-box-orient: vertical
+  overflow: hidden
+  text-overflow: ellipsis
 
-  &--truncated
+  &--expanded
+    -webkit-line-clamp: unset
     display: block
-
-  &--full
-    display: none
+    white-space: normal
 
 .show-more
   color: $green
@@ -233,7 +237,7 @@
 .gallery-container
   position: sticky
   top: 40px
-  z-index: 100
+  z-index: 10
   width: 100%
   margin: 0 auto
   @media all and ($m)

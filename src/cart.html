@@ -34,15 +34,16 @@
               <div class="cart__item">
                 <a href="" class="cart__item-info">
                   {% if not item.img %}
-                  {{ 'assets/img/no-image.jpg' | picture( "Изображение на товар отсуствует", 'cart__item-image no-img')|safe}}
+                  {{ 'assets/img/no-image.jpg' | picture( "Изображение на товар отсуствует", 'cart__item-image
+                  no-img')|safe}}
                   {% else %}
                   <div class="card__img-box">
                     {{ item.img | picture(alt, 'cart__item-image') | safe }}
                   </div>
                   {% endif %}
                   <div class="cart__item-details">
-                    <div  class="cart__item-name">{{ item.title }}</div>
-                    <p class="cart__item-weight">{{ item.weight }}</p>
+                    <div class="cart__item-name">{{ item.title }}</div>
+                    <!-- <p class="cart__item-weight">{{ item.weight }}</p> -->
                     <p class="cart__item-sku">Арт: {{ item.sku or 'Не указан' }}</p>
                   </div>
                 </a>
@@ -51,10 +52,11 @@
                     <div class="cart__item-quantity-stepper">
                       <button disabled type="button"
                         class="cart__item-quantity-btn cart__item-quantity-btn--minus">-</button>
+
                       <span class="cart__item-quantity-value">{{ item.quantity or 1 }}</span>
                       <button type="button" class="cart__item-quantity-btn cart__item-quantity-btn--plus">+</button>
                     </div>
-
+                    <p class="cart__item-weight">{{ item.weight }}</p>
                     {% if item.quantity > 1 %}
                     <p class="cart__item-price-one">
                       {{ item.price }} ₽ / шт.
@@ -106,17 +108,18 @@
                     <span class="custom-checkbox__box"></span>
                   </span>
                 </label>
-                <div class="cart__item cart__item--disabled"> 
+                <div class="cart__item cart__item--disabled">
                   <div class="cart__item-info">
                     {% if not item.img %}
-                    {{ 'assets/img/no-image.jpg' | picture( "Изображение на товар отсуствует", 'cart__item-image no-img') | safe }}
+                    {{ 'assets/img/no-image.jpg' | picture( "Изображение на товар отсуствует", 'cart__item-image
+                    no-img') | safe }}
                     {% else %}
                     <div class="card__img-box">
                       {{ item.img | picture(item.alt or item.title, 'cart__item-image') | safe }}
                     </div>
                     {% endif %}
                     <div class="cart__item-details">
-                      <p class="cart__item-name">{{ item.title }}</p> 
+                      <p class="cart__item-name">{{ item.title }}</p>
                       <p class="cart__item-weight">{{ item.weight }}</p>
                       <p class="cart__item-sku">Арт: {{ item.sku or 'Не указан' }}</p>
                     </div>

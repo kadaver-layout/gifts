@@ -197,6 +197,7 @@ $(document).ready(function () {
   const navContainer = document.querySelector(".header__nav-container");
   const navBox = document.querySelector(".header__nav-box");
   const navOverlay = document.querySelector(".header__nav-overlay");
+  const desktopOverlay = document.querySelector(".header__overlay");
   const body = document.body;
   const pageHeight = document.documentElement.scrollHeight;
 
@@ -205,6 +206,10 @@ $(document).ready(function () {
     if (navContainer && navBox) {
       navContainer.classList.add("active");
       navBox.classList.add("active");
+      const navBoxHeight = navBox.clientHeight;
+      setTimeout(() => {
+        desktopOverlay.style.top = navBoxHeight + "px";
+      }, 500);
     }
     if (burger) {
       burger.classList.add("active");
@@ -223,6 +228,7 @@ $(document).ready(function () {
     if (navContainer && navBox) {
       navContainer.classList.remove("active");
       navBox.classList.remove("active");
+      desktopOverlay.style.top = 2 + "px";
     }
     if (burger) {
       burger.classList.remove("active");
@@ -230,6 +236,10 @@ $(document).ready(function () {
     if (window.innerWidth > 1199.9) {
       body.style.overflow = "";
     }
+  }
+
+  if (desktopOverlay) {
+    desktopOverlay.addEventListener("click", closeMenu);
   }
 
   // Обработчик клика на бургер
@@ -330,6 +340,7 @@ $(document).ready(function () {
     // Закрываем строку поиска при клике вне нее
     document.addEventListener("click", (event) => {
       if (
+        searchResault.classList.contains("active") && 
         !searchBox.contains(event.target) &&
         !searchButton.contains(event.target)
       ) {
@@ -365,6 +376,7 @@ $(document).ready(function () {
         document.body.appendChild(overlay);
         overlay.classList.add("overlay-header");
         searchResault.classList.add("active");
+        closeMenu();
       } else {
         serchReset();
       }
@@ -622,37 +634,55 @@ $(document).ready(function () {
 
   // Обработка кнопок добавления в корзину и счетчиков
   const productCards = document.querySelectorAll(".card__button-box");
+
   productCards.forEach((card) => {
     const addToCartBtn = card.querySelector(".card__button");
     const counterContainer = card.querySelector(".card__button-count");
     const minusBtn = card.querySelector(".card__button-count--minus");
     const plusBtn = card.querySelector(".card__button-count--plus");
     const valueText = card.querySelector(".card__button-count-text");
-    if (addToCartBtn && counterContainer && minusBtn && plusBtn && valueText) {
-      addToCartBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        addToCartBtn.classList.add("is-hidden");
-        counterContainer.classList.remove("is-hidden");
-        valueText.textContent = "1";
-      });
-      plusBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        let currentValue = parseInt(valueText.textContent) || 1;
-        currentValue++;
-        valueText.textContent = currentValue;
-      });
-      minusBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        let currentValue = parseInt(valueText.textContent) || 1;
-        if (currentValue > 1) {
-          currentValue--;
-          valueText.textContent = currentValue;
-        } else if (currentValue === 1) {
-          addToCartBtn.classList.remove("is-hidden");
-          counterContainer.classList.add("is-hidden");
-        }
-      });
-    }
+    const weightSpan = valueText.querySelector("span"); // ← именно внутри p.card__button-count-text
+
+    if (
+      !addToCartBtn ||
+      !counterContainer ||
+      !minusBtn ||
+      !plusBtn ||
+      !valueText ||
+      !weightSpan
+    )
+      return;
+
+    const baseWeight = 100; // или можно взять из span: parseInt(weightSpan.textContent)
+
+    addToCartBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      addToCartBtn.classList.add("is-hidden");
+      counterContainer.classList.remove("is-hidden");
+      valueText.firstChild.textContent = "1"; // меняем только цифру, не трогая span
+      weightSpan.textContent = `${baseWeight} г`;
+    });
+
+    plusBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      let count = parseInt(valueText.firstChild.textContent.trim()) || 1;
+      count++;
+      valueText.firstChild.textContent = count;
+      weightSpan.textContent = `${count * baseWeight} г`;
+    });
+
+    minusBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      let count = parseInt(valueText.firstChild.textContent.trim()) || 1;
+      if (count > 1) {
+        count--;
+        valueText.firstChild.textContent = count;
+        weightSpan.textContent = `${count * baseWeight} г`;
+      } else {
+        addToCartBtn.classList.remove("is-hidden");
+        counterContainer.classList.add("is-hidden");
+      }
+    });
   });
 
   // Обработка счетчиков количества товаров в корзине
@@ -783,59 +813,48 @@ $(document).ready(function () {
 
   // Карта на главной
 
-  if (document.getElementById("mapMain")) {
-    ymaps.ready(initMain);
-    function initMain() {
-      let destinations = {
-        OR: [52.973583, 36.096968],
-        KOM: [52.937419, 36.041649],
-        MIX: [52.993878, 36.114596],
-        LOM: [52.981875, 36.069292],
-      };
-      let myMap = new ymaps.Map("mapMain", {
-        center: destinations["OR"],
-        zoom: 13.5,
-      });
-
-      let myPlacemark = new ymaps.Placemark(
-        destinations["KOM"],
-        {},
-        {
-          //опции
-          iconLayout: "default#image",
-          iconImageHref: "../assets/img/icon-map.svg",
-          iconImageSize: [35, 45],
-          iconImageOffset: [-20, -50],
-        }
-      );
-      let myPlacemark1 = new ymaps.Placemark(
-        destinations["MIX"],
-        {},
-        {
-          //опции
-          iconLayout: "default#image",
-          iconImageHref: "../assets/img/icon-map.svg",
-          iconImageSize: [35, 45],
-          iconImageOffset: [-20, -50],
-        }
-      );
-      let myPlacemark2 = new ymaps.Placemark(
-        destinations["LOM"],
-        {},
-        {
-          //опции
-          iconLayout: "default#image",
-          iconImageHref: "../assets/img/icon-map.svg",
-          iconImageSize: [35, 45],
-          iconImageOffset: [-20, -50],
-        }
-      );
-      // После того как метка была создана, добавляем её на карту.
-      myMap.geoObjects.add(myPlacemark);
-      myMap.geoObjects.add(myPlacemark1);
-      myMap.geoObjects.add(myPlacemark2);
-    }
-  }
+  // if (document.getElementById("mapMain")) {
+  //   function he() {
+  //     let centerMapX = arMap.arSettingsMap.x_coordinate;
+  //     let centerMapY = arMap.arSettingsMap.y_coordinate;
+  //     let zoomMap = arMap.arSettingsMap.zoom;
+  //     if (
+  //       centerMapX !== undefined &&
+  //       centerMapY !== undefined &&
+  //       zoomMap !== undefined
+  //     ) {
+  //       var myMap = new ymaps.Map("mapMain", {
+  //         center: [centerMapX, centerMapY],
+  //         zoom: zoomMap,
+  //       });
+  //     } else {
+  //       var myMap = new ymaps.Map("mapMain", {
+  //         center: [56.865595, 53.18251],
+  //         zoom: 3.5,
+  //       });
+  //     }
+  //     $.each(arMap.arItemsMap, function (index, value) {
+  //       let x = value.x_coordinate;
+  //       let y = value.y_coordinate;
+  //       let textPopup = value.text_map_point;
+  //       let settingsPopup = {};
+  //       console.log(myMap);
+  //       if (x != "" && y != "") {
+  //         if (textPopup != "") settingsPopup = { balloonContent: textPopup };
+  //         else settingsPopup = {};
+  //         let myPlacemark = new ymaps.Placemark([x, y], settingsPopup, {
+  //           //опции
+  //           iconLayout: "default#image",
+  //           iconImageHref: "/local/templates/catalog/assets/img/icon-map.svg",
+  //           iconImageSize: [35, 45],
+  //           iconImageOffset: [-20, -50],
+  //         });
+  //         myMap.geoObjects.add(myPlacemark);
+  //       }
+  //     });
+  //   }
+  //   ymaps.ready(he);
+  // }
 
   // ЛОГИКА РАБОТЫ С КАРТОЙ ВЫНЕСЕНА В ОТДЕЛЬНЫЫЙ МОДУЛЬ
   // Инициализация модуля карты
@@ -1134,11 +1153,12 @@ $(document).ready(function () {
   });
 
   const calatogSidebar = document.querySelector(".catalog-sidebar");
-  
+
   console.log(calatogSidebar);
-  
+
   if (calatogSidebar) {
-    const btnCatalogSidebar = catalogSidebar.querySelectorAll(".category-nav__btn");
+    const btnCatalogSidebar =
+      catalogSidebar.querySelectorAll(".category-nav__btn");
 
     btnCatalogSidebar.forEach((button) => {
       button.addEventListener("click", () => {
@@ -1147,25 +1167,26 @@ $(document).ready(function () {
     });
   }
 
+  if (filterCategoryBody) {
+    filterCategoryBody
+      .querySelectorAll(".category-nav__btn")
+      .forEach((button) => {
+        button.addEventListener("click", () => {
+          console.log(button);
 
-  filterCategoryBody
-    .querySelectorAll(".category-nav__btn")
-    .forEach((button) => {
-      button.addEventListener("click", () => {
-        console.log(button);
-
-        // closeAllModals();
-        button.closest(".category-nav__item").classList.toggle("active");
-        // openSidebar();
+          // closeAllModals();
+          button.closest(".category-nav__item").classList.toggle("active");
+          // openSidebar();
+        });
       });
-    });
 
-  filterCategoryBody
-    .querySelector(".category-header__btn")
-    .addEventListener("click", () => {
-      catalogSidebar.classList.add("active");
-      filterCategoryBody.classList.remove("active");
-    });
+    filterCategoryBody
+      .querySelector(".category-header__btn")
+      .addEventListener("click", () => {
+        catalogSidebar.classList.add("active");
+        filterCategoryBody.classList.remove("active");
+      });
+  }
 
   /// cладейр
   const gallery = document.querySelector(".gallery-slider");
@@ -1181,48 +1202,22 @@ $(document).ready(function () {
 
   /// показать все в карточке
 
-  const showMoreLinks = document.querySelectorAll(".show-more");
-  if (showMoreLinks.length > 0) {
-    showMoreLinks.forEach((link) => {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
+  document.querySelectorAll(".show-more").forEach((button) => {
+    button.addEventListener("click", function () {
+      const detailText = this.previousElementSibling; // <p class="detail-text">
+      if (!detailText || !detailText.classList.contains("detail-text")) return;
 
-        const parent = this.closest(".product-details-section");
-        if (!parent) return; // На всякий случай проверим
+      const isExpanded = detailText.classList.contains("detail-text--expanded");
 
-        const truncatedText = parent.querySelector(".detail-text--truncated");
-        const fullText = parent.querySelector(".detail-text--full");
-
-        // Если нет полного текста - ничего не делаем
-        if (!fullText) return;
-
-        if (
-          fullText.style.display === "none" ||
-          fullText.style.display === ""
-        ) {
-          // Показываем полный текст
-          if (truncatedText) truncatedText.style.display = "none";
-          fullText.style.display = "block";
-          this.textContent = "Скрыть";
-        } else {
-          // Показываем краткий текст
-          if (truncatedText) truncatedText.style.display = "block";
-          fullText.style.display = "none";
-          // Восстанавливаем оригинальный текст кнопки
-          const originalText = this.dataset.originalText || this.textContent;
-          if (!this.dataset.originalText) {
-            // Если это первый клик, сохраняем оригинальный текст, если он не "Скрыть"
-            if (this.textContent !== "Скрыть") {
-              this.dataset.originalText = this.textContent;
-            } else {
-              this.dataset.originalText = "Показать полностью"; // fallback
-            }
-          }
-          this.textContent = this.dataset.originalText;
-        }
-      });
+      if (isExpanded) {
+        detailText.classList.remove("detail-text--expanded");
+        this.textContent = "Показать полностью";
+      } else {
+        detailText.classList.add("detail-text--expanded");
+        this.textContent = "Скрыть";
+      }
     });
-  }
+  });
 
   /// кнопка "в корзину" на мобильной версии
   if (document.querySelector(".product-section")) {

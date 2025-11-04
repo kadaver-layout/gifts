@@ -4,547 +4,561 @@
 
 {% block content %}
 
-	<section class="banner">
-		<div class="container">
-			<div class="banner__img-box">
-				<div class="banner__box">
-					<h3 class="banner__subtitle">
-					ЯРМАРКА «ОТ АБХАЗИИ ДО КАМЧАТКИ»
-				</h3>
-					<h1 class="banner__title">
-					Натуральная фермерская продукция по всей стране
-				</h1>
-					<p class="banner__text">
-					Экологически чистая продукция, приготовленная по старинным семейным рецептурам. Возможность приобрести
-					натуральные
-					продукты, изготовленные небольшими семейными хозяйствами напрямую от производителей.
-				</p>
-				</div>
-			</div>
-		</div>
+<section class="banner">
+  <div class="container">
+    <video class="banner__bg " src="assets/video/video-bg.mp4" type="video/mp4" autoplay="" muted="" loop=""
+      playsinline=""></video>
+    <div class="banner__bg-effects "></div>
 
-	</section>
+    <div class="banner__box">
 
-	<section class="about">
-		<div class="container">
-			<div class="about__box">
-				<div data-aos="fade-up" class="about__block about__block--1">
-					<h2 class="title">
-					Подход
-				</h2>
+      <h3 class="banner__subtitle">
+        ЯРМАРКА «ОТ АБХАЗИИ ДО КАМЧАТКИ»
+      </h3>
+      <h1 class="banner__title">
+        Натуральная фермерская продукция по всей стране
+      </h1>
+      <p class="banner__text">
+        Экологически чистая продукция, приготовленная по старинным семейным рецептурам. Возможность
+        приобрести
+        натуральные
+        продукты, изготовленные небольшими семейными хозяйствами напрямую от производителей.
+      </p>
+    </div>
 
-					<p class="about__desc">
-						<span>Поставки формируются из свежайших продуктов, которые едут напрямую в город проведения мероприятия. Таким
-						образом, покупатели могут попробовать и приобрести те деликатесы,некоторые не представлены в их регионах
-						проживания.</span>
-						<span>Задача производителей, сохранить пользу в каждом продукте и подарить
-						покупателям
-						необыкновенный натуральный вкус,некоторый многие помнят ещё с детства.</span>
-					</p>
+  </div>
 
-					<div class="about__icon">
-						<img src="assets/img/m1.svg">
-					</div>
-				</div>
-				<div data-aos="fade-up" class="about__block about__block--2">
-					<h2 class="title">
-					Миссия
-				</h2>
-					<p class="about__desc">
-						<span>
-						Мы предлагаем человеку свежайший товар, даже с коротким сроком хранения. Сети и рынки не имеют такой
-						возможности, а значит люди могут приобрести продукты, которые не продаются у них в регионе.
-					</span>
-						<span>В составе
-						продукции отсутствуют добавки и консерванты. Продукты, представленные на ярмарке исключительно экологически
-						чистого происхождения.</span>
-					</p>
-					<div class="about__icon">
-						<img src="assets/img/m2.svg">
-					</div>
-				</div>
-				<div data-aos="fade-up" class="about__block about__block--3">
-					<h2 class="title">
-					История
-				</h2>
-					<p class="about__desc">
-						<span>
-						Более 6-ти лет ярмарки постоянно проходят в более чем 30 городах России. </span>
-						<span> Десятки тысяч покупателей
-						уже знают этот бренд и возвращаются снова и снова.</span>
-					</p>
-					<div class="about__icon">
-						<img src="assets/img/m3.svg">
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+</section>
 
-	<section id="catalog" data-aos="fade-up" class="catalog">
-		<div class="container">
-			<h2 class="title">
-			Каталог продукции
-		</h2>
-			<ul class="catalog__box">
-				{% for item in catalog %}
-					<li class="catalog__item">
-						<a href="" class="catalog__link">
-							<div class="catalog__content">
-								<p class="catalog__title">
-									{{ item.title }}
-								</p>
-							</div>
-							<img class="catalog__background" src="{{ item.img }}" alt="">
-						</a>
-					</li>
-				{% endfor %}
-			</ul>
-			{# <button class="catalog__all-btn">
-				<p class="catalog__all-btn-text">
-				Показать больше
-			</p>
-				<img class="svg" src="assets/img/all-btn.svg">
-			</button> #}
-		</div>
-	</section>
+<section class="about">
+  <div class="container">
+    <div class="about__box">
+      <div data-aos="fade-up" class="about__block about__block--1">
+        <h2 class="title">
+          Подход
+        </h2>
 
-	<section id="calendar" data-aos="fade-up" class="calendar">
-		<div class="container">
-			<h2 class="title">
-			Расписание ярмарок
-		</h2>
-			<div class="calendar__area">
+        <p class="about__desc">
+          <span>Поставки формируются из свежайших продуктов, которые едут напрямую в город проведения
+            мероприятия. Таким
+            образом, покупатели могут попробовать и приобрести те деликатесы,некоторые не представлены
+            в их регионах
+            проживания.</span>
+          <span>Задача производителей, сохранить пользу в каждом продукте и подарить
+            покупателям
+            необыкновенный натуральный вкус,некоторый многие помнят ещё с детства.</span>
+        </p>
 
-				<div class="calendar__box">
+        <div class="about__icon">
+          <img src="assets/img/m1.svg">
+        </div>
+      </div>
+      <div data-aos="fade-up" class="about__block about__block--2">
+        <h2 class="title">
+          Миссия
+        </h2>
+        <p class="about__desc">
+          <span>
+            Мы предлагаем человеку свежайший товар, даже с коротким сроком хранения. Сети и рынки не имеют
+            такой
+            возможности, а значит люди могут приобрести продукты, которые не продаются у них в регионе.
+          </span>
+          <span>В составе
+            продукции отсутствуют добавки и консерванты. Продукты, представленные на ярмарке исключительно
+            экологически
+            чистого происхождения.</span>
+        </p>
+        <div class="about__icon">
+          <img src="assets/img/m2.svg">
+        </div>
+      </div>
+      <div data-aos="fade-up" class="about__block about__block--3">
+        <h2 class="title">
+          История
+        </h2>
+        <p class="about__desc">
+          <span>
+            Более 6-ти лет ярмарки постоянно проходят в более чем 30 городах России. </span>
+          <span> Десятки тысяч покупателей
+            уже знают этот бренд и возвращаются снова и снова.</span>
+        </p>
+        <div class="about__icon">
+          <img src="assets/img/m3.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-					<div data-fancybox data-src="#modal-calendar" class="calendar__item calendar__item-link">
+<section id="catalog" data-aos="fade-up" class="catalog">
+  <div class="container">
+    <h2 class="title">
+      Каталог продукции
+    </h2>
+    <ul class="catalog__box">
+      {% for item in catalog %}
+      <li class="catalog__item">
+        <a href="" class="catalog__link">
+          <div class="catalog__content">
+            <p class="catalog__title">
+              {{ item.title }}
+            </p>
+          </div>
+          <img class="catalog__background" src="{{ item.img }}" alt="">
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {# <button class="catalog__all-btn">
+      <p class="catalog__all-btn-text">
+        Показать больше
+      </p>
+      <img class="svg" src="assets/img/all-btn.svg">
+    </button> #}
+  </div>
+</section>
 
-						<div class="calendar__img-box">
-							<div class="calendar__buble">
-								<p class="calendar__buble-text">Розыгрыш</p>
-								<img class="calendar__buble-img svg" src="assets/img/buble.svg" alt="">
-							</div>
-							<img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
-						</div>
+<section id="calendar" data-aos="fade-up" class="calendar">
+  <div class="container">
+    <h2 class="title">
+      Расписание ярмарок
+    </h2>
+    <div class="calendar__area">
 
-						<div class="calendar__title-date">
-							<div class="calendar__date-box">
-								<p class="calendar__date">
-									<img class="svg" src="assets/img/date.svg">
-								с 12 по 30 декабря
-							</p>
-							</div>
-							<p class="calendar__item-title">
-							г. Екатеринбург
-						</p>
-						</div>
-						<div class="calendar__desc-box">
-							<p class="calendar__desc-label">
-							Адрес
-						</p>
-							<p class="calendar__desc">
-							ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
-						</p>
-						</div>
-						<div class="calendar__desc-box">
-							<p class="calendar__desc-label">
-							Время работы
-						</p>
-							<p class="calendar__desc">
-							с 10:00 до 22:00
-						</p>
-						</div>
-					</div>
+      <div class="calendar__box">
 
-					<div class="calendar__item">
-						<img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
-						<div class="calendar__title-date">
-							<div class="calendar__date-box gray">
-								<p class="calendar__date">
-									<img class="svg" src="assets/img/date.svg">
-								с 12 по 30 декабря
-							</p>
-							</div>
-							<p class="calendar__item-title">
-							г. Екатеринбург
-						</p>
-						</div>
-						<div class="calendar__desc-box">
-							<p class="calendar__desc-label">
-							Адрес
-						</p>
-							<p class="calendar__desc">
-							ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
-						</p>
-						</div>
-						<div class="calendar__desc-box">
-							<p class="calendar__desc-label">
-							Время работы
-						</p>
-							<p class="calendar__desc">
-							с 10:00 до 22:00
-						</p>
-						</div>
-					</div>
+        <div class="calendar__item calendar__item-link">
 
-					<div class="calendar__item">
-						<img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
-						<div class="calendar__title-date">
-							<div class="calendar__date-box">
-								<p class="calendar__date">
-									<img class="svg" src="assets/img/date.svg">
-								с 12 по 30 декабря
-							</p>
-							</div>
-							<p class="calendar__item-title">
-							г. Екатеринбург
-						</p>
-						</div>
-						<div class="calendar__desc-box">
-							<p class="calendar__desc-label">
-							Адрес
-						</p>
-							<p class="calendar__desc">
-							ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
-						</p>
-						</div>
-						<div class="calendar__desc-box">
-							<p class="calendar__desc-label">
-							Время работы
-						</p>
-							<p class="calendar__desc">
-							с 10:00 до 22:00
-						</p>
-						</div>
-					</div>
+          <div class="calendar__img-box">
+            <a data-fancybox data-src="#modal-calendar" class="calendar__buble" href="javascript:;" class="calendar__buble">
+              <p class="calendar__buble-text">Розыгрыш</p>
+              <img class="calendar__buble-img svg" src="assets/img/buble.svg" alt="">
+            </a>
 
-					<div class="calendar__item">
-						<img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
-						<div class="calendar__title-date">
-							<div class="calendar__date-box">
-								<p class="calendar__date">
-									<img class="svg" src="assets/img/date.svg">
-								с 12 по 30 декабря
-							</p>
-							</div>
-							<p class="calendar__item-title">
-							г. Екатеринбург
-						</p>
-						</div>
-						<div class="calendar__desc-box">
-							<p class="calendar__desc-label">
-							Адрес
-						</p>
-							<p class="calendar__desc">
-							ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
-						</p>
-						</div>
-						<div class="calendar__desc-box">
-							<p class="calendar__desc-label">
-							Время работы
-						</p>
-							<p class="calendar__desc">
-							с 10:00 до 22:00
-						</p>
-						</div>
-					</div>
+            <img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
+          </div>
 
-					<div class="calendar__item">
-						<img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
-						<div class="calendar__title-date">
-							<div class="calendar__date-box gray">
-								<p class="calendar__date">
-									<img class="svg" src="assets/img/date.svg">
-								с 12 по 30 декабря
-							</p>
-							</div>
-							<p class="calendar__item-title">
-							г. Екатеринбург
-						</p>
-						</div>
-						<div class="calendar__desc-box">
-							<p class="calendar__desc-label">
-							Адрес
-						</p>
-							<p class="calendar__desc">
-							ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
-						</p>
-						</div>
-						<div class="calendar__desc-box">
-							<p class="calendar__desc-label">
-							Время работы
-						</p>
-							<p class="calendar__desc">
-							с 10:00 до 22:00
-						</p>
-						</div>
-					</div>
+          <div class="calendar__title-date">
+            <div class="calendar__date-box">
+              <p class="calendar__date">
+                <img class="svg" src="assets/img/date.svg">
+                с 12 по 30 декабря
+              </p>
+            </div>
+            <p class="calendar__item-title">
+              г. Екатеринбург
+            </p>
+          </div>
+          <div class="calendar__desc-box">
+            <p class="calendar__desc-label">
+              Адрес
+            </p>
+            <p class="calendar__desc">
+              ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
+            </p>
+          </div>
+          <div class="calendar__desc-box">
+            <p class="calendar__desc-label">
+              Время работы
+            </p>
+            <p class="calendar__desc">
+              с 10:00 до 22:00
+            </p>
+          </div>
+        </div>
+        <div class="calendar__item">
+          <img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
+          <div class="calendar__title-date">
+            <div class="calendar__date-box gray">
+              <p class="calendar__date">
+                <img class="svg" src="assets/img/date.svg">
+                с 12 по 30 декабря
+              </p>
+            </div>
+            <p class="calendar__item-title">
+              г. Екатеринбург
+            </p>
+          </div>
+          <div class="calendar__desc-box">
+            <p class="calendar__desc-label">
+              Адрес
+            </p>
+            <p class="calendar__desc">
+              ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
+            </p>
+          </div>
+          <div class="calendar__desc-box">
+            <p class="calendar__desc-label">
+              Время работы
+            </p>
+            <p class="calendar__desc">
+              с 10:00 до 22:00
+            </p>
+          </div>
+        </div>
 
-					<div class="calendar__item">
-						<img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
-						<div class="calendar__title-date">
-							<div class="calendar__date-box">
-								<p class="calendar__date">
-									<img class="svg" src="assets/img/date.svg">
-								с 12 по 30 декабря
-							</p>
-							</div>
-							<p class="calendar__item-title">
-							г. Екатеринбург
-						</p>
-						</div>
-						<div class="calendar__desc-box">
-							<p class="calendar__desc-label">
-							Адрес
-						</p>
-							<p class="calendar__desc">
-							ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
-						</p>
-						</div>
-						<div class="calendar__desc-box">
-							<p class="calendar__desc-label">
-							Время работы
-						</p>
-							<p class="calendar__desc">
-							с 10:00 до 22:00
-						</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="calendar__item">
+          <img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
+          <div class="calendar__title-date">
+            <div class="calendar__date-box">
+              <p class="calendar__date">
+                <img class="svg" src="assets/img/date.svg">
+                с 12 по 30 декабря
+              </p>
+            </div>
+            <p class="calendar__item-title">
+              г. Екатеринбург
+            </p>
+          </div>
+          <div class="calendar__desc-box">
+            <p class="calendar__desc-label">
+              Адрес
+            </p>
+            <p class="calendar__desc">
+              ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
+            </p>
+          </div>
+          <div class="calendar__desc-box">
+            <p class="calendar__desc-label">
+              Время работы
+            </p>
+            <p class="calendar__desc">
+              с 10:00 до 22:00
+            </p>
+          </div>
+        </div>
 
-	</section>
+        <div class="calendar__item">
+          <img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
+          <div class="calendar__title-date">
+            <div class="calendar__date-box">
+              <p class="calendar__date">
+                <img class="svg" src="assets/img/date.svg">
+                с 12 по 30 декабря
+              </p>
+            </div>
+            <p class="calendar__item-title">
+              г. Екатеринбург
+            </p>
+          </div>
+          <div class="calendar__desc-box">
+            <p class="calendar__desc-label">
+              Адрес
+            </p>
+            <p class="calendar__desc">
+              ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
+            </p>
+          </div>
+          <div class="calendar__desc-box">
+            <p class="calendar__desc-label">
+              Время работы
+            </p>
+            <p class="calendar__desc">
+              с 10:00 до 22:00
+            </p>
+          </div>
+        </div>
 
-	<section class="popular">
-		<div class="container">
-			<!-- {# <div class="popular__box">
+        <div class="calendar__item">
+          <img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
+          <div class="calendar__title-date">
+            <div class="calendar__date-box gray">
+              <p class="calendar__date">
+                <img class="svg" src="assets/img/date.svg">
+                с 12 по 30 декабря
+              </p>
+            </div>
+            <p class="calendar__item-title">
+              г. Екатеринбург
+            </p>
+          </div>
+          <div class="calendar__desc-box">
+            <p class="calendar__desc-label">
+              Адрес
+            </p>
+            <p class="calendar__desc">
+              ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
+            </p>
+          </div>
+          <div class="calendar__desc-box">
+            <p class="calendar__desc-label">
+              Время работы
+            </p>
+            <p class="calendar__desc">
+              с 10:00 до 22:00
+            </p>
+          </div>
+        </div>
+
+        <div class="calendar__item">
+          <img class="calendar__img" src="assets/img/img1.jpg" alt="ярмарка в Екатеринбурге">
+          <div class="calendar__title-date">
+            <div class="calendar__date-box">
+              <p class="calendar__date">
+                <img class="svg" src="assets/img/date.svg">
+                с 12 по 30 декабря
+              </p>
+            </div>
+            <p class="calendar__item-title">
+              г. Екатеринбург
+            </p>
+          </div>
+          <div class="calendar__desc-box">
+            <p class="calendar__desc-label">
+              Адрес
+            </p>
+            <p class="calendar__desc">
+              ТРЦ "iMall Эспланада", минус первый этаж Петропавловская ул., д.73А
+            </p>
+          </div>
+          <div class="calendar__desc-box">
+            <p class="calendar__desc-label">
+              Время работы
+            </p>
+            <p class="calendar__desc">
+              с 10:00 до 22:00
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="popular">
+  <div class="container">
+    <!-- {# <div class="popular__box">
 			<h2 class="title">
 				Самые популярные
 			</h2>
 
 		</div> #} -->
-			{% set titleSplide = "Самые популярные" %}
-			{% include 'includes/popular-splide.html' %}
+    {% set titleSplide = "Самые популярные" %}
+    {% include 'includes/popular-splide.html' %}
 
-		</section>
+</section>
 
-		<section class="request">
-			<div class="container">
-				<div class="request__box">
-					<div data-aos="fade-right" class="request__btn-box">
-						<h2 class="title">
-					Отправьте заявку и получите скидку 10% на покупки
-				</h2>
-						<button class="request__btn">
-					Отравить заявку
-				</button>
-					</div>
-					<img data-aos="fade-left" class="request__img" src="assets/img/request-img.jpg" alt="Фото ">
-				</div>
+<section class="request">
+  <div class="container">
+    <div class="request__box">
+      <div data-aos="fade-right" class="request__btn-box">
+        <h2 class="title">
+          Отправьте заявку и получите скидку 10% на покупки
+        </h2>
+        <button class="request__btn">
+          Отравить заявку
+        </button>
+      </div>
+      <img data-aos="fade-left" class="request__img" src="assets/img/request-img.jpg" alt="Фото ">
+    </div>
 
-			</div>
-		</section>
+  </div>
+</section>
 
-		<section data-aos="fade-up" class="info">
-			<div class="container">
-				<div class="info__box">
-					<h2 class="title">
-				Экология — <br> наша главная забота
-			</h2>
-					<p class="info__text">
-				Задача производителей, сохранить пользу в каждом продукте и подарить покупателям необыкновенный натуральный
-				вкус, который многие помнят ещё с детства.
-			</p>
-				</div>
-			</section>
-			<section data-aos="fade-up" class="advantages">
-				<div class="container">
-					<div class="advantages__box">
-						<div class="advantages__item">
-							<img class="svg" src="assets/img/info1.svg">
-							<p class="advantages__item-title">
-					Здоровье
-				</p>
-							<p class="advantages__item-desc">
-					Наши продукты произведены не просто без использования вредных химических веществ, но и с сохранением полезных
-					свойств каждого продукта. Хорошее питания — основа здоровья человека
-				</p>
-						</div>
-						<div class="advantages__item">
-							<img class="svg" src="assets/img/info2.svg">
-							<p class="advantages__item-title">
-					Вкус
-				</p>
-							<p class="advantages__item-desc">
-					Мы выращиваем лучшие породы скота и проводим селекцию поголовья. В поисках непревзойденного вкуса продукты мы
-					осуществляем его тщательный отбор, выбирая лучшее из безупречного
-				</p>
-						</div>
-						<div class="advantages__item">
-							<img class="svg" src="assets/img/info3.svg">
-							<p class="advantages__item-title">
-					Традиции
-				</p>
-							<p class="advantages__item-desc">
-					При производстве экономическая эффективность никогда не ставится выше получения традиционного вкуса продуктов.
-					Мы создаем свои традиции производства настоящих продуктов.
-				</p>
-						</div>
-					</div>
-				</div>
+<section data-aos="fade-up" class="info">
+  <div class="container">
+    <div class="info__box">
+      <h2 class="title">
+        Экология — <br> наша главная забота
+      </h2>
+      <p class="info__text">
+        Задача производителей, сохранить пользу в каждом продукте и подарить покупателям необыкновенный
+        натуральный
+        вкус, который многие помнят ещё с детства.
+      </p>
+    </div>
+</section>
+<section data-aos="fade-up" class="advantages">
+  <div class="container">
+    <div class="advantages__box">
+      <div class="advantages__item">
+        <img class="svg" src="assets/img/info1.svg">
+        <p class="advantages__item-title">
+          Здоровье
+        </p>
+        <p class="advantages__item-desc">
+          Наши продукты произведены не просто без использования вредных химических веществ, но и с сохранением
+          полезных
+          свойств каждого продукта. Хорошее питания — основа здоровья человека
+        </p>
+      </div>
+      <div class="advantages__item">
+        <img class="svg" src="assets/img/info2.svg">
+        <p class="advantages__item-title">
+          Вкус
+        </p>
+        <p class="advantages__item-desc">
+          Мы выращиваем лучшие породы скота и проводим селекцию поголовья. В поисках непревзойденного вкуса
+          продукты мы
+          осуществляем его тщательный отбор, выбирая лучшее из безупречного
+        </p>
+      </div>
+      <div class="advantages__item">
+        <img class="svg" src="assets/img/info3.svg">
+        <p class="advantages__item-title">
+          Традиции
+        </p>
+        <p class="advantages__item-desc">
+          При производстве экономическая эффективность никогда не ставится выше получения традиционного вкуса
+          продуктов.
+          Мы создаем свои традиции производства настоящих продуктов.
+        </p>
+      </div>
+    </div>
+  </div>
 
-			</section>
+</section>
 
-			<section data-aos="fade-up" class="reviews">
-				<div class="container">
+<section data-aos="fade-up" class="reviews">
+  <div class="container">
 
-					<div class="title">
-						<h2>Отзывы наших клиентов</h2>
-						<div class="slider-nav-box">
-							<button class="slider-nav slider-nav--prev">
-								<svg class="arrow-left-icon" width="40" height="40" aria-hidden="true">
-									<use href="#arrow-left-icon"></use>
-								</svg>
-							</button>
-							<button class="slider-nav slider-nav--next">
-								<svg class="arrow-right-icon" width="40" height="40" aria-hidden="true">
-									<use href="#arrow-left-icon"></use>
-								</svg>
-							</button>
-						</div>
-					</div>
+    <div class="title">
+      <h2>Отзывы наших клиентов</h2>
+      <div class="slider-nav-box">
+        <button class="slider-nav slider-nav--prev">
+          <svg class="arrow-left-icon" width="40" height="40" aria-hidden="true">
+            <use href="#arrow-left-icon"></use>
+          </svg>
+        </button>
+        <button class="slider-nav slider-nav--next">
+          <svg class="arrow-right-icon" width="40" height="40" aria-hidden="true">
+            <use href="#arrow-left-icon"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
 
-					<div class="splide reviews-slider">
-						<div class="slider__track splide__track">
-							<ul class="slider__list splide__list">
-								{% for item in reviewsVideo %}
-									<li class="slider__slide splide__slide">
-										<div class="reviews__video-box">
-											<div class="reviews__video-desc-box">
-												<p class="reviews__video-title">{{ item.title }}</p>
-												<p class="reviews__video-city">{{ item.city }}</p>
-											</div>
-											<div data-video="{{ item.video }}" data-image="{{ item.img }}" class="reviews__video" id="{{ item.id }}" aria-label="{{ item.alt }}"></div>
-										</div>
-									</li>
-								{% endfor %}
+    <div class="splide reviews-slider">
+      <div class="slider__track splide__track">
+        <ul class="slider__list splide__list">
+          {% for item in reviewsVideo %}
+          <li class="slider__slide splide__slide">
+            <div class="reviews__video-box">
+              <div class="reviews__video-desc-box">
+                <p class="reviews__video-title">{{ item.title }}</p>
+                <p class="reviews__video-city">{{ item.city }}</p>
+              </div>
+              <div data-video="{{ item.video }}" data-image="{{ item.img }}" class="reviews__video" id="{{ item.id }}"
+                aria-label="{{ item.alt }}"></div>
+            </div>
+          </li>
+          {% endfor %}
 
-							</ul>
-						</div>
+        </ul>
+      </div>
 
-					</div>
+    </div>
 
-				</div>
-			</section>
+  </div>
+</section>
 
-			<section id="map-block" data-aos="fade-up" class="map-block">
-				<div class="container">
-					<h2 class="title">
-			Карта ярмарок
-		</h2>
-					<div class="map" id="mapMain"></div>
-				</div>
-			</section>
+<section id="map-block" data-aos="fade-up" class="map-block">
+  <div class="container">
+    <h2 class="title">
+      Карта ярмарок
+    </h2>
+    <div class="map" id="mapMain"></div>
+  </div>
+</section>
 
-			<section class="form-block">
-				<div class="container">
-					<div class="form-block__box">
-						<div class="form__block">
+<section class="form-block">
+  <div class="container">
+    <div class="form-block__box">
+      <div class="form__block">
 
-							<div class="form__box">
-								<div class="form__sale-box">
-									<p class="form__sale">
-							Скидка 10%
-						</p>
-								</div>
-								<div class="form__box-title">
-									<h2 class="title">
-							Остались вопросы?
-						</h2>
-									<p class="form__box-subtitle">
-							Отправьте заявку на консультацию со специалистом и получите скидку 10% на покупки.
-						</p>
-								</div>
-								<form class="form" action="" id="form" name="form">
+        <div class="form__box">
+          <div class="form__sale-box">
+            <p class="form__sale">
+              Скидка 10%
+            </p>
+          </div>
+          <div class="form__box-title">
+            <h2 class="title">
+              Остались вопросы?
+            </h2>
+            <p class="form__box-subtitle">
+              Отправьте заявку на консультацию со специалистом и получите скидку 10% на покупки.
+            </p>
+          </div>
+          <form class="form" action="" id="form" name="form">
 
-									<div class="input_block">
-										<input required class="form__input" type="text" name="name" id="name_input">
-										<label class="label-input" for="name_input">
-											<span class="label-span">Ваше имя</span>
-										</label>
-									</div>
+            <div class="input_block">
+              <input required class="form__input" type="text" name="name" id="name_input">
+              <label class="label-input" for="name_input">
+                <span class="label-span">Ваше имя</span>
+              </label>
+            </div>
 
-									<div class="input_block">
-										<input required class="form__input" type="tel" name="tel" id="tel_input">
-										<label class="label-input" for="tel_input">
-											<span class="label-span">Номер телефона</span>
-										</label>
-									</div>
+            <div class="input_block">
+              <input required class="form__input" type="tel" name="tel" id="tel_input">
+              <label class="label-input" for="tel_input">
+                <span class="label-span">Номер телефона</span>
+              </label>
+            </div>
 
-									<div class="select_block">
+            <div class="select_block">
 
-										<select class="city" name="city" id="city">
-											<option value=""></option>
-											<option value="1">Орел</option>
-											<option value="2">Москва</option>
-											<option value="3">Питер</option>
-										</select>
-										<label class="label-input-select" for="city">
-											<span class="label-span">Город</span>
-										</label>
-									</div>
+              <select class="city" name="city" id="city">
+                <option value=""></option>
+                <option value="1">Орел</option>
+                <option value="2">Москва</option>
+                <option value="3">Питер</option>
+              </select>
+              <label class="label-input-select" for="city">
+                <span class="label-span">Город</span>
+              </label>
+            </div>
 
-									<div class="select_block">
+            <div class="select_block">
 
-										<select class="advice" name="advice" id="advice">
-											<option value=""></option>
-											<option value="1">Интернет</option>
-											<option value="2">Газета</option>
-											<option value="3">Смс</option>
-										</select>
-										<label class="label-input-select" for="advice">
-											<span class="label-span">Как вы узнали о ярмарке</span>
-										</label>
-									</div>
-								</form>
+              <select class="advice" name="advice" id="advice">
+                <option value=""></option>
+                <option value="1">Интернет</option>
+                <option value="2">Газета</option>
+                <option value="3">Смс</option>
+              </select>
+              <label class="label-input-select" for="advice">
+                <span class="label-span">Как вы узнали о ярмарке</span>
+              </label>
+            </div>
+          </form>
 
-								<div class="form__submit">
-									<button form="form" type="submit" class="request__btn">
-							Отравить заявку
-						</button>
-									<p class="form__submit-text">
-							Отправляя заявку Вы соглашаетесь с действующей <a href="">политикой конфиденциальности </a>
-									</p>
-								</div>
-							</div>
+          <div class="form__submit">
+            <button form="form" type="submit" class="request__btn">
+              Отравить заявку
+            </button>
+            <p class="form__submit-text">
+              Отправляя заявку Вы соглашаетесь с действующей <a href="">политикой конфиденциальности </a>
+            </p>
+          </div>
+        </div>
 
-							<div class="form-block__contact-block">
-								<p class="form-block__contact-text">
-						Или свяжитесь с нами удобным способом
-					</p>
-								<div class="form-block__contact-wrapper">
+        <div class="form-block__contact-block">
+          <p class="form-block__contact-text">
+            Или свяжитесь с нами удобным способом
+          </p>
+          <div class="form-block__contact-wrapper">
 
-									<a href="tel:+79536236283" type="tel" class="form-block__contact-link">
-										<img class="svg" src="assets/img/tel.svg">
-										<p>
-								+7 (953) 623-62-83
-							</p>
-									</a>
-									<a href="mailto:tishaeva1991@gmail.com" type="mail" class="form-block__contact-link">
-										<img class="svg" src="assets/img/mail.svg">
-										<p>
-								tishaeva1991@gmail.com
-							</p>
-									</a>
-								</div>
-							</div>
-						</div>
+            <a href="tel:+79536236283" type="tel" class="form-block__contact-link">
+              <img class="svg" src="assets/img/tel.svg">
+              <p>
+                +7 (953) 623-62-83
+              </p>
+            </a>
+            <a href="mailto:tishaeva1991@gmail.com" type="mail" class="form-block__contact-link">
+              <img class="svg" src="assets/img/mail.svg">
+              <p>
+                tishaeva1991@gmail.com
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
 
-						<img class="form-block__img" src="assets/img/form.jpg" alt="   ">
-		</div>
-	</div>
+      <img class="form-block__img" src="assets/img/form.jpg" alt="   ">
+    </div>
+  </div>
 </section>
 
 
